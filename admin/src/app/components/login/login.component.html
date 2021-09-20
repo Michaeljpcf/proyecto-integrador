@@ -14,26 +14,26 @@
                         
                         <div class="text-center w-75 m-auto">
                             <h4 class="text-dark-50 text-center pb-0 fw-bold">Iniciar Sesión</h4>
-                            <p class="text-muted mb-4">Ingrese su dirección de correo electrónico y contraseña para acceder al panel de administración.</p>
+                            <p class="text-muted mb-4">Ingrese su nombre de usuario y contraseña para acceder al panel de administración.</p>
                         </div>
 
                         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
                             <div class="mb-3">
-                                <label for="emailaddress" class="form-label">Correo electrónico</label>
-                                <input class="form-control" type="email" name="email" [(ngModel)]="user.email" required="" placeholder="Ingrese su correo electrónico">
+                                <label for="emailaddress" class="form-label">Nombre de usuario</label>
+                                <input class="form-control" type="text" name="userName" [(ngModel)]="userName" required="" placeholder="Ingrese su nombre de usuario">
                             </div>
 
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" name="password" [(ngModel)]="user.password" class="form-control" placeholder="Tu contraseña" required="">
+                                    <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Tu contraseña" required="">
                                     <div class="input-group-text" data-password="false">
                                         <span class="password-eye"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3 mb-0 text-center">
-                                <button class="btn btn-primary" type="submit"> Ingresar </button>
+                                <button class="btn btn-primary"> Ingresar </button>
                             </div>
                         </form>
                     </div> <!-- end card-body -->

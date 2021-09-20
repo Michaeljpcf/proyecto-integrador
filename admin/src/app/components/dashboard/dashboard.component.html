@@ -169,8 +169,8 @@
                         <span class="account-user-avatar"> 
                             <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                         </span>
-                        <span>
-                            <span class="account-user-name">Soeng Souy</span>
+                        <span *ngIf="isLogged">
+                            <span class="account-user-name">{{userName}}</span>
                             <span class="account-position">Founder</span>
                         </span>
                     </a>
@@ -193,7 +193,7 @@
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a style="cursor: pointer;" class="dropdown-item notify-item" (click)= "onLogOut()">
                             <i class="mdi mdi-logout me-1"></i>
                             <span>Cerrar Sesión</span>
                         </a>

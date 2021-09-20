@@ -4,7 +4,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LoginComponent } from "./components/login/login.component";
 
 const appRoute: Routes = [
-    {path: '', component: DashboardComponent},
+    {path: '', component: DashboardComponent, canActivate: []},
     {path: 'login', component: LoginComponent}
 ]
 
