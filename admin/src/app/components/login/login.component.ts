@@ -15,25 +15,24 @@ declare var iziToast;
 })
 export class LoginComponent implements OnInit {
   
-  isLogged = false;
-  isLoginFail = false;
   loginUser: LoginUser;
   userName: string;
   password: string;
-  roles: string[] = [];
+  
+  public token:any = '';
 
   constructor(
     private _tokenService: TokenService,
     private _authService: AuthService,
     private _router: Router
-  ) { }
+  ) { 
+    this.token = this._tokenService.getToken();
+  }
 
-  ngOnInit(): void {
-    if (this._tokenService.getToken()) {
-      this.isLogged = true;
-      this.isLoginFail = false;
-      this.roles = this._tokenService.getAuthorities();
-    }
+  ngOnInit(): void {    
+    if (this.token) {
+      this._router.navigate(['/']);
+    } 
   }
 
   login(loginForm:any) {
@@ -41,13 +40,7 @@ export class LoginComponent implements OnInit {
       this.loginUser = new LoginUser(this.userName, this.password);
       this._authService.login_admin(this.loginUser).subscribe(
         res=> {
-          this.isLogged = true;
-          this.isLoginFail = false;
-
           this._tokenService.setToken(res.token);
-          this._tokenService.setUserName(res.userName);
-          this._tokenService.setAuthorities(res.authorities);
-          this.roles = res.authorities;
           this._router.navigate(['/']);
         },
         err=> {
@@ -60,8 +53,6 @@ export class LoginComponent implements OnInit {
               message: 'Usuario o contraseña incorrecta'
             });
           }
-          this.isLogged = false;
-          this.isLoginFail = true;          
         }
       );
       

@@ -9,8 +9,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class DashboardComponent implements OnInit {
 
-  isLogged = false;
-  userName = '';
+  userName: string;
 
   constructor(
     private _tokenService: TokenService,
@@ -18,13 +17,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this._tokenService.getToken()) {
-      this.isLogged = true;
-      this.userName = this._tokenService.getUserName();
-    } else {
-      this.isLogged = false;
-      this.userName = '';
-    }
+    this.userName = this._tokenService.getUserName();
   }
 
   onLogOut(): void {
