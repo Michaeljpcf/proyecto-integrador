@@ -8,24 +8,24 @@ Header
     <div class="header__top">
         <div class="container">
             <!--=====================================
-            Social 
+            Social
             ======================================-->
             <div class="header__left">
                 <ul class="d-flex justify-content-center">
                     <li><a href="#" target="_blank"><i class="fab fa-facebook-f mr-4"></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fab fa-instagram mr-4"></i></a></li>					
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram mr-4"></i></a></li>
                     <li><a href="#" target="_blank"><i class="fab fa-twitter mr-4"></i></a></li>
                     <li><a href="#" target="_blank"><i class="fab fa-youtube mr-4"></i></a></li>
                 </ul>
             </div>
             <!--=====================================
-            Contact & lenguage 
+            Contact & lenguage
             ======================================-->
             <div class="header__right">
-                <ul class="header__top-links"> 
+                <ul class="header__top-links">
                     <li><a href="#">Sell on MarketPlace</a></li>
                     <li><a href="#">Store List</a></li>
-                    <li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>                     
+                    <li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>
                     <li>
                         <div class="ps-dropdown language"><a href="#"><img src="assets/img/template/en.png" alt="">English</a>
                             <ul class="ps-dropdown-menu">
@@ -52,7 +52,7 @@ Header
                 <!--=====================================
                 Menú
                 ======================================-->
-                <div class="menu--product-categories">                    
+                <div class="menu--product-categories">
                     <div class="menu__toggle">
                         <i class="icon-menu"></i>
                         <span> Shop by Department</span>
@@ -247,8 +247,9 @@ Header
                             <i class="icon-user"></i>
                         </div>
                         <div class="ps-block__right">
-                            <a href="my-account.html">Login</a>
-                            <a href="my-account.html">Register</a>
+                             <a routerLink="login">Login</a>
+                             <a style="cursor: pointer;" *ngIf="userName"  (click)="onLogOut()">Cerrar Sesion</a>
+                            <a routerLink="register">Register</a>
                         </div>
                     </div>
                 </div><!-- End Header Actions-->
@@ -265,16 +266,16 @@ Header Mobile
         <div class="header__left">
             <ul class="d-flex justify-content-center">
                 <li><a href="#" target="_blank"><i class="fab fa-facebook-f mr-4"></i></a></li>
-                <li><a href="#" target="_blank"><i class="fab fa-instagram mr-4"></i></a></li>					
+                <li><a href="#" target="_blank"><i class="fab fa-instagram mr-4"></i></a></li>
                 <li><a href="#" target="_blank"><i class="fab fa-twitter mr-4"></i></a></li>
                 <li><a href="#" target="_blank"><i class="fab fa-youtube mr-4"></i></a></li>
             </ul>
         </div>
         <div class="header__right">
-            <ul class="navigation__extra">                
+            <ul class="navigation__extra">
                 <li><a href="#">Sell on MarketPlace</a></li>
                 <li><a href="#">Store List</a></li>
-                <li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>    
+                <li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>
                 <li>
                     <div class="ps-dropdown language"><a href="#"><img src="assets/img/template/en.png" alt="">English</a>
                         <ul class="ps-dropdown-menu">
@@ -290,7 +291,7 @@ Header Mobile
             <!--=====================================
             Menu Mobile
             ======================================-->
-            <div class="menu--product-categories">                
+            <div class="menu--product-categories">
                 <div class="ps-shop__filter-mb mt-4" id="filter-sidebar">
                     <i class="icon-menu "></i>
                 </div>
@@ -466,9 +467,9 @@ Header Mobile
                                 <li class="current-menu-item "><a href="shop-default.html">Cars &amp; Motocycles</a>
                                 </li>
                             </ul>
-                        </aside>   
+                        </aside>
                     </div>
-                </div> 
+                </div>
             </div><!-- End menu-->
             <a class="ps-logo pl-3 pl-sm-5" href="index.html">
                 <img src="assets/img/template/logo_light.png" class="pt-3" alt="">
@@ -491,7 +492,7 @@ Header Mobile
                                         <img src="assets/img/products/clothing/7.jpg" alt="">
                                     </a>
                                 </div>
-                                <div class="ps-product__content">                                    
+                                <div class="ps-product__content">
                                     <a class="ps-product__remove" href="#">
                                         <i class="icon-cross"></i>
                                     </a>
@@ -531,8 +532,9 @@ Header Mobile
                         <i class="icon-user"></i>
                     </div>
                     <div class="ps-block__right">
-                        <a href="my-account.html">Login</a>
-                        <a href="my-account.html">Register</a>
+                      <a routerLink="login">Login</a>
+                      <a style="cursor: pointer;" *ngIf="userName"  (click)="onLogOut()">Cerrar Sesion</a>
+                      <a routerLink="register">Register</a>
                     </div>
                 </div>
             </div>
