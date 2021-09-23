@@ -247,9 +247,10 @@ Header
                             <i class="icon-user"></i>
                         </div>
                         <div class="ps-block__right">
-                             <a routerLink="login">Login</a>
-                             <a style="cursor: pointer;" *ngIf="userName"  (click)="onLogOut()">Cerrar Sesion</a>
-                            <a routerLink="register">Register</a>
+                             <a routerLink="login" *ngIf="!userName">Login</a>
+                             <a routerLink="" *ngIf="userName">Bienvenido {{userName}}</a>
+                            <a routerLink="register" *ngIf="!userName">Register</a>
+                            <a style="cursor: pointer;" *ngIf="userName"  (click)="onLogOut()">Cerrar Sesion</a>
                         </div>
                     </div>
                 </div><!-- End Header Actions-->
@@ -532,9 +533,10 @@ Header Mobile
                         <i class="icon-user"></i>
                     </div>
                     <div class="ps-block__right">
-                      <a routerLink="login">Login</a>
-                      <a style="cursor: pointer;" *ngIf="userName"  (click)="onLogOut()">Cerrar Sesion</a>
-                      <a routerLink="register">Register</a>
+                      <a routerLink="login" *ngIf="!userName">Login</a>
+                             <a *ngIf="userName">Bienvenido {{userName}}</a>
+                            <a routerLink="register" *ngIf="!userName">Register</a>
+                            <a style="cursor: pointer;" *ngIf="userName"  (click)="onLogOut()">Cerrar Sesion</a>
                     </div>
                 </div>
             </div>

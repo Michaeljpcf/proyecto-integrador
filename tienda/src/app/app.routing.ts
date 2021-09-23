@@ -7,7 +7,7 @@ import { RegisterComponent } from "./components/register/register.component";
 
 const appRoute: Routes = [
     {path:'login',component:LoginComponent},
-    {path:'register', component:RegisterComponent,canActivate: [AdminGuard], data:{expectedRole:['admin']}},
+    {path:'register', component:RegisterComponent/*,canActivate: [AdminGuard], data:{expectedRole:['admin']}*/},
     {path: '', component: InicioComponent}
 ]
 

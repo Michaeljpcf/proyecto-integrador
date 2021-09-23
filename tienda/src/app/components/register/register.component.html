@@ -1,1 +1,102 @@
-<p>register works!</p>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
+<div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-xxl-4 col-lg-5">
+              <div class="card">
+                  <!-- Logo -->
+                  <div class="card-header pt-4 pb-4 text-center bg-primary">
+                      <a href="index.html">
+                          <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                      </a>
+                  </div>
+
+                  <div class="card-body p-4">
+
+
+                    <ul class="nav nav-tabs justify-content-center">
+                      <li class="nav-item">
+                        <a class="nav-link"  routerLink="../login" style="font-size:large; font-family: Arial, Helvetica, sans-serif;">Login</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" routerLink="../register" style="font-size:large; font-family: Arial, Helvetica, sans-serif;">Register</a>
+                      </li>
+                    </ul>
+
+                      <div class="text-center w-75 m-auto " >
+                          <h4 class="text-dark-50 text-center pb-0 fw-bold" style="margin-top: 20px;">Registrar cuenta</h4>
+                          <p class="text-muted mb-4">Ingrese los datos personales para registrar cuenta</p>
+                      </div>
+
+                      <form #loginForm="ngForm" >
+                          <div class="form-group">
+                            <label for="userName" class="form-label">Nombre de usuario</label>
+                            <input class="form-control" type="text" name="userName"  required="" placeholder="Ingrese su nombre de usuario">
+                          </div>
+                          <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <div class="input-group input-group-merge">
+                                <input type="password" name="password"  class="form-control" placeholder="Tu contraseña" required="">
+                                <div class="input-group-text" data-password="false" onclick="data-password.true"><i class="fa fa-eye-slash fa-2x"></i>
+                                    <span class="password-eye"></span>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="form-group">
+                              <div class="ps-checkbox">
+                                  <input class="form-control" type="checkbox" id="remember-me" name="remember-me" />
+                                  <label for="remember-me">Rememeber me</label>
+                              </div>
+                          </div>
+                          <div class="form-group submtit">
+                              <button class="ps-btn ps-btn--fullwidth">Login</button>
+                          </div>
+
+                        </form>
+                        <!--FORM DEL REGISTER-->
+                  <!---<div class="ps-tab" id="register">
+                      <div class="ps-form__content">
+                          <h5>Register An Account</h5>
+                          <div class="form-group">
+                              <input class="form-control" type="text" placeholder="Username or email address">
+                          </div>
+                          <div class="form-group">
+                              <input class="form-control" type="text" placeholder="Password">
+                          </div>
+                          <div class="form-group submtit">
+                              <button class="ps-btn ps-btn--fullwidth">Login</button>
+                          </div>
+                      </div>
+                      <div class="ps-form__footer">
+                          <p>Connect with:</p>
+                          <ul class="ps-list--social">
+                              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                              <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+                              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                              <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                          </ul>
+                      </div>
+                  </div> -->
+                  </div> <!-- end card-body -->
+              </div>
+              <!-- end card -->
+
+              <div class="row mt-3">
+                  <div class="col-12 text-center">
+                      <p class="text-muted">¿No tienes una cuenta? <a href="pages-register.html" class="text-muted ms-1"><b>Registrarse</b></a></p>
+                  </div> <!-- end col -->
+              </div>
+              <!-- end row -->
+
+          </div> <!-- end col -->
+      </div>
+      <!-- end row -->
+  </div>
+  <!-- end container -->
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>

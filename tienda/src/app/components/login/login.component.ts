@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 
 
+
 declare var jQuery:any;
 declare var $:any;
 declare var iziToast;
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
               title: 'Error',
               position: 'topRight',
               color: 'red',
-              timeout: 1000,
+              timeout: 3000,
               message: 'Usuario o contraseña incorrecta'
             });
           }
@@ -62,7 +63,7 @@ export class LoginComponent implements OnInit {
         title: 'Error',
         position: 'topRight',
         color: 'red',
-        timeout: 1000,
+        timeout: 3000,
         message: 'Complete todos los datos del formulario.'
       });
     }
