@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           if (err.status == 401) {
             iziToast.show({
               title: 'Error',
-              position: 'topRight',
+              position: 'bottomRight',
               color: 'red',
               timeout: 3000,
               message: 'Usuario o contraseña incorrecta'
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
     } else {
       iziToast.show({
         title: 'Error',
-        position: 'topRight',
+        position: 'bottomRight',
         color: 'red',
         timeout: 3000,
         message: 'Complete todos los datos del formulario.'

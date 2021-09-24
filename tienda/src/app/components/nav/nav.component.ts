@@ -9,6 +9,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class NavComponent implements OnInit {
   userName!: string;
+  name!: string;
 
   constructor(
     private _tokenService: TokenService,
@@ -17,6 +18,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = this._tokenService.getUserName();
+
   }
 
   onLogOut(): void {

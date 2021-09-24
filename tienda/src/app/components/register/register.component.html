@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<app-nav></app-nav>
 <body>
 <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
   <div class="container">
@@ -9,7 +9,7 @@
                   <!-- Logo -->
                   <div class="card-header pt-4 pb-4 text-center bg-primary">
                       <a href="index.html">
-                          <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                        <span><img src="../../../assets/img/template/logo_light.png" alt="" height="18"></span>
                       </a>
                   </div>
 
@@ -30,15 +30,23 @@
                           <p class="text-muted mb-4">Ingrese los datos personales para registrar cuenta</p>
                       </div>
 
-                      <form #loginForm="ngForm" >
+                      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" >
+                          <div class="form-group">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input class="form-control" type="text" name="name" [(ngModel)]="name" required="" placeholder="Ingrese su nombre">
+                          </div>
                           <div class="form-group">
                             <label for="userName" class="form-label">Nombre de usuario</label>
-                            <input class="form-control" type="text" name="userName"  required="" placeholder="Ingrese su nombre de usuario">
+                            <input class="form-control" type="text" name="userName" [(ngModel)]="userName" required="" placeholder="Ingrese su nombre de usuario">
+                          </div>
+                          <div class="form-group">
+                            <label for="email" class="form-label">Correo personal</label>
+                            <input class="form-control" type="email" name="email" [(ngModel)]="email" required="" placeholder="Ingrese su email">
                           </div>
                           <div class="mb-3">
                             <label for="password" class="form-label">Contraseña</label>
                             <div class="input-group input-group-merge">
-                                <input type="password" name="password"  class="form-control" placeholder="Tu contraseña" required="">
+                                <input type="password" name="password" [(ngModel)]="password"  class="form-control" placeholder="Tu contraseña" required="">
                                 <div class="input-group-text" data-password="false" onclick="data-password.true"><i class="fa fa-eye-slash fa-2x"></i>
                                     <span class="password-eye"></span>
                                 </div>
@@ -47,39 +55,15 @@
                           <div class="form-group">
                               <div class="ps-checkbox">
                                   <input class="form-control" type="checkbox" id="remember-me" name="remember-me" />
-                                  <label for="remember-me">Rememeber me</label>
+                                  <label for="remember-me">Rememeber me </label>
                               </div>
                           </div>
                           <div class="form-group submtit">
-                              <button class="ps-btn ps-btn--fullwidth">Login</button>
+                              <button class="ps-btn ps-btn--fullwidth">Registrar       <i class="fas fa-user-plus"></i></button>
                           </div>
 
                         </form>
-                        <!--FORM DEL REGISTER-->
-                  <!---<div class="ps-tab" id="register">
-                      <div class="ps-form__content">
-                          <h5>Register An Account</h5>
-                          <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Username or email address">
-                          </div>
-                          <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Password">
-                          </div>
-                          <div class="form-group submtit">
-                              <button class="ps-btn ps-btn--fullwidth">Login</button>
-                          </div>
-                      </div>
-                      <div class="ps-form__footer">
-                          <p>Connect with:</p>
-                          <ul class="ps-list--social">
-                              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                          </ul>
-                      </div>
-                  </div> -->
-                  </div> <!-- end card-body -->
+                  </div>
               </div>
               <!-- end card -->
 
@@ -100,3 +84,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+<app-footer></app-footer>

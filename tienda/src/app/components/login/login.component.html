@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+<app-nav></app-nav>
 <body>
 <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
   <div class="container">
@@ -9,7 +9,7 @@
                   <!-- Logo -->
                   <div class="card-header pt-4 pb-4 text-center bg-primary">
                       <a href="index.html">
-                          <span><img src="assets/images/logo.png" alt="" height="18"></span>
+                          <span><img src="../../../assets/img/template/logo_light.png" alt="" height="18"></span>
                       </a>
                   </div>
 
@@ -40,7 +40,6 @@
                             <div class="input-group input-group-merge">
                                 <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Tu contraseña" required="">
                                 <div class="input-group-text" data-password="false" onclick="data-password.true"><i class="fa fa-eye-slash fa-2x"></i>
-                                    <span class="password-eye"></span>
                                 </div>
                             </div>
                         </div>
@@ -51,35 +50,12 @@
                               </div>
                           </div>
                           <div class="form-group submtit">
-                              <button class="ps-btn ps-btn--fullwidth">Login</button>
+                              <button class="ps-btn ps-btn--fullwidth">Login      <i class="fas fa-sign-in-alt"></i></button>
                           </div>
 
                         </form>
-                        <!--FORM DEL REGISTER-->
-                  <!---<div class="ps-tab" id="register">
-                      <div class="ps-form__content">
-                          <h5>Register An Account</h5>
-                          <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Username or email address">
-                          </div>
-                          <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Password">
-                          </div>
-                          <div class="form-group submtit">
-                              <button class="ps-btn ps-btn--fullwidth">Login</button>
-                          </div>
-                      </div>
-                      <div class="ps-form__footer">
-                          <p>Connect with:</p>
-                          <ul class="ps-list--social">
-                              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                              <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                              <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                          </ul>
-                      </div>
-                  </div> -->
-                  </div> <!-- end card-body -->
+
+                  </div>
               </div>
               <!-- end card -->
 
@@ -98,3 +74,4 @@
 </div>
 
 </body>
+<app-footer></app-footer>
