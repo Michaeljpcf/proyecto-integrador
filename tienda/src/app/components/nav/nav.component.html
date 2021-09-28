@@ -187,72 +187,47 @@ Header
                     <!--=====================================
                     Wishlist
                     ======================================-->
-                    <a class="header__extra" href="#">
-                        <i class="icon-heart"></i><span><i>0</i></span>
-                    </a>
+                    <ng-container *ngIf="userName">
+                        <a class="header__extra" href="#">
+                            <i class="icon-heart"></i><span><i>0</i></span>
+                        </a>
+                    </ng-container>
                     <!--=====================================
-                    Cart
+                    User
                     ======================================-->
                     <div class="ps-cart--mini">
-                        <a class="header__extra" href="#">
-                            <i class="icon-bag2"></i><span><i>0</i></span>
+                        <a class="header__extra" style="cursor: pointer;">
+                            <i class="icon-user"></i>
                         </a>
                         <div class="ps-cart__content">
                             <div class="ps-cart__items">
-                                <div class="ps-product--cart-mobile">
-                                    <div class="ps-product__thumbnail">
-                                        <a href="#">
-                                            <img src="assets/img/products/clothing/7.jpg" alt="">
-                                        </a>
+                                <ng-container *ngIf="!userName">
+                                    <div class="ps-product--cart-mobile">
+                                        <div class="ps-product__content">
+                                            <a [routerLink]="['/login']">Iniciar Sesión</a>
+                                        </div>
                                     </div>
-                                    <div class="ps-product__content">
-                                        <a class="ps-product__remove" href="#">
-                                            <i class="icon-cross"></i>
-                                        </a>
-                                        <a href="product-default.html">MVMTH Classical Leather Watch In Black</a>
-                                        <p><strong>Sold by:</strong> YOUNG SHOP</p>
-                                        <small>1 x $59.99</small>
+                                </ng-container>
+                                <ng-container *ngIf="userName">
+                                    <div class="ps-product--cart-mobile">
+                                        <div class="ps-product__content">
+                                            <a [routerLink]="['/account/profile']">Mi cuenta</a>
+                                        </div>
+                                    </div> 
+                                    <div class="ps-product--cart-mobile">
+                                        <div class="ps-product__content">
+                                            <a [routerLink]="['/sell']">Vender</a>
+                                        </div>
+                                    </div> 
+                                    <div class="ps-product--cart-mobile">  
+                                        <div class="ps-product__content">
+                                            <a style="cursor: pointer;" (click)="onLogOut()">Cerrar Sesion</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="ps-product--cart-mobile">
-                                    <div class="ps-product__thumbnail">
-                                        <a href="#">
-                                            <img src="assets/img/products/clothing/5.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="ps-product__content">
-                                        <a class="ps-product__remove" href="#">
-                                            <i class="icon-cross"></i>
-                                        </a>
-                                        <a href="product-default.html">Sleeve Linen Blend Caro Pane Shirt</a>
-                                        <p><strong>Sold by:</strong> YOUNG SHOP</p>
-                                        <small>1 x $59.99</small>
-                                    </div>
-                                </div>
+                                </ng-container>   
                             </div>
-                            <div class="ps-cart__footer">
-                                <h3>Sub Total:<strong>$59.99</strong></h3>
-                                <figure>
-                                    <a class="ps-btn" href="shopping-cart.html">View Cart</a>
-                                    <a class="ps-btn" href="checkout.html">Checkout</a>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                    <!--=====================================
-                    Login and Register
-                    ======================================-->
-                    <div class="ps-block--user-header">
-                        <div class="ps-block__left">
-                            <i class="icon-user"></i>
-                        </div>
-                        <div class="ps-block__right">
-                             <a routerLink="/login" *ngIf="!userName">Login</a>
-                             <a routerLink="" *ngIf="userName">Bienvenido {{userName}}</a>
-                            <a routerLink="/register" *ngIf="!userName">Register</a>
-                            <a style="cursor: pointer;" *ngIf="userName"  (click)="onLogOut()">Cerrar Sesion</a>
-                        </div>
-                    </div>
+                        </div>  
+                    </div>  
                 </div><!-- End Header Actions-->
             </div><!-- End Header Content Right-->
         </div><!-- End Container-->
@@ -479,66 +454,36 @@ Header Mobile
         <div class="navigation__right">
             <div class="header__actions">
                 <!--=====================================
-                Cart
+                User
                 ======================================-->
                 <div class="ps-cart--mini">
-                    <a class="header__extra" href="#">
-                        <i class="icon-bag2"></i><span><i>0</i></span>
+                    <a class="header__extra" style="cursor: pointer;">
+                        <i class="icon-user"></i>
                     </a>
                     <div class="ps-cart__content">
                         <div class="ps-cart__items">
-                            <div class="ps-product--cart-mobile">
-                                <div class="ps-product__thumbnail">
-                                    <a href="#">
-                                        <img src="assets/img/products/clothing/7.jpg" alt="">
-                                    </a>
+                            <ng-container *ngIf="!userName">
+                                <div class="ps-product--cart-mobile">
+                                    <div class="ps-product__content">
+                                        <a [routerLink]="['/login']">Login</a>
+                                    </div>
                                 </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__remove" href="#">
-                                        <i class="icon-cross"></i>
-                                    </a>
-                                    <a href="product-default.html">MVMTH Classical Leather Watch In Black</a>
-                                    <p><strong>Sold by:</strong> YOUNG SHOP</p>
-                                    <small>1 x $59.99</small>
+                            </ng-container>
+                            <ng-container *ngIf="userName">
+                                <div class="ps-product--cart-mobile">
+                                    <div class="ps-product__content">
+                                        <a [routerLink]="['/account/profile']" routerLinkActive="active"  *ngIf="userName">Mi cuenta</a>
+                                    </div>
+                                </div> 
+                                <div class="ps-product--cart-mobile">  
+                                    <div class="ps-product__content">
+                                        <a style="cursor: pointer;" *ngIf="userName" (click)="onLogOut()">Cerrar Sesion</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="ps-product--cart-mobile">
-                                <div class="ps-product__thumbnail">
-                                    <a href="#"><img src="assets/img/products/clothing/5.jpg" alt=""></a>
-                                </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__remove" href="#">
-                                        <i class="icon-cross"></i>
-                                    </a>
-                                    <a href="product-default.html">Sleeve Linen Blend Caro Pane Shirt</a>
-                                    <p><strong>Sold by:</strong> YOUNG SHOP</p>
-                                    <small>1 x $59.99</small>
-                                </div>
-                            </div>
+                            </ng-container>   
                         </div>
-                        <div class="ps-cart__footer">
-                            <h3>Sub Total:<strong>$59.99</strong></h3>
-                            <figure>
-                                <a class="ps-btn" href="shopping-cart.html">View Cart</a>
-                                <a class="ps-btn" href="checkout.html">Checkout</a>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-                <!--=====================================
-                Login and Register
-                ======================================-->
-                <div class="ps-block--user-header">
-                    <div class="ps-block__left">
-                        <i class="icon-user"></i>
-                    </div>
-                    <div class="ps-block__right">
-                      <a routerLink="/login" *ngIf="!userName">Login</a>
-                             <a *ngIf="userName">Bienvenido {{userName}}</a>
-                            <a routerLink="/register" *ngIf="!userName">Register</a>
-                            <a style="cursor: pointer;" *ngIf="userName"  (click)="onLogOut()">Cerrar Sesion</a>
-                    </div>
-                </div>
+                    </div>  
+                </div>  
             </div>
         </div>
     </div>

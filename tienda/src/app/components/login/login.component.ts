@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       this._authService.login_user(this.loginUser).subscribe(
         res=> {
           this._tokenService.setToken(res.token);
-          this._router.navigate(['/']);
+          this._router.navigate(['account/profile']);
         },
         err=> {
           if (err.status == 401) {

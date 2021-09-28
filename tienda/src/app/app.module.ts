@@ -12,6 +12,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { interceptorProvider } from './services/interceptor.service';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { SalesComponent } from './components/user/sales/sales.component';
+import { ShoppingComponent } from './components/user/shopping/shopping.component';
+import { SidebarComponent } from './components/user/sidebar/sidebar.component';
+import { WishlistComponent } from './components/user/wishlist/wishlist.component';
+import { SellComponent } from './components/user/sell/sell.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { interceptorProvider } from './services/interceptor.service';
     NavComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    SalesComponent,
+    ShoppingComponent,
+    SidebarComponent,
+    WishlistComponent,
+    SellComponent
   ],
   imports: [
     BrowserModule,

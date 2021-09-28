@@ -10063,8 +10063,7 @@ textarea.form-control {
 
 .ps-product--cart-mobile .ps-product__content {
   position: relative;
-  padding-right: 30px;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .ps-product--cart-mobile .ps-product__content .ps-product__remove {
@@ -10076,7 +10075,8 @@ textarea.form-control {
 }
 
 .ps-product--cart-mobile .ps-product__content a {
-  color: #06c;
+  display: block;
+  color: #666;
 }
 
 .ps-product--cart-mobile .ps-product__content a:hover {
@@ -11456,12 +11456,12 @@ textarea.form-control {
 }
 
 .ps-cart--mini .ps-cart__items .ps-product--cart-mobile {
-  margin-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .ps-cart--mini .ps-cart__content {
   position: absolute;
-  min-width: 370px;
+  min-width: 200px;
   right: -30px;
   z-index: 30;
   padding-top: 10px;
@@ -11471,6 +11471,7 @@ textarea.form-control {
   transition: all .4s ease;
   visibility: hidden;
   opacity: 0;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .ps-cart--mini .ps-cart__footer {
@@ -15247,7 +15248,7 @@ textarea.form-control {
 
 .menu--product-categories .menu__content {
   position: absolute;
-  top: 100%;
+  top: 50px;
   left: 0;
   z-index: 100;
   z-index: 1000;
@@ -15762,7 +15763,7 @@ textarea.form-control {
 }
 
 .header--standard .header__content {
-  padding: 20px 0;
+  padding: 15px 0 0;
 }
 
 .header--standard .header__content .menu--product-categories .menu__toggle:hover:before {
