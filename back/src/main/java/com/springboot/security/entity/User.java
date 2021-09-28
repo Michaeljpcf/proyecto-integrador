@@ -1,9 +1,12 @@
 package com.springboot.security.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,16 +16,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.springboot.entity.Product;
 import com.sun.istack.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
 
+@JsonInclude(content = Include.NON_NULL)
+//@JsonPropertyOrder
 @Entity
 @Getter
 @Setter
@@ -43,6 +55,7 @@ public class User {
 	private String email;
 	
 	@NotNull
+	@JsonIgnore
 	private String password;
 	
 	private String picture; 
@@ -50,26 +63,27 @@ public class User {
 	private String city;
 	private String phone;
 	private String address;
-	private String token;
-	private String method;
 	private String wishlist;
 	private Boolean enabled;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
 	private Date date_created_user;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_updated_user;
 	
 	@NotNull
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name="user_id"),
 	inverseJoinColumns = @JoinColumn(name="role_id"))
+	@JsonIgnore
 	private Set<Role> roles = new HashSet<>();
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+	//@JsonManagedReference
+	private List<Product> products;
 
 	public User() {
-		super();
+		this.products = new ArrayList<>();
 	}
 
 	public User(String name, String userName, String email, String password) {

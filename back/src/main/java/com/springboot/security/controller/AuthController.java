@@ -1,6 +1,7 @@
 package com.springboot.security.controller;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -15,12 +16,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.dto.Message;
+import com.springboot.entity.Category;
 import com.springboot.security.dto.JwtDto;
 import com.springboot.security.dto.LoginUser;
 import com.springboot.security.dto.NewUser;
@@ -50,7 +54,7 @@ public class AuthController {
 	
 	@Autowired
 	JwtProvider jwtProvider;
-	
+
 	@PostMapping("/new")	
 	public ResponseEntity<?> nuevo(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
 		if(bindingResult.hasErrors())
