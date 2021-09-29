@@ -11,6 +11,8 @@ import com.springboot.security.entity.UserPrimary;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+	// Obtiene el usuario de la DB y convierte en un Usuario Principal, que es la clase específica que utiliza Spring Security
+	//para obtener los datos y los privilegios del usuario. 
 	
 	@Autowired
 	UserService userService;

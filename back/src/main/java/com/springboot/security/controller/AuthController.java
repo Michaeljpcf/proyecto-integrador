@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.dto.Message;
-import com.springboot.entity.Category;
 import com.springboot.security.dto.JwtDto;
 import com.springboot.security.dto.LoginUser;
 import com.springboot.security.dto.NewUser;
@@ -32,6 +31,7 @@ import com.springboot.security.entity.Role;
 import com.springboot.security.entity.User;
 import com.springboot.security.enums.RoleName;
 import com.springboot.security.jwt.JwtProvider;
+import com.springboot.security.service.ClientService;
 import com.springboot.security.service.RoleService;
 import com.springboot.security.service.UserService;
 
@@ -54,6 +54,9 @@ public class AuthController {
 	
 	@Autowired
 	JwtProvider jwtProvider;
+	
+	@Autowired
+	ClientService clientService;
 
 	@PostMapping("/new")	
 	public ResponseEntity<?> nuevo(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
@@ -88,7 +91,12 @@ public class AuthController {
 		return new ResponseEntity<>(jwtDto, HttpStatus.OK);
 	}
 	
-	
+	@GetMapping("/users")
+	@ResponseBody
+	public ResponseEntity<List<User>> findAll() {
+		List<User> lista = clientService.findAll();
+		return ResponseEntity.ok(lista);
+	}
 	
 	
 	

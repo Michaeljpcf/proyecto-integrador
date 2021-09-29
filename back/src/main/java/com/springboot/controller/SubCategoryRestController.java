@@ -10,22 +10,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.entity.Category;
-import com.springboot.service.CategoryService;
+import com.springboot.entity.SubCategory;
+import com.springboot.service.SubCategoryService;
 
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
-public class CategoryRestController {
+public class SubCategoryRestController {
 	
 	@Autowired
-	private CategoryService categoryService;
+	private SubCategoryService subCategoryService;
 	
-	@GetMapping("/categories")
+	@GetMapping("/subcategories")
 	@ResponseBody
-	public ResponseEntity<List<Category>> findAll() {
-		List<Category> lista = categoryService.findAll();
+	public ResponseEntity<List<SubCategory>> findAll() {
+		List<SubCategory> lista = subCategoryService.findAll();
 		return ResponseEntity.ok(lista);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

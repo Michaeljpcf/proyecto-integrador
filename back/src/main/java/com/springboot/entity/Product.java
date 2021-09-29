@@ -1,21 +1,20 @@
 package com.springboot.entity;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.security.entity.User;
 
 import lombok.Getter;
@@ -26,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "products")
 public class Product {
-	
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -41,16 +40,19 @@ public class Product {
 	private Date createAt;
 		
 	@ManyToOne(fetch = FetchType.EAGER)
-	//@JsonBackReference
+	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Category category;	
+	@JoinColumn(name = "subcategories_id")
+	private SubCategory subCategory;	
 	
 	@PrePersist
 	public void prePersist() {
 		this.createAt = new Date();
 	}
+
+	
 }
 
 

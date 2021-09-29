@@ -21,7 +21,7 @@ import com.springboot.security.service.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class MainSecurity extends WebSecurityConfigurerAdapter {
+public class MainSecurity extends WebSecurityConfigurerAdapter { //Es la que organiza todas las clases de seguridad
 	
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
@@ -60,7 +60,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/auth/**").permitAll()
-			.antMatchers("/api/**").permitAll()
+			.antMatchers("/api/**").permitAll()	
 			.anyRequest().authenticated()
 			.and()
 			.exceptionHandling().authenticationEntryPoint(jwtEntryPoint)

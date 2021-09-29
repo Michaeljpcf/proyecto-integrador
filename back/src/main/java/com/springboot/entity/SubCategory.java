@@ -1,5 +1,6 @@
 package com.springboot.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,7 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,35 +19,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "subcategories")
+public class SubCategory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int id;	
 	private String name;
 	private String url;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Category category;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "category_id")
-	private List<SubCategory> subcategories;
+	private List<Product> products;
+	
+	public SubCategory() {
+		products = new ArrayList<>();
+	}
 	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

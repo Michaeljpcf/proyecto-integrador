@@ -17,16 +17,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.PrePersist;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.springboot.entity.Product;
 import com.sun.istack.NotNull;
 
@@ -84,6 +81,11 @@ public class User {
 
 	public User() {
 		this.products = new ArrayList<>();
+	}
+	
+	@PrePersist
+	public void prePersist() {
+		this.date_created_user = new Date();
 	}
 
 	public User(String name, String userName, String email, String password) {
