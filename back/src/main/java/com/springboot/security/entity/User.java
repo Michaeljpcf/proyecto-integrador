@@ -52,7 +52,7 @@ public class User {
 	private String email;
 	
 	@NotNull
-	@JsonIgnore
+	//@JsonIgnore
 	private String password;
 	
 	private String picture; 

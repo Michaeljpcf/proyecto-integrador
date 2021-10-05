@@ -7,5 +7,6 @@ import com.springboot.entity.Category;
 public interface CategoryService {
 	
 	public List<Category> findAll();
+	
 
 }
