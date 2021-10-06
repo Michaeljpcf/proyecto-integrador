@@ -1,0 +1,192 @@
+<app-nav></app-nav>
+
+<div class="container">  
+    <h1 class="text-center text-uppercase pt-30" style="font-size: 35px">
+        Publica tu anuncio
+    </h1>    
+    <form #registerForm="ngForm" (ngSubmit)="registerPost(registerForm)">
+        <div class="ui-card-post">
+            <div class="card categories">
+                <div class="card-header border-bottom-0">            
+                    <h3 class="content-title">Elige una categoría</h3>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="categories-dropdown">
+                        <li class="categories-item-has-children has-subcategories" *ngFor="let item of categories">
+                            <a data-toggle="tab" href="#product" (click)="goProduct()">
+                                <input type="hidden" name="name" [(ngModel)]="category.name">
+                                {{item.name}}
+                            </a>
+                            <!-- <div class="subcategories-dropdown">
+                                <ul class="subcategories-list">
+                                    <li><a href="#">Home Audio &amp; Theathers</a>
+                                    </li>
+                                    <li><a href="#">TV &amp; Videos</a>
+                                    </li>
+                                    <li><a href="#">Camera, Photos &amp; Videos</a>
+                                    </li>
+                                    <li><a href="#">Cellphones &amp; Accessories</a>
+                                    </li>
+                                    <li><a href="#">Headphones</a>
+                                    </li>
+                                    <li><a href="#">Videosgames</a>
+                                    </li>
+                                    <li><a href="#">Wireless Speakers</a>
+                                    </li>
+                                    <li><a href="#">Office Electronic</a>
+                                    </li>
+                                </ul>                 
+                            </div> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="product" class="tab-pane fade mb-30 mt-50">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="content-title">Incluya algunos detalles a su producto</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Título del producto</label>
+                                <div class="form-group__content">
+                                    <input
+                                    type="text" 
+                                    class="form-control formProduct" 
+                                    (change)="validate(name)" 
+                                    #name
+                                    name="name" 
+                                    [(ngModel)]="product.name"  
+                                    required>
+
+                                    <div class="valid-feedback">Valido.</div>
+                                    <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Url del producto</label>
+                                <div class="form-group__content">
+                                    <input type="text" 
+                                    class="form-control formProduct" 
+                                    readonly
+                                    name="url" 
+                                    [(ngModel)]="product.url">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label>Fija un Precio</label>
+                                <div class="form-group__content input-group mx-0 pr-0">
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">S/.</span>
+                                    </div>
+                                    <input 
+                                    type="number" 
+                                    class="form-control formProduct col-md-3" 
+                                    name="price" 
+                                    [(ngModel)]="product.price" 
+                                    tag="prices"
+                                    min="0"
+                                    step="any"
+                                    pattern="[.\\,\\0-9]{1,}"
+                                    (change)="validate(price)"
+                                    #price
+                                    required>
+
+                                    <div class="valid-feedback">Valido.</div>
+                                    <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
+                                </div>                                
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label>Descripción</label>
+                                <textarea 
+                                class="formProduct"
+                                name="description" 
+                                [(ngModel)]="product.description"
+                                [ngxSummernote]="config"
+                                rows="10"
+                                required></textarea>
+
+                                <div class="valid-feedback">Valido.</div>
+                                <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
+                            </div>                            
+
+                            <div class="form-group col-md-12">
+                                <label>Imagen de tu producto</label>
+                                <div class="form-group__content">
+                                    <label for="productImage">
+                                        <img [src]="imgSelect" class="img-fluid" style="width: 300px;">
+                                    </label>
+
+                                    <div class="custom-file">
+                                        <input 
+                                        type="file"
+                                        class="custom-file-input fromProduct"
+                                        id="productImage"
+                                        [accept]="'image/jpeg,image/jpg,image/png,image'"
+                                        (change)="fileChangeEvent($event)"
+                                        required>
+
+                                        <div class="valid-feedback">Valido.</div>
+                                        <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
+
+                                        <label for="productImage" class="custom-file-label" id="image-name">Subir Imagen</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label>Galería de productos</label>
+
+                            <div class="custom-dropzone mb-5"
+                            ngx-dropzone
+                            [accept]="'image/jpeg,image/jpg,image/png,image'"
+                            [maxFileSize]="2000000"
+                            (change)="onSelect($event)">
+
+                                <ngx-dropzone-label>
+                                    <div>
+                                        <h2 class="text-muted">Suelta tus archivos aquí, tamaño 1000px * 1000px</h2>
+                                    </div>
+                                </ngx-dropzone-label>
+
+                                <ngx-dropzone-image-preview
+                                ngProjectAs="ngx-dropzone-preview"
+                                *ngFor="let f of gallery"
+                                [file]="f"
+                                [removable]="true"
+                                (removed)="onRemove(f)">
+                                    <ngx-dropzone-label>
+                                        {{f.name}} {{f.type}}
+                                    </ngx-dropzone-label>
+                                </ngx-dropzone-image-preview>
+
+                            </div>
+
+                            <!-- <div class="form-group col-md-6">
+                                <label>Título del producto</label>
+                                <div class="form-group__content">
+                                    <input type="text" class="form-control" name="title" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Título del producto</label>
+                                <div class="form-group__content">
+                                    <input type="text" class="form-control" name="title" required>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div> 
+                    <div class="car-footer">
+                        <div class="form-group submtit float-end mr-15">
+                            <button class="ps-btn ps-btn--lg">Crear Producto</button>
+                        </div>
+                    </div>                           
+                </div>
+            </div>
+        </div>        
+    </form>
+</div>
+
+<app-footer></app-footer>

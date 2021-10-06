@@ -7,7 +7,7 @@ import { ProfileComponent } from "./components/user/profile/profile.component";
 import { ShoppingComponent } from "./components/user/shopping/shopping.component";
 import { SalesComponent } from "./components/user/sales/sales.component";
 import { WishlistComponent } from "./components/user/wishlist/wishlist.component";
-import { SellComponent } from "./components/user/sell/sell.component";
+import { PostComponent } from "./components/user/post/post.component";
 
 const appRoute: Routes = [
     {path: '', redirectTo: 'index', pathMatch: 'full'},
@@ -18,7 +18,7 @@ const appRoute: Routes = [
     {path:'account/wishlist', component: WishlistComponent},
     {path:'account/shopping', component: ShoppingComponent},
     {path:'account/sales', component: SalesComponent},
-    {path:'sell', component: SellComponent},
+    {path:'post', component: PostComponent},
 ]
 
 export const appRoutingProvider: any[]=[];

@@ -60,6 +60,15 @@ export class RegisterComponent implements OnInit {
               message: 'Campos invalidos o vacios'
             });
           }
+          if (err.status == 400) {
+            iziToast.show({
+              title: 'Error',
+              position: 'bottomRight',
+              color: 'red',
+              timeout: 3000,
+              message: 'El usuario ya se encuentra registrado'
+            });
+          }
         }
       );
 

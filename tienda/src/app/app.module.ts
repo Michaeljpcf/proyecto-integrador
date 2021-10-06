@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
+import { NgxSummernoteModule } from "ngx-summernote";
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { routing } from "./app.routing";
@@ -15,9 +18,9 @@ import { interceptorProvider } from './services/interceptor.service';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { SalesComponent } from './components/user/sales/sales.component';
 import { ShoppingComponent } from './components/user/shopping/shopping.component';
-import { SidebarComponent } from './components/user/sidebar/sidebar.component';
+import { TopbarComponent } from './components/user/topbar/topbar.component';
 import { WishlistComponent } from './components/user/wishlist/wishlist.component';
-import { SellComponent } from './components/user/sell/sell.component';
+import { PostComponent } from './components/user/post/post.component';
 
 @NgModule({
   declarations: [
@@ -30,16 +33,18 @@ import { SellComponent } from './components/user/sell/sell.component';
     ProfileComponent,
     SalesComponent,
     ShoppingComponent,
-    SidebarComponent,
+    TopbarComponent,
     WishlistComponent,
-    SellComponent
+    PostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    routing
+    routing,
+    NgxSummernoteModule,
+    NgxDropzoneModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
