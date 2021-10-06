@@ -1,9 +1,22 @@
 package com.springboot.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,10 +26,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.entity.Product;
+import com.springboot.security.entity.User;
 import com.springboot.service.ProductService;
 
 @RestController
@@ -53,6 +69,15 @@ public class ProductRestController {
     public ResponseEntity<Product> delete(@PathVariable("id")int idProduct){
         Optional<Product> optProduct = productService.getById(idProduct);
         if(optProduct.isPresent()) {
+        	Product product = productService.findById(idProduct);
+        	String namePictureOld = product.getImage();
+        	if(namePictureOld != null && namePictureOld.length() > 0) {
+				Path rutaPictureOld = Paths.get("uploads//products").resolve(namePictureOld).toAbsolutePath();
+				File filePictureOld = rutaPictureOld.toFile();
+				if (filePictureOld.exists() && filePictureOld.canRead()) {
+					filePictureOld.delete();
+				}
+			}
             productService.deleteProduct(idProduct);
             return ResponseEntity.ok(optProduct.get());
         }
@@ -76,5 +101,89 @@ public class ProductRestController {
 		}		
 		
 	}
+	
+	
+	@PostMapping("/products/upload")
+	public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file, @RequestParam("id") Integer id) {
+		Map<String, Object> response = new HashMap<>();
+		
+		Product product = productService.findById(id);
+		
+		if (!file.isEmpty()) {
+			String nameFile = UUID.randomUUID().toString() + "_" + file.getOriginalFilename().replace(" ", "");
+			Path rutaFile = Paths.get("uploads//products").resolve(nameFile).toAbsolutePath();
+			
+			try {
+				Files.copy(file.getInputStream(), rutaFile);
+			} catch (IOException e) {
+				response.put("mensaje", "Error al subir la imagen del producto " + nameFile);
+				response.put("error", e.getMessage().concat(": ").concat(e.getCause().getMessage()));
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);	
+			}
+			
+			String namePictureOld = product.getImage();
+			
+			if(namePictureOld != null && namePictureOld.length() > 0) {
+				Path rutaPictureOld = Paths.get("uploads//products").resolve(nameFile).toAbsolutePath();
+				File filePictureOld = rutaPictureOld.toFile();
+				if (filePictureOld.exists() && filePictureOld.canRead()) {
+					filePictureOld.delete();
+				}
+			}
+			
+			product.setImage(nameFile);
+			productService.insertProduct(product);
+			
+			response.put("cliente", product);
+			response.put("mensaje", "Has subido la imagen con éxito: " + nameFile);
+		}
+		
+		
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/uploads/img/{namePicture:.+}")
+	public ResponseEntity<Resource> viewPicture(@PathVariable String namePicture) {
+		Path rutaPictureOld = Paths.get("uploads//products").resolve(namePicture).toAbsolutePath();
+		Resource recurso = null;
+		
+		try {
+			recurso = new UrlResource(rutaPictureOld.toUri());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		
+		if (!recurso.exists() && !recurso.isReadable()) {
+			throw new RuntimeException("Error no se pudo cargar la imagen: " + namePicture);
+		}
+		HttpHeaders cabeceras = new HttpHeaders();
+		cabeceras.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"");
+		
+		return new ResponseEntity<Resource>(recurso, cabeceras, HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

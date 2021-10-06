@@ -9,7 +9,7 @@ public interface ProductService {
 	
 	public List<Product> findAll();
 	
-	public Product findById(int idProduct);
+	public Product findById(Integer id);
 	
 	public Product insertProduct(Product obj);	
 	
