@@ -4,6 +4,8 @@ import { Category } from 'src/app/models/category';
 import { SubCategory } from 'src/app/models/sub-category';
 import { ClientService } from 'src/app/services/client.service';
 import { ProductService } from 'src/app/services/product.service';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/product';
 
 declare var jQuery:any;
 declare var $:any;
@@ -18,6 +20,7 @@ export class PostComponent implements OnInit {
 
   categories: Category[] = [];
   // subcategories: SubCategory[] = []
+  products: Product;
 
   public category:any = {};
   public product:any = {};
@@ -43,29 +46,42 @@ export class PostComponent implements OnInit {
 
   constructor(
     private _clientService: ClientService,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _activatedRoute: ActivatedRoute
   ) {
 
   }
 
   ngOnInit(): void {
     this.listCategories();
+    this._activatedRoute.paramMap.subscribe(
+      params=> {
+        let id = params.get('id');
+        if (id) {
+          this._productService.getProducts(id).subscribe(
+            res => {
+              this.products = res;
+            }
+          )
+        }
+      }
+    )
   }
 
   listCategories() {
     this._clientService.listCategories().subscribe(
       res=> {
-        this.categories = res;  
+        this.categories = res;
         this._clientService.listSubCategories().subscribe(
           sub=> {
-            console.log(sub);            
+            console.log(sub);
           }
         );
-        
+
       },
       err=> {
         console.log(err);
-        
+
       }
     );
   }
@@ -106,12 +122,16 @@ export class PostComponent implements OnInit {
     }
   }
 
-  fileChangeEvent(event:any):void {
+  fileChangeEvent(event:any) {
     var file:any;
+
+    this.imgSelect = event.target.files[0]
 
     if (event.target.files && event.target.files[0]) {
       file = <File>event.target.files[0];
-      
+      console.log(file);
+
+
     } else {
       iziToast.show({
         title: 'Error',
@@ -129,7 +149,7 @@ export class PostComponent implements OnInit {
       if (file.type == 'image/png' || file.type == 'image/webp' || file.type == 'image/jpg' || file.type == 'image/jpeg') {
 
         const reader = new FileReader();
-        reader.onload = e => this.imgSelect = reader.result;        
+        reader.onload = e => this.imgSelect = reader.result;
         reader.readAsDataURL(file);
 
         $('#image-name').text(file.name);
@@ -159,7 +179,7 @@ export class PostComponent implements OnInit {
       $('#image-name').text('Seleccionar imagen');
       this.imgSelect = 'assets/img/products/default/default-image.jpg';
       this.file = undefined;
-    }    
+    }
   }
 
   //gallery
@@ -181,24 +201,32 @@ export class PostComponent implements OnInit {
       let formProduct = $(".formProduct");
       let error = 0;
 
-      for (let i = 0; i < formProduct.length; i++) {        
+      for (let i = 0; i < formProduct.length; i++) {
         if ($(formProduct[i]).val() == "" || $(formProduct[i]).val() == undefined) {
           error ++;
           $(formProduct[i]).parent().addClass("was-validated");
-        }        
+        }
       }
 
       if (error > 0) {
         return;
       }
-      
+
       this._productService.newProduct(this.product).subscribe(
         res=>{
           console.log(res);
         }
-      )
+      );
 
-      
+      this._productService.uploadImage(this.imgSelect).subscribe(
+        products=> {
+          this.products = products;
+          console.log(products);
+
+        }
+      );
+
+
     } else {
       iziToast.show({
         title: 'Error',
@@ -207,7 +235,7 @@ export class PostComponent implements OnInit {
         message: 'Complete todos los campos obligatorios.'
       });
     }
-    
+
   }
 
 }

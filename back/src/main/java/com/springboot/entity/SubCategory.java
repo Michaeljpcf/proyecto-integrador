@@ -31,12 +31,12 @@ public class SubCategory {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Product> products;
+//	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private List<Product> products;
 	
-	public SubCategory() {
-		products = new ArrayList<>();
-	}
+//	public SubCategory() {
+//		products = new ArrayList<>();
+//	}
 	
 
 }

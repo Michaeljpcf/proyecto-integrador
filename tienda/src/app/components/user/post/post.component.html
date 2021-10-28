@@ -1,13 +1,13 @@
 <app-nav></app-nav>
 
-<div class="container">  
+<div class="container">
     <h1 class="text-center text-uppercase pt-30" style="font-size: 35px">
         Publica tu anuncio
-    </h1>    
+    </h1>
     <form #registerForm="ngForm" (ngSubmit)="registerPost(registerForm)">
         <div class="ui-card-post">
             <div class="card categories">
-                <div class="card-header border-bottom-0">            
+                <div class="card-header border-bottom-0">
                     <h3 class="content-title">Elige una categoría</h3>
                 </div>
                 <div class="card-body p-0">
@@ -35,7 +35,7 @@
                                     </li>
                                     <li><a href="#">Office Electronic</a>
                                     </li>
-                                </ul>                 
+                                </ul>
                             </div> -->
                         </li>
                     </ul>
@@ -52,12 +52,12 @@
                                 <label>Título del producto</label>
                                 <div class="form-group__content">
                                     <input
-                                    type="text" 
-                                    class="form-control formProduct" 
-                                    (change)="validate(name)" 
+                                    type="text"
+                                    class="form-control formProduct"
+                                    (change)="validate(name)"
                                     #name
-                                    name="name" 
-                                    [(ngModel)]="product.name"  
+                                    name="name"
+                                    [(ngModel)]="product.name"
                                     required>
 
                                     <div class="valid-feedback">Valido.</div>
@@ -67,10 +67,10 @@
                             <div class="form-group col-md-6">
                                 <label>Url del producto</label>
                                 <div class="form-group__content">
-                                    <input type="text" 
-                                    class="form-control formProduct" 
+                                    <input type="text"
+                                    class="form-control formProduct"
                                     readonly
-                                    name="url" 
+                                    name="url"
                                     [(ngModel)]="product.url">
                                 </div>
                             </div>
@@ -81,11 +81,11 @@
                                     <div class="input-group-append">
                                       <span class="input-group-text">S/.</span>
                                     </div>
-                                    <input 
-                                    type="number" 
-                                    class="form-control formProduct col-md-3" 
-                                    name="price" 
-                                    [(ngModel)]="product.price" 
+                                    <input
+                                    type="number"
+                                    class="form-control formProduct col-md-3"
+                                    name="price"
+                                    [(ngModel)]="product.price"
                                     tag="prices"
                                     min="0"
                                     step="any"
@@ -96,14 +96,14 @@
 
                                     <div class="valid-feedback">Valido.</div>
                                     <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
-                                </div>                                
+                                </div>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label>Descripción</label>
-                                <textarea 
+                                <textarea
                                 class="formProduct"
-                                name="description" 
+                                name="description"
                                 [(ngModel)]="product.description"
                                 [ngxSummernote]="config"
                                 rows="10"
@@ -111,7 +111,7 @@
 
                                 <div class="valid-feedback">Valido.</div>
                                 <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
-                            </div>                            
+                            </div>
 
                             <div class="form-group col-md-12">
                                 <label>Imagen de tu producto</label>
@@ -121,7 +121,7 @@
                                     </label>
 
                                     <div class="custom-file">
-                                        <input 
+                                        <input
                                         type="file"
                                         class="custom-file-input fromProduct"
                                         id="productImage"
@@ -136,7 +136,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <label>Galería de productos</label>
 
                             <div class="custom-dropzone mb-5"
@@ -177,15 +177,15 @@
                                 </div>
                             </div> -->
                         </div>
-                    </div> 
+                    </div>
                     <div class="car-footer">
                         <div class="form-group submtit float-end mr-15">
                             <button class="ps-btn ps-btn--lg">Crear Producto</button>
                         </div>
-                    </div>                           
+                    </div>
                 </div>
             </div>
-        </div>        
+        </div>
     </form>
 </div>
 

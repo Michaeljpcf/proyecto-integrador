@@ -11,6 +11,15 @@ export class User {
     city: string;
     address: string;
     phone: string;
-    createAt: string;
+    createAt: Date;
     product: Product[] = [];
+
+
+    constructor() {
+      this.idUser = 0;
+      this.name = '';
+      this.userName = '';
+      this.email = '';
+      this.password = '';
+  }
 }

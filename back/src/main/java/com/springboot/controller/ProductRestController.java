@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,9 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +37,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.entity.Product;
 import com.springboot.security.entity.User;
+import com.springboot.security.entity.UserPrimary;
 import com.springboot.service.ProductService;
 
 @RestController
@@ -43,17 +48,26 @@ public class ProductRestController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping("/products")
+	@GetMapping("/listProducts")
 	@ResponseBody
 	public ResponseEntity<List<Product>> findAll() {
 		List<Product> lista = productService.findAll();
 		return ResponseEntity.ok(lista);
 	}
 	
+	@GetMapping("/findProduct/{id}")
+	public Product show(@PathVariable Integer id) {
+		return productService.findById(id);
+	}
+	
 	@PostMapping("/newProduct")	
 	@ResponseBody
-	public ResponseEntity<Product> insertProduct(@RequestBody Product obj) {
-		
+	public ResponseEntity<Product> insertProduct(@RequestBody Product obj, Authentication authentication) {
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();
+		User user = new User();
+		user.setIdUser(usuarioPrincipal.getIdUser());
+		obj.setUser(user);
 		Product objSalida = productService.insertProduct(obj);
 		
 		if (objSalida == null) {
@@ -64,7 +78,7 @@ public class ProductRestController {
 		
 	}
 	
-	@DeleteMapping("/product/{id}")
+	@DeleteMapping("/deleteProduct/{id}")
     @ResponseBody
     public ResponseEntity<Product> delete(@PathVariable("id")int idProduct){
         Optional<Product> optProduct = productService.getById(idProduct);
@@ -134,7 +148,7 @@ public class ProductRestController {
 			product.setImage(nameFile);
 			productService.insertProduct(product);
 			
-			response.put("cliente", product);
+			response.put("product", product);
 			response.put("mensaje", "Has subido la imagen con éxito: " + nameFile);
 		}
 		

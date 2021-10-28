@@ -19,19 +19,23 @@ export class ProductService {
   }
 
   listProducts(): Observable<Product[]> {
-    return this._httpClient.get<Product[]>(this.url+'products');      
+    return this._httpClient.get<Product[]>(this.url+'products');
+  }
+
+  getProducts(id): Observable<Product> {
+    return this._httpClient.get<Product>(`${this.url}/${id}`);
   }
 
   newProduct(product: Product): Observable<any> {
-    return this._httpClient.post<any>(this.url+'newProduct', product);      
+    return this._httpClient.post<any>(this.url+'newProduct', product);
   }
 
   updateProduct(product: Product): Observable<any> {
-    return this._httpClient.put<any>(this.url+'updateProduct', product);      
+    return this._httpClient.put<any>(this.url+'updateProduct', product);
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this._httpClient.delete<any>(this.url+`product/${id}`);      
+    return this._httpClient.delete<any>(this.url+`product/${id}`);
   }
 
   uploadImage(file: File): Observable<Product>{

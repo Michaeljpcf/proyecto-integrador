@@ -41,6 +41,7 @@ import com.springboot.security.dto.LoginUser;
 import com.springboot.security.dto.NewUser;
 import com.springboot.security.entity.Role;
 import com.springboot.security.entity.User;
+import com.springboot.security.entity.UserPrimary;
 import com.springboot.security.enums.RoleName;
 import com.springboot.security.jwt.JwtProvider;
 import com.springboot.security.service.ClientService;
@@ -94,8 +95,9 @@ public class AuthController {
 	@PostMapping("/login")
 	public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
 		if(bindingResult.hasErrors())
-			return new ResponseEntity(new Message("Campos erróneos"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity(new Message("Usuario o contraseña incorrecta"), HttpStatus.BAD_REQUEST);
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUserName(), loginUser.getPassword()));
+		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtProvider.generateToken(authentication);
 		JwtDto jwtDto = new JwtDto(jwt);
@@ -103,7 +105,7 @@ public class AuthController {
 		return new ResponseEntity<>(jwtDto, HttpStatus.OK);
 	}
 	
-	@GetMapping("/users")
+	@GetMapping("/list")
 	@ResponseBody
 	public ResponseEntity<List<User>> findAll() {
 		List<User> lista = clientService.findAll();
@@ -116,7 +118,7 @@ public class AuthController {
 //	}
 	
 	
-	@PostMapping("/users")
+	@PostMapping("/add")
 	@ResponseBody
 	public ResponseEntity<User> create(@RequestBody User user) {
 		if (user == null) {
@@ -128,7 +130,7 @@ public class AuthController {
 		}
 	}
 	
-	@PutMapping("/updateUser")
+	@PutMapping("/update")
 	@ResponseBody
 	public ResponseEntity<User> update(@RequestBody User obj) {
 		if (obj == null) {
@@ -144,7 +146,7 @@ public class AuthController {
 		}
 	}
 	
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/find/{id}")
 	@ResponseBody
 	public ResponseEntity<User> delete(@PathVariable("id") int id) {
 		Optional<User> optUser = clientService.findById(id);

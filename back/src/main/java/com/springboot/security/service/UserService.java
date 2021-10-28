@@ -1,11 +1,10 @@
 package com.springboot.security.service;
 
-import java.util.List;
 import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.provider.HibernateUtils;
 import org.springframework.stereotype.Service;
 
 import com.springboot.security.entity.User;
@@ -19,6 +18,9 @@ public class UserService {
 	UserRepository userRepository;
 	
 	public Optional<User> getByUserName(String userName) {
+//		var a = userRepository.findByUserName(userName);
+//		a.get().getRoles();
+//		return a;
 		return userRepository.findByUserName(userName);
 	}
 	

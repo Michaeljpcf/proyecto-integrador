@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginUser } from 'src/app/models/login-user';
+import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -37,19 +38,30 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(loginForm:any) {
+  login(loginForm) {
+
     if (loginForm.valid) {
       this.loginUser = new LoginUser(this.userName, this.password);
       this._authService.login_user(this.loginUser).subscribe(
         res=> {
+          let payload = JSON.parse(atob(res.token.split(".")[1]));
           this._tokenService.setToken(res.token);
           this._router.navigate(['account/profile']);
+          iziToast.show({
+            title: 'Success',
+            position: 'topRight',
+            color: '#A3E1B1',
+            timeout: 3000,
+            message: `Bienvenido ${payload.sub}`
+          });
+          console.log(res);
+
         },
         err=> {
           if (err.status == 401) {
             iziToast.show({
               title: 'Error',
-              position: 'bottomRight',
+              position: 'topRight',
               color: 'red',
               timeout: 3000,
               message: 'Usuario o contraseña incorrecta'

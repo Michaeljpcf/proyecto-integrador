@@ -30,7 +30,7 @@
                           <p class="text-muted mb-4">Ingrese su nombre de usuario y contraseña para acceder al panel de administración.</p>
                       </div>
 
-                      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                      <form #loginForm="ngForm" (ngSubmit)="login(loginForm )">
                           <div class="form-group">
                             <label for="userName" class="form-label">Nombre de usuario</label>
                             <input class="form-control" type="text" name="userName" [(ngModel)]="userName" required="" placeholder="Ingrese su nombre de usuario">

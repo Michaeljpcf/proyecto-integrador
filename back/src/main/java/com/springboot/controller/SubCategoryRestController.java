@@ -32,7 +32,7 @@ public class SubCategoryRestController {
 	
 	@GetMapping("/subcategories/{id}")
 	@ResponseBody
-	public ResponseEntity<List<SubCategory>> findAll(@PathVariable("id") int id) {
+	public ResponseEntity<List<SubCategory>> findByIdCategory(@PathVariable("id") int id) {
 		List<SubCategory> lista = subCategoryService.findByIdCategory(id);
 		return ResponseEntity.ok(lista);
 	}
