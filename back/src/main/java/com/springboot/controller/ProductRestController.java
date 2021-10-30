@@ -25,6 +25,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +46,8 @@ import com.springboot.entity.Product;
 import com.springboot.security.entity.User;
 import com.springboot.security.entity.UserPrimary;
 import com.springboot.service.ProductService;
+
+import io.jsonwebtoken.lang.Collections;
 
 @RestController
 @RequestMapping("/api")
@@ -212,6 +215,21 @@ public class ProductRestController {
 	}
 	
 	
+	@RequestMapping(value = "/getImage/{id}", produces = MediaType.IMAGE_JPEG_VALUE/*,consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}*/)	
+	@ResponseBody
+	public ResponseEntity<byte[]> getPhotoByProductId(@PathVariable("id") int idProduct,
+			MultipartHttpServletRequest request )throws IOException {
+		
+		byte[] lstImages = productService.getProductImageByProductId(idProduct);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.IMAGE_JPEG);
+		
+		
+			return new ResponseEntity<byte[]>(lstImages, headers, HttpStatus.OK);
+		}		
+		
+	}
 	
 	
 	
@@ -232,4 +250,5 @@ public class ProductRestController {
 	
 	
 	
-}
+	
+	

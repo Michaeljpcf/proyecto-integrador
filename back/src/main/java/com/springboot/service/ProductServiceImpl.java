@@ -72,5 +72,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	
+	@Override
+	public byte[] getProductImageByProductId(int id) {
+		return proImagesRepository.findTop1ImagesByProducto_Id(id);
+	}
+
+	
 
 }

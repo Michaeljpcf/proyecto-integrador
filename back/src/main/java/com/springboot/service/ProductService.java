@@ -21,5 +21,7 @@ public interface ProductService {
 	public Optional<Product> getById(int idProduct);
 	
 	public Product insertProductImages(Product obj,List<MultipartFile> lstImages);
+	
+	public byte[] getProductImageByProductId(int id);
 
 }
