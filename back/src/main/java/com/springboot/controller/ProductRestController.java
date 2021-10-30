@@ -13,11 +13,14 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -30,10 +33,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.springboot.entity.Product;
 import com.springboot.security.entity.User;
@@ -47,6 +53,9 @@ public class ProductRestController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	
+	
 
 	@GetMapping("/listProducts")
 	@ResponseBody
@@ -178,6 +187,29 @@ public class ProductRestController {
 	
 	
 	
+	
+	
+	
+	@RequestMapping(value = "/newProductt",consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})	
+	@ResponseBody
+	public ResponseEntity<Product> insertProductPhoto(@RequestPart Product obj,
+			Authentication authentication,
+			@RequestPart("images")List<MultipartFile> images,
+			MultipartHttpServletRequest request ) {
+		
+		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();
+		User user = new User();
+		user.setIdUser(usuarioPrincipal.getIdUser());
+		obj.setUser(user);
+		Product objSalida = productService.insertProductImages(obj, images);
+		
+		if (objSalida == null) {
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.ok(objSalida);
+		}		
+		
+	}
 	
 	
 	
