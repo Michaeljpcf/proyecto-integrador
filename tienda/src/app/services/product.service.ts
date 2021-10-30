@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Product } from '../models/product';
 import { Global } from './global';
 import { map, catchError } from "rxjs/operators";
+import { Byte } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +24,14 @@ export class ProductService {
   }
 
   getProducts(id): Observable<Product> {
-    return this._httpClient.get<Product>(`${this.url}/${id}`);
+    return this._httpClient.get<Product>(`${this.url}+/'findProduct'/+${id}`);
   }
 
-  newProduct(product: Product): Observable<any> {
-    return this._httpClient.post<any>(this.url+'newProduct', product);
-  }
+  /*newProduct(product: Product, images:any): Observable<any> {
+    const params = new HttpParams()
+      .set("images",images);
+    return this._httpClient.post<any>(this.url+'newProductt', product,{params});
+  }*/
 
   updateProduct(product: Product): Observable<any> {
     return this._httpClient.put<any>(this.url+'updateProduct', product);
@@ -49,5 +52,17 @@ export class ProductService {
       })
 
     );
+  }
+
+
+
+  newProduct(obj:Product,images: File[]): Observable<any> {
+    const formData = new FormData();
+
+    images.forEach(file=>formData.append('images',file));
+
+    formData.append('obj',new Blob([JSON.stringify(obj)],{type:'application/json'}));
+
+    return this._httpClient.post<any>(this.url+'newProductt', formData);
   }
 }

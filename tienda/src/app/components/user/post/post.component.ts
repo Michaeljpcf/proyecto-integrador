@@ -212,7 +212,7 @@ export class PostComponent implements OnInit {
         return;
       }
 
-      this._productService.newProduct(this.product).subscribe(
+      this._productService.newProduct(this.product,this.gallery).subscribe(
         res=>{
           console.log(res);
         }

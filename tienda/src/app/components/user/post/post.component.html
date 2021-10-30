@@ -4,7 +4,7 @@
     <h1 class="text-center text-uppercase pt-30" style="font-size: 35px">
         Publica tu anuncio
     </h1>
-    <form #registerForm="ngForm" (ngSubmit)="registerPost(registerForm)">
+    <form #registerForm="ngForm" (ngSubmit)="registerPost(registerForm)" method="post" enctype="multipart/form-data" >
         <div class="ui-card-post">
             <div class="card categories">
                 <div class="card-header border-bottom-0">
@@ -117,12 +117,14 @@
                                 <label>Imagen de tu producto</label>
                                 <div class="form-group__content">
                                     <label for="productImage">
-                                        <img [src]="imgSelect" class="img-fluid" style="width: 300px;">
+                                        <img   [src]="imgSelect" class="img-fluid" style="width: 300px;" >
                                     </label>
 
                                     <div class="custom-file">
                                         <input
+
                                         type="file"
+
                                         class="custom-file-input fromProduct"
                                         id="productImage"
                                         [accept]="'image/jpeg,image/jpg,image/png,image'"
@@ -156,7 +158,8 @@
                                 *ngFor="let f of gallery"
                                 [file]="f"
                                 [removable]="true"
-                                (removed)="onRemove(f)">
+                                (removed)="onRemove(f)"
+                                >
                                     <ngx-dropzone-label>
                                         {{f.name}} {{f.type}}
                                     </ngx-dropzone-label>
