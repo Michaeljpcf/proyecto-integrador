@@ -267,7 +267,7 @@ public class ProductRestController {
 		
 		Map<String,Object> mapFinal = new HashMap<>();
 		try {
-			List<Product> lstProduct = productService.getProductosWithParams(name, cat, price);
+			List<Product> lstProduct = productService.getProductosWithParams("%"+name+"%", cat, price);
 			if(CollectionUtils.isEmpty(lstProduct)) {
 				mapFinal.put("mensaje", "No existe datos para la consulta");
 			}else {

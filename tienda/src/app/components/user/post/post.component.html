@@ -4,7 +4,6 @@
 
     <h1 class="text-center text-uppercase pt-30" style="font-size: 35px">
         Publica tu anuncio
-        <!-- <img  alt="" src="{{imgSrc}}"> -->
     </h1>
     <form #registerForm="ngForm" (ngSubmit)="registerPost(registerForm)" method="post" enctype="multipart/form-data" >
         <div class="ui-card-post">
@@ -15,14 +14,14 @@
                 <div class="card-body p-0">
                     <ul class="categories-dropdown">
                         <li class="categories-item-has-children has-subcategories" *ngFor="let cat of categories">
-                            <a data-toggle="tab" href="#product" (click)="goProduct()">
+                            <a data-toggle="tab" href="#product">
                                 <!-- <input type="hidden" name="name" [(ngModel)]="category.name"> -->
                                 {{cat.name}}
                             </a>
                             <div class="subcategories-dropdown">
                                 <ul class="subcategories-list">
 
-                                    <li *ngFor="let sub of cat.subcategories"><a href="#">{{sub.name}}</a>
+                                    <li *ngFor="let sub of cat.subcategories"><a (click)="goProduct(sub)">{{sub.name}}</a>
                                     </li>
 
                                 </ul>
@@ -31,15 +30,6 @@
                     </ul>
                 </div>
             </div>
-
-
-            <!--Prueba       img src-->
-
-
-
-
-
-
 
             <div id="product" class="tab-pane fade mb-30 mt-50">
                 <div class="card">
@@ -113,7 +103,7 @@
                                 <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <!-- <div class="form-group col-md-12">
                                 <label>Imagen de tu producto</label>
                                 <div class="form-group__content">
                                     <label for="productImage">
@@ -137,7 +127,7 @@
                                         <label for="productImage" class="custom-file-label" id="image-name">Subir Imagen</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <label>Galería de productos</label>
 

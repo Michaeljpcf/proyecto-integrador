@@ -15,25 +15,37 @@
               <aside class="widget widget_shop">
                   <h4 class="widget-title">Categorías</h4>
                   <ul class="ps-list--categories">
-                      <li  class="menu-item-has-children"><a href="shop-default.html">FALTA EL ngFor</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
-                          <ul class="sub-menu">
-                              <li><a href="shop-default.html">Womens</a>
-                              </li>
-                              <li><a href="shop-default.html">Mens</a>
-                              </li>
-                              <li><a href="shop-default.html">Bags</a>
-                              </li>
-                              <li><a href="shop-default.html">Sunglasses</a>
-                              </li>
-                              <li><a href="shop-default.html">Accessories</a>
-                              </li>
-                              <li><a href="shop-default.html">Kid's Fashion</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li *ngFor="let cat of categories">
-                        <a href="shop-default.html">{{cat.name}}</a>
-                      </li>
+                    <li  class="menu-item-has-children" *ngFor="let cat of categories">
+                      <a href="#">{{cat.name}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                      <ul class="sub-menu">
+                        <li *ngFor="let sub of cat.subcategories">
+                          <a href="#">{{sub.name}}</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+
+                  <ul class="ps-list--categories">
+                    <li  class="menu-item-has-children">
+                      <a href="shop-default.html">FALTA EL ngFor</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                      <ul class="sub-menu">
+                        <li><a href="shop-default.html">Womens</a>
+                        </li>
+                        <li><a href="shop-default.html">Mens</a>
+                        </li>
+                        <li><a href="shop-default.html">Bags</a>
+                        </li>
+                        <li><a href="shop-default.html">Sunglasses</a>
+                        </li>
+                        <li><a href="shop-default.html">Accessories</a>
+                        </li>
+                        <li><a href="shop-default.html">Kid's Fashion</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li *ngFor="let cat of categories">
+                      <a href="shop-default.html">{{cat.name}}</a>
+                    </li>
                   </ul>
               </aside>
               <!-- <aside class="widget widget_shop">
@@ -106,16 +118,16 @@
                       <p><strong>36</strong> Productos encontrados</p>
                       <div class="ps-shopping__actions">
                           <select class="ps-select" data-placeholder="Sort Items">
-                              <option selected disabled>Ordenar por</option>
-                              <option>Menor precio</option>
-                              <option>Mayor precio</option>
+                            <option selected disabled>Ordenar por</option>
+                            <option>Menor precio</option>
+                            <option>Mayor precio</option>
                           </select>
                           <div class="ps-shopping__view">
-                              <p>Vistas</p>
-                              <ul class="ps-tab-list">
-                                  <li class="active"><a href="#tab-1"><i class="icon-grid"></i></a></li>
-                                  <li><a href="#tab-2"><i class="icon-list4"></i></a></li>
-                              </ul>
+                            <p>Vistas</p>
+                            <ul class="ps-tab-list">
+                              <li class="active"><a href="#tab-1"><i class="icon-grid"></i></a></li>
+                              <li><a href="#tab-2"><i class="icon-list4"></i></a></li>
+                            </ul>
                           </div>
                       </div>
                   </div>
@@ -166,9 +178,6 @@
                                     <div class="ps-product__content">
                                       <a class="ps-product__title" href="product-default.html">{{prod.name}}</a>
                                       <div [innerHTML]="prod.description"></div>
-                                      <!-- <p class="ps-product__vendor">
-                                        {{prod.description}}
-                                      </p> -->
                                     </div>
                                     <div class="ps-product__shopping">
                                       <p class="ps-product__price">S/{{prod.price}}</p>

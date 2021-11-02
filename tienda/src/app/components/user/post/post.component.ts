@@ -21,15 +21,16 @@ export class PostComponent implements OnInit {
 
   categories: Category[] = [];
   // subcategories: SubCategory[] = []
-  products: Product;
+  // products: Product;
+  product: Product = new Product
 
   public imgSrc:string="";
   public idPro:number=34;
 
   public category:any = {};
-  public product:any = {};
+  //public product:any = {};
   public id:any;
-  public idSubcategory:1;
+  public idSubcategory:number;
 
 
   public file:any | File = undefined;
@@ -62,23 +63,6 @@ export class PostComponent implements OnInit {
     this.getImageByIdProduct(this.idPro);
     this.listCategories();
     this.listSubcategoriesById(this.id);
-
-
-
-
-    this._activatedRoute.paramMap.subscribe(
-      params=> {
-        let id = params.get('id');
-        if (id) {
-          this._productService.getProducts(id).subscribe(
-            res => {
-              this.products = res;
-            }
-          )
-        }
-      }
-    )
-
   }
 
   listSubcategoriesById(id:number) {
@@ -108,13 +92,17 @@ export class PostComponent implements OnInit {
     );
   }
 
-  goProduct() {
+
+
+
+  goProduct(subcategory: SubCategory) {
 
     $("#product").addClass("show");
 
     $("html, body").animate({
       scrollTop: $("#product").offset().top
     })
+    this.product.subCategory = subcategory;
   }
 
 
@@ -144,67 +132,68 @@ export class PostComponent implements OnInit {
     }
   }
 
-  fileChangeEvent(event:any) {
-    var file:any;
+  // fileChangeEvent(event:any) {
+  //   var file:any;
 
-    this.imgSelect = event.target.files[0]
+  //   this.imgSelect = event.target.files[0]
 
-    if (event.target.files && event.target.files[0]) {
-      file = <File>event.target.files[0];
-      console.log(file);
+  //   if (event.target.files && event.target.files[0]) {
+  //     file = <File>event.target.files[0];
+  //     console.log(file);
 
 
-    } else {
-      iziToast.show({
-        title: 'Error',
-        position: 'topRight',
-        color: 'red',
-        message: 'No existe una imagen.'
-      });
+  //   } else {
+  //     iziToast.show({
+  //       title: 'Error',
+  //       position: 'topRight',
+  //       color: 'red',
+  //       message: 'No existe una imagen.'
+  //     });
 
-      $('#image-name').text('Seleccionar imagen');
-      this.imgSelect = 'assets/img/products/default/default-image.jpg';
-      this.file = undefined;
-    }
+  //     $('#image-name').text('Seleccionar imagen');
+  //     this.imgSelect = 'assets/img/products/default/default-image.jpg';
+  //     this.file = undefined;
+  //   }
 
-    if (file.size <= 2000000) {
-      if (file.type == 'image/png' || file.type == 'image/webp' || file.type == 'image/jpg' || file.type == 'image/jpeg') {
+  //   if (file.size <= 2000000) {
+  //     if (file.type == 'image/png' || file.type == 'image/webp' || file.type == 'image/jpg' || file.type == 'image/jpeg') {
 
-        const reader = new FileReader();
-        reader.onload = e => this.imgSelect = reader.result;
-        reader.readAsDataURL(file);
+  //       const reader = new FileReader();
+  //       reader.onload = e => this.imgSelect = reader.result;
+  //       reader.readAsDataURL(file);
 
-        $('#image-name').text(file.name);
+  //       $('#image-name').text(file.name);
 
-        this.file = file;
+  //       this.file = file;
 
-      } else {
-        iziToast.show({
-          title: 'Error',
-          position: 'topRight',
-          color: 'red',
-          message: 'La imagen no tiene el formato(png, webp, jpg, jpeg).'
-        });
+  //     } else {
+  //       iziToast.show({
+  //         title: 'Error',
+  //         position: 'topRight',
+  //         color: 'red',
+  //         message: 'La imagen no tiene el formato(png, webp, jpg, jpeg).'
+  //       });
 
-        $('#image-name').text('Seleccionar imagen');
-        this.imgSelect = 'assets/img/products/default/default-image.jpg';
-        this.file = undefined;
-      }
-    } else {
-      iziToast.show({
-        title: 'Error',
-        position: 'topRight',
-        color: 'red',
-        message: 'La imagen no puede superar los 2MB.'
-      });
+  //       $('#image-name').text('Seleccionar imagen');
+  //       this.imgSelect = 'assets/img/products/default/default-image.jpg';
+  //       this.file = undefined;
+  //     }
+  //   } else {
+  //     iziToast.show({
+  //       title: 'Error',
+  //       position: 'topRight',
+  //       color: 'red',
+  //       message: 'La imagen no puede superar los 2MB.'
+  //     });
 
-      $('#image-name').text('Seleccionar imagen');
-      this.imgSelect = 'assets/img/products/default/default-image.jpg';
-      this.file = undefined;
-    }
-  }
+  //     $('#image-name').text('Seleccionar imagen');
+  //     this.imgSelect = 'assets/img/products/default/default-image.jpg';
+  //     this.file = undefined;
+  //   }
+  // }
 
   //gallery
+
   onSelect(event) {
 		console.log(event);
 		this.gallery.push(...event.addedFiles);
@@ -219,11 +208,9 @@ export class PostComponent implements OnInit {
     this._productService.getProductImage(this.idPro).subscribe(
       response => {
         this.imgSrc = response
-
       },
       (error:any)=>{
         console.log(JSON.stringify(error))
-
       }
     )
   }
@@ -249,18 +236,9 @@ export class PostComponent implements OnInit {
 
       this._productService.newProduct(this.product,this.gallery).subscribe(
         res=>{
-          console.log(res);
+          console.log("producto nuevo",res);
         }
       );
-
-      // this._productService.uploadImage(this.imgSelect).subscribe(
-      //   products=> {
-      //     this.products = products;
-      //     console.log(products);
-
-      //   }
-      // );
-
 
     } else {
       iziToast.show({

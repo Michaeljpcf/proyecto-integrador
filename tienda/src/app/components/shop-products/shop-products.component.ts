@@ -31,14 +31,7 @@ export class ShopProductsComponent implements OnInit {
     this._clientService.listCategories().subscribe(
       res=> {
         this.categories = res;
-        this.subCategories=[];
-        this._clientService.listSubCategories().subscribe(
-          sub=> {
-            this.subCategories = sub;
-            // console.log(sub);
-          }
-        );
-
+        // console.log(res);
       },
       err=> {
         // console.log(err);
@@ -51,7 +44,7 @@ export class ShopProductsComponent implements OnInit {
     this._productService.listProducts().subscribe(
       res=> {
         this.products = res;
-        console.log(res);
+        // console.log(res);
       }
     );
   }

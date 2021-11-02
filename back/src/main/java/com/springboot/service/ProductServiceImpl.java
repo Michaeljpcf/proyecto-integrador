@@ -90,6 +90,7 @@ public class ProductServiceImpl implements ProductService {
 
 			log.info("Subiendo archivo con el nombre.... " + newFileName);
 			PutObjectRequest request = new PutObjectRequest(bucketName, newFileName, mainFile).withCannedAcl(CannedAccessControlList.PublicRead);
+			stream.close();
 			amazonS3.putObject(request);
 			String uri = amazonS3.getUrl(bucketName, newFileName).toString();
 			

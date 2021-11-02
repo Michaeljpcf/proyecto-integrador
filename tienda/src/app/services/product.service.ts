@@ -41,17 +41,24 @@ export class ProductService {
     return this._httpClient.delete<any>(this.url+`/product/${id}`);
   }
 
-  uploadImage(file: File): Observable<Product>{
+  uploadImage(file: File, id:any): Observable<HttpEvent<{}>>{
     let formData = new FormData();
     formData.append("file", file);
-    return this._httpClient.post(`${this.url}/products/upload/`, formData).pipe(
-      map((response:any) => response.product as Product),
-      catchError(e => {
-        console.log(e.error.mensaje);
-        return throwError(e);
-      })
+    formData.append("id", id);
 
-    );
+    const req = new HttpRequest('POST', `${this.url}/products/upload/`,formData, {
+      reportProgress: true
+    });
+    return this._httpClient.request(req);
+
+    // return this._httpClient.post(`${this.url}/products/upload/`, formData).pipe(
+    //   map((response:any) => response.product as Product),
+    //   catchError(e => {
+    //     console.log(e.error.mensaje);
+    //     return throwError(e);
+    //   })
+
+    // );
   }
 
 
@@ -70,6 +77,16 @@ export class ProductService {
   getProductImage(idProduct:number){
     return this._httpClient.get(this.url+`/getImgProductByProductId/${idProduct}`,{responseType:'text'});
   }
+
+  getProductByParams(name:string,subcat:number,price:number):Observable<any>{
+    const params = new HttpParams()
+      .set("name",name)
+      .set("cat",subcat)
+      .set("price",price);
+
+      return this._httpClient.get(this.url+"/getListProductUsingParams",{params})
+  }
+
 
 
 }
