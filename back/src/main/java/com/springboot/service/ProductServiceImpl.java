@@ -142,5 +142,18 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return productList;
 	}
+
+	@Override
+	public List<Product> getProductosWithParams(String name, int cat, double price) {
+		List<Product> productList =  productRepository.listProductWithParams(name, cat, price);
+		if(CollectionUtils.isEmpty(productList)) {
+			log.error("No se encontro ningun listado en el metodo de Product LIST");
+		}
+		for(Product pro : productList) {
+			String  aux = proImagesRepository.findTop1ImagesByProducto_IdStr(pro.getId());
+			pro.setImage(aux);			
+		}
+		return productList;
+	}
 	
 }

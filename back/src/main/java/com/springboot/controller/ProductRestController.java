@@ -255,6 +255,30 @@ public class ProductRestController {
 		List<Product> lstProduct = productService.getProductsWith1Image();
 		return ResponseEntity.ok(lstProduct);
 	}
+	
+	
+	@GetMapping("/getListProductUsingParams")
+	@ResponseBody
+	public ResponseEntity<Map<String,Object>> getListProductWithParams(
+			@RequestParam(name = "name",defaultValue = ""  ,required = false)String name,
+			@RequestParam(name = "cat",defaultValue = "0"  ,required = false)int cat,
+			@RequestParam(name = "price",defaultValue = "0.0",required = false)Double price){
+		
+		Map<String,Object> mapFinal = new HashMap<>();
+		try {
+			List<Product> lstProduct = productService.getProductosWithParams(name, cat, price);
+			if(CollectionUtils.isEmpty(lstProduct)) {
+				mapFinal.put("mensaje", "No existe datos para la consulta");
+			}else {
+				mapFinal.put("list", lstProduct);
+				mapFinal.put("mensaje", "Existe = "+lstProduct.size());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			mapFinal.put("mensaje", "Ocurrio un error, No existe datos para mostrar");
+		}
+		return ResponseEntity.ok(mapFinal);
+	}
 
 }
 	

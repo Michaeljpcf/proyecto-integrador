@@ -36,5 +36,8 @@ public interface ProductService {
 	
 	//Obtener todos los productos con 1 foto
 	public List<Product> getProductsWith1Image();
+	
+	//Obtener lista de los productos con imagen usando 3 parametros
+	public List<Product> getProductosWithParams(String name,int cat,double price);
 
 }
