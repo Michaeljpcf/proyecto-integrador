@@ -29,6 +29,7 @@ export class PostComponent implements OnInit {
   public category:any = {};
   public product:any = {};
   public id:any;
+  public idSubcategory:1;
 
 
   public file:any | File = undefined;
@@ -60,6 +61,11 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.getImageByIdProduct(this.idPro);
     this.listCategories();
+    this.listSubcategoriesById(this.id);
+
+
+
+
     this._activatedRoute.paramMap.subscribe(
       params=> {
         let id = params.get('id');
@@ -75,10 +81,19 @@ export class PostComponent implements OnInit {
 
   }
 
+  listSubcategoriesById(id:number) {
+    this._clientService.listSubCategoriesId(id).subscribe(
+      res=> {
+        console.log(res);
+      }
+    );
+  }
+
   listCategories() {
     this._clientService.listCategories().subscribe(
-      res=> {
+      (res: Category[])=> {
         this.categories = res;
+        console.log('categorias',res)
         this._clientService.listSubCategories().subscribe(
           sub=> {
             console.log(sub);
@@ -238,13 +253,13 @@ export class PostComponent implements OnInit {
         }
       );
 
-      this._productService.uploadImage(this.imgSelect).subscribe(
-        products=> {
-          this.products = products;
-          console.log(products);
+      // this._productService.uploadImage(this.imgSelect).subscribe(
+      //   products=> {
+      //     this.products = products;
+      //     console.log(products);
 
-        }
-      );
+      //   }
+      // );
 
 
     } else {

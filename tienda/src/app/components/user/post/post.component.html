@@ -14,29 +14,17 @@
                 </div>
                 <div class="card-body p-0">
                     <ul class="categories-dropdown">
-                        <li class="categories-item-has-children has-subcategories" *ngFor="let item of categories">
+                        <li class="categories-item-has-children has-subcategories" *ngFor="let cat of categories">
                             <a data-toggle="tab" href="#product" (click)="goProduct()">
-                                <input type="hidden" name="name" [(ngModel)]="category.name">
-                                {{item.name}}
+                                <!-- <input type="hidden" name="name" [(ngModel)]="category.name"> -->
+                                {{cat.name}}
                             </a>
                             <div class="subcategories-dropdown">
                                 <ul class="subcategories-list">
-                                    <li><a href="#">Home Audio &amp; Theathers</a>
+
+                                    <li *ngFor="let sub of cat.subcategories"><a href="#">{{sub.name}}</a>
                                     </li>
-                                    <li><a href="#">TV &amp; Videos</a>
-                                    </li>
-                                    <li><a href="#">Camera, Photos &amp; Videos</a>
-                                    </li>
-                                    <li><a href="#">Cellphones &amp; Accessories</a>
-                                    </li>
-                                    <li><a href="#">Headphones</a>
-                                    </li>
-                                    <li><a href="#">Videosgames</a>
-                                    </li>
-                                    <li><a href="#">Wireless Speakers</a>
-                                    </li>
-                                    <li><a href="#">Office Electronic</a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </li>

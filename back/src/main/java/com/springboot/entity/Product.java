@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.security.entity.User;
 
 import lombok.Getter;
@@ -41,9 +42,14 @@ public class Product {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "subcategories_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private SubCategory subCategory;	
+	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name ="category_id")
+//	private Category category;
 	
 	@PrePersist
 	public void prePersist() {
