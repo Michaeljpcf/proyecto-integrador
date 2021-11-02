@@ -7,8 +7,8 @@ export class Product {
     price: string;
     description: string;
     image: string;
-    gallery: string;    
+    gallery: string;
     createAt: string;
     subCategory: SubCategory;
-    user: User;    
+    user: User;
 }
