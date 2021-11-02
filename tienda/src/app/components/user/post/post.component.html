@@ -1,6 +1,7 @@
 <app-nav></app-nav>
 
 <div class="container">
+
     <h1 class="text-center text-uppercase pt-30" style="font-size: 35px">
         Publica tu anuncio
     </h1>
@@ -17,7 +18,7 @@
                                 <input type="hidden" name="name" [(ngModel)]="category.name">
                                 {{item.name}}
                             </a>
-                            <!-- <div class="subcategories-dropdown">
+                            <div class="subcategories-dropdown">
                                 <ul class="subcategories-list">
                                     <li><a href="#">Home Audio &amp; Theathers</a>
                                     </li>
@@ -36,11 +37,21 @@
                                     <li><a href="#">Office Electronic</a>
                                     </li>
                                 </ul>
-                            </div> -->
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
+
+
+            <!--Prueba       img src-->
+
+            <!-- <img  alt="" [src]="getImageByIdProduct(17)"> -->
+
+
+
+
+
             <div id="product" class="tab-pane fade mb-30 mt-50">
                 <div class="card">
                     <div class="card-header">

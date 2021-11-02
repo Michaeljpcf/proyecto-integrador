@@ -6,6 +6,7 @@ import { ClientService } from 'src/app/services/client.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { Byte } from '@angular/compiler/src/util';
 
 declare var jQuery:any;
 declare var $:any;
@@ -22,9 +23,13 @@ export class PostComponent implements OnInit {
   // subcategories: SubCategory[] = []
   products: Product;
 
+  public imgSrc:string="";
+  public idPro:number=34;
+
   public category:any = {};
   public product:any = {};
   public id:any;
+
 
   public file:any | File = undefined;
   public imgSelect: any | ArrayBuffer = 'assets/img/products/default/default-image.jpg';
@@ -53,6 +58,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getImageByIdProduct(this.idPro);
     this.listCategories();
     this._activatedRoute.paramMap.subscribe(
       params=> {
@@ -66,6 +72,7 @@ export class PostComponent implements OnInit {
         }
       }
     )
+
   }
 
   listCategories() {
@@ -192,6 +199,19 @@ export class PostComponent implements OnInit {
 		console.log(event);
 		this.gallery.splice(this.gallery.indexOf(event), 1);
 	}
+
+  getImageByIdProduct(id:number){
+    this._productService.getProductImage(this.idPro).subscribe(
+      response => {
+        this.imgSrc = response
+
+      },
+      (error:any)=>{
+        console.log(JSON.stringify(error))
+
+      }
+    )
+  }
 
 
   registerPost(registerForm){

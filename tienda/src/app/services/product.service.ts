@@ -65,4 +65,11 @@ export class ProductService {
 
     return this._httpClient.post<any>(this.url+'newProductt', formData);
   }
+
+
+  getProductImage(idProduct:number){
+    return this._httpClient.get(this.url+`getImgProductByProductId/${idProduct}`,{responseType:'text'});
+  }
+
+
 }
