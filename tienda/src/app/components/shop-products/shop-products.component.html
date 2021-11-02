@@ -1,0 +1,260 @@
+<app-nav></app-nav>
+<div class="ps-breadcrumb">
+  <div class="ps-container">
+      <ul class="breadcrumb">
+          <li><a href="index.html">Inicio</a></li>
+          <li>Productos</li>
+      </ul>
+  </div>
+</div>
+<div class="ps-page--shop" id="shop-sidebar">
+  <div class="container">
+      <div class="ps-layout--shop">
+
+          <div class="ps-layout__left">
+              <aside class="widget widget_shop">
+                  <h4 class="widget-title">Categorías</h4>
+                  <ul class="ps-list--categories">
+                      <li  class="menu-item-has-children"><a href="shop-default.html">FALTA EL ngFor</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                          <ul class="sub-menu">
+                              <li><a href="shop-default.html">Womens</a>
+                              </li>
+                              <li><a href="shop-default.html">Mens</a>
+                              </li>
+                              <li><a href="shop-default.html">Bags</a>
+                              </li>
+                              <li><a href="shop-default.html">Sunglasses</a>
+                              </li>
+                              <li><a href="shop-default.html">Accessories</a>
+                              </li>
+                              <li><a href="shop-default.html">Kid's Fashion</a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li *ngFor="let cat of categories">
+                        <a href="shop-default.html">{{cat.name}}</a>
+                      </li>
+                  </ul>
+              </aside>
+              <!-- <aside class="widget widget_shop">
+                  <h4 class="widget-title">BY BRANDS</h4>
+                  <form class="ps-form--widget-search" action="do_action" method="get">
+                      <input class="form-control" type="text" placeholder="">
+                      <button><i class="icon-magnifier"></i></button>
+                  </form>
+                  <figure class="ps-custom-scrollbar" data-height="250">
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-1" name="brand" />
+                          <label for="brand-1">Adidas (3)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-2" name="brand" />
+                          <label for="brand-2">Amcrest (1)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-3" name="brand" />
+                          <label for="brand-3">Apple (2)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-4" name="brand" />
+                          <label for="brand-4">Asus (19)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-5" name="brand" />
+                          <label for="brand-5">Baxtex (20)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-6" name="brand" />
+                          <label for="brand-6">Adidas (11)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-7" name="brand" />
+                          <label for="brand-7">Casio (9)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-8" name="brand" />
+                          <label for="brand-8">Electrolux (0)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-9" name="brand" />
+                          <label for="brand-9">Gallaxy (0)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-10" name="brand" />
+                          <label for="brand-10">Samsung (0)</label>
+                      </div>
+                      <div class="ps-checkbox">
+                          <input class="form-control" type="checkbox" id="brand-11" name="brand" />
+                          <label for="brand-11">Sony (0)</label>
+                      </div>
+                  </figure>
+                  <figure>
+                      <h4 class="widget-title">By Price</h4>
+                      <div id="nonlinear"></div>
+                      <p class="ps-slider__meta">Price:<span class="ps-slider__value">$<span class="ps-slider__min"></span></span>-<span class="ps-slider__value">$<span class="ps-slider__max"></span></span></p>
+                  </figure>
+              </aside> -->
+          </div>
+
+
+          <div class="ps-layout__right">
+              <div class="ps-page__header">
+                  <h1>PRODUCTOS</h1>
+              </div>
+              <div class="ps-shopping ps-tab-root">
+                  <div class="ps-shopping__header">
+                      <p><strong>36</strong> Productos encontrados</p>
+                      <div class="ps-shopping__actions">
+                          <select class="ps-select" data-placeholder="Sort Items">
+                              <option selected disabled>Ordenar por</option>
+                              <option>Menor precio</option>
+                              <option>Mayor precio</option>
+                          </select>
+                          <div class="ps-shopping__view">
+                              <p>Vistas</p>
+                              <ul class="ps-tab-list">
+                                  <li class="active"><a href="#tab-1"><i class="icon-grid"></i></a></li>
+                                  <li><a href="#tab-2"><i class="icon-list4"></i></a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="ps-tabs">
+                      <div class="ps-tab active" id="tab-1">
+                          <div class="ps-shopping-product">
+                              <div class="row">
+                                  <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6" *ngFor="let prod of products">
+                                      <div class="ps-product">
+                                          <div class="ps-product__thumbnail">
+                                            <a href="#">
+                                              <img src="" alt="" />
+                                            </a>
+                                            <ul class="ps-product__actions">
+                                              <li>
+                                                <a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview">
+                                                  <i class="icon-eye"></i>
+                                                </a>
+                                              </li>
+                                              <!-- <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li> -->
+                                            </ul>
+                                          </div>
+                                          <div class="ps-product__container">
+                                            <a class="ps-product__vendor" href="#">{{prod.name}}</a>
+                                            <div class="ps-product__content">
+                                              <!-- <a class="ps-product__title" href="#">Apple iPhone Retina 6s Plus 64GB</a> -->
+                                              <p class="ps-product__price">S/.{{prod.price}}</p>
+                                            </div>
+                                            <div class="ps-product__content hover">
+                                              <a class="ps-product__title" href="#">{{prod.name}}</a>
+                                              <p class="ps-product__price">S/.{{prod.price}}</p>
+                                            </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="ps-pagination">
+                              <ul class="pagination">
+                                  <li class="active"><a href="#">1</a></li>
+                                  <li><a href="#">2</a></li>
+                                  <li><a href="#">3</a></li>
+                                  <li><a href="#">Next Page<i class="icon-chevron-right"></i></a></li>
+                              </ul>
+                          </div>
+                      </div>
+
+                      <div class="ps-tab" id="tab-2">
+                          <div class="ps-shopping-product">
+                              <div class="ps-product ps-product--wide" *ngFor="let prod of products">
+                                  <div class="ps-product__thumbnail">
+                                    <a href="#">
+                                      <!-- <img [src]="(prod?.getValue('image') | async) || '' "> -->
+                                      <img [src]="prod.image" />
+                                    </a>
+                                  </div>
+                                  <div class="ps-product__container">
+                                      <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 64GB</a>
+                                          <p class="ps-product__vendor">Sold by:<a href="#">ROBERT’S STORE</a></p>
+                                          <ul class="ps-product__desc">
+                                              <li> Unrestrained and portable active stereo speaker</li>
+                                              <li> Free from the confines of wires and chords</li>
+                                              <li> 20 hours of portable capabilities</li>
+                                              <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
+                                              <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
+                                          </ul>
+                                      </div>
+                                      <div class="ps-product__shopping">
+                                          <p class="ps-product__price">$1310.00</p><a class="ps-btn" href="#">Add to cart</a>
+                                          <ul class="ps-product__actions">
+                                              <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
+                                              <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="ps-pagination">
+                              <ul class="pagination">
+                                  <li class="active"><a href="#">1</a></li>
+                                  <li><a href="#">2</a></li>
+                                  <li><a href="#">3</a></li>
+                                  <li><a href="#">Next Page<i class="icon-chevron-right"></i></a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- MODAL VISTA PRODUCTO -->
+<div class="modal fade" id="product-quickview" tabindex="-1" role="dialog" aria-labelledby="product-quickview" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content"><span class="modal-close" data-dismiss="modal"><i class="icon-cross2"></i></span>
+          <article class="ps-product--detail ps-product--fullwidth ps-product--quickview">
+              <div class="ps-product__header">
+                  <div class="ps-product__thumbnail" data-vertical="false">
+                      <div class="ps-product__images" data-arrow="true">
+                          <div class="item"><img src="img/products/detail/fullwidth/1.jpg" alt=""></div>
+                          <div class="item"><img src="img/products/detail/fullwidth/2.jpg" alt=""></div>
+                          <div class="item"><img src="img/products/detail/fullwidth/3.jpg" alt=""></div>
+                      </div>
+                  </div>
+                  <div class="ps-product__info">
+                      <h1>Marshall Kilburn Portable Wireless Speaker</h1>
+                      <div class="ps-product__meta">
+                          <p>Brand:<a href="shop-default.html">Sony</a></p>
+                          <div class="ps-product__rating">
+                              <select class="ps-rating" data-read-only="true">
+                                  <option value="1">1</option>
+                                  <option value="1">2</option>
+                                  <option value="1">3</option>
+                                  <option value="1">4</option>
+                                  <option value="2">5</option>
+                              </select><span>(1 review)</span>
+                          </div>
+                      </div>
+                      <h4 class="ps-product__price">$36.78 – $56.99</h4>
+                      <div class="ps-product__desc">
+                          <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
+                          <ul class="ps-list--dot">
+                              <li> Unrestrained and portable active stereo speaker</li>
+                              <li> Free from the confines of wires and chords</li>
+                              <li> 20 hours of portable capabilities</li>
+                              <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
+                              <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
+                          </ul>
+                      </div>
+                      <div class="ps-product__shopping"><a class="ps-btn ps-btn--black" href="#">Add to cart</a><a class="ps-btn" href="#">Buy Now</a>
+                          <div class="ps-product__actions"><a href="#"><i class="icon-heart"></i></a><a href="#"><i class="icon-chart-bars"></i></a></div>
+                      </div>
+                  </div>
+              </div>
+          </article>
+      </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

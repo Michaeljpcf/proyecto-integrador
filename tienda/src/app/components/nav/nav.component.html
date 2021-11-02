@@ -23,16 +23,8 @@ Header
             ======================================-->
             <div class="header__right">
                 <ul class="header__top-links">
-                    <li><a href="#">Sell on MarketPlace</a></li>
-                    <li><a href="#">Store List</a></li>
-                    <li><i class="icon-telephone"></i> Hotline:<strong> 1-800-234-5678</strong></li>
-                    <li>
-                        <div class="ps-dropdown language"><a href="#"><img src="assets/img/template/en.png" alt="">English</a>
-                            <ul class="ps-dropdown-menu">
-                                <li><a href="#"><img src="assets/img/template/es.png" alt=""> Spanish</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                  <li><a [routerLink]="['/shop-products']"><strong>PRODUCTOS</strong></a></li>
+                  <li><a href="#">Store List</a></li>
                 </ul>
             </div>
         </div><!-- End Container -->
@@ -172,10 +164,8 @@ Header
                     <div class="form-group--icon">
                         <i class="icon-chevron-down"></i>
                         <select class="form-control">
-                            <option value="1">All</option>
-                            <option value="1">Smartphone</option>
-                            <option value="1">Sounds</option>
-                            <option value="1">Technology toys</option>
+                          <option selected disabled value="">Categorías</option>
+                          <option  *ngFor="let cat of categories" value="cat.id">{{cat.name}}</option>
                         </select>
                     </div>
                     <input class="form-control" type="text" placeholder="I'm shopping for...">
@@ -213,21 +203,21 @@ Header
                                         <div class="ps-product__content">
                                             <a [routerLink]="['/account/profile']">Mi cuenta</a>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="ps-product--cart-mobile">
                                         <div class="ps-product__content">
                                             <a [routerLink]="['/post']">Vender</a>
                                         </div>
-                                    </div> 
-                                    <div class="ps-product--cart-mobile">  
+                                    </div>
+                                    <div class="ps-product--cart-mobile">
                                         <div class="ps-product__content">
                                             <a style="cursor: pointer;" (click)="onLogOut()">Cerrar Sesion</a>
                                         </div>
                                     </div>
-                                </ng-container>   
+                                </ng-container>
                             </div>
-                        </div>  
-                    </div>  
+                        </div>
+                    </div>
                 </div><!-- End Header Actions-->
             </div><!-- End Header Content Right-->
         </div><!-- End Container-->
@@ -474,16 +464,16 @@ Header Mobile
                                     <div class="ps-product__content">
                                         <a [routerLink]="['/account/profile']" routerLinkActive="active"  *ngIf="userName">Mi cuenta</a>
                                     </div>
-                                </div> 
-                                <div class="ps-product--cart-mobile">  
+                                </div>
+                                <div class="ps-product--cart-mobile">
                                     <div class="ps-product__content">
                                         <a style="cursor: pointer;" *ngIf="userName" (click)="onLogOut()">Cerrar Sesion</a>
                                     </div>
                                 </div>
-                            </ng-container>   
+                            </ng-container>
                         </div>
-                    </div>  
-                </div>  
+                    </div>
+                </div>
             </div>
         </div>
     </div>

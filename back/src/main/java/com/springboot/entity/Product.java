@@ -33,7 +33,6 @@ public class Product {
 	private Double price;
 	private String description;
 	private String image;
-	private String gallery;
 	
 	@Temporal(TemporalType.DATE)
 	private Date createAt;

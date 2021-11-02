@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { Product } from '../models/product';
 import { Global } from './global';
 import { map, catchError } from "rxjs/operators";
-import { Byte } from '@angular/compiler/src/util';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,11 @@ export class ProductService {
   constructor(
     private _httpClient: HttpClient
   ) {
-    this.url = Global.url;
+    this.url = environment.apiUrl;
   }
 
-  listProducts(): Observable<Product[]> {
-    return this._httpClient.get<Product[]>(this.url+'products');
+  listProducts(): Observable<any> {
+    return this._httpClient.get(this.url+'/getListProductsWithImage');
   }
 
   getProducts(id): Observable<Product> {
@@ -34,17 +34,17 @@ export class ProductService {
   }*/
 
   updateProduct(product: Product): Observable<any> {
-    return this._httpClient.put<any>(this.url+'updateProduct', product);
+    return this._httpClient.put<any>(this.url+'/updateProduct', product);
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this._httpClient.delete<any>(this.url+`product/${id}`);
+    return this._httpClient.delete<any>(this.url+`/product/${id}`);
   }
 
   uploadImage(file: File): Observable<Product>{
     let formData = new FormData();
     formData.append("file", file);
-    return this._httpClient.post(`${this.url}products/upload/`, formData).pipe(
+    return this._httpClient.post(`${this.url}/products/upload/`, formData).pipe(
       map((response:any) => response.product as Product),
       catchError(e => {
         console.log(e.error.mensaje);
@@ -63,12 +63,12 @@ export class ProductService {
 
     formData.append('obj',new Blob([JSON.stringify(obj)],{type:'application/json'}));
 
-    return this._httpClient.post<any>(this.url+'newProductt', formData);
+    return this._httpClient.post<any>(this.url+'/newProductt', formData);
   }
 
 
   getProductImage(idProduct:number){
-    return this._httpClient.get(this.url+`getImgProductByProductId/${idProduct}`,{responseType:'text'});
+    return this._httpClient.get(this.url+`/getImgProductByProductId/${idProduct}`,{responseType:'text'});
   }
 
 

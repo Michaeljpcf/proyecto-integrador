@@ -46,6 +46,7 @@ public class User implements Serializable{
 	private String userName;
 	
 	@NotNull
+	@Column(unique = true)
 	private String email;
 	
 	//@JsonIgnore
@@ -53,17 +54,11 @@ public class User implements Serializable{
 	private String password;
 	
 	private String picture; 
-	private String country;
-	private String city;
 	private String phone;
 	private String address;
-	private String wishlist;
-	private Boolean enabled;
 	
-//	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date date_created_user;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date date_updated_user;
+	private Date date_created_user;
 	
 	@NotNull
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -143,22 +138,6 @@ public class User implements Serializable{
 		this.picture = picture;
 	}
 
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
@@ -175,36 +154,12 @@ public class User implements Serializable{
 		this.address = address;
 	}
 
-	public String getWishlist() {
-		return wishlist;
-	}
-
-	public void setWishlist(String wishlist) {
-		this.wishlist = wishlist;
-	}
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
 	public Date getDate_created_user() {
 		return date_created_user;
 	}
 
 	public void setDate_created_user(Date date_created_user) {
 		this.date_created_user = date_created_user;
-	}
-
-	public Date getDate_updated_user() {
-		return date_updated_user;
-	}
-
-	public void setDate_updated_user(Date date_updated_user) {
-		this.date_updated_user = date_updated_user;
 	}
 
 	public Set<Role> getRoles() {

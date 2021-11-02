@@ -21,6 +21,7 @@ import { ShoppingComponent } from './components/user/shopping/shopping.component
 import { TopbarComponent } from './components/user/topbar/topbar.component';
 import { WishlistComponent } from './components/user/wishlist/wishlist.component';
 import { PostComponent } from './components/user/post/post.component';
+import { ShopProductsComponent } from './components/shop-products/shop-products.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PostComponent } from './components/user/post/post.component';
     ShoppingComponent,
     TopbarComponent,
     WishlistComponent,
-    PostComponent
+    PostComponent,
+    ShopProductsComponent
   ],
   imports: [
     BrowserModule,
