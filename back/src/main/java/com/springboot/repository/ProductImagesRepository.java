@@ -15,4 +15,8 @@ public interface ProductImagesRepository extends JpaRepository<ProductImages, In
 	public abstract byte[] findTop1ImagesByProducto_Id(int id);
 	
 	
+	@Query(value = "SELECT a.images from product_images a join products p on p.id = a.idProduct where a.idProduct= ?1 LIMIT 1;", nativeQuery = true)
+	public abstract String findTop1ImagesByProducto_IdStr(int id);
+	
+	
 }

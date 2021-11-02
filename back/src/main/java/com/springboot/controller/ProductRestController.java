@@ -16,6 +16,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -42,6 +43,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.amazonaws.services.xray.model.Http;
 import com.springboot.entity.Product;
 import com.springboot.security.entity.User;
 import com.springboot.security.entity.UserPrimary;
@@ -195,23 +197,17 @@ public class ProductRestController {
 	
 	@RequestMapping(value = "/newProductt",consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})	
 	@ResponseBody
-	public ResponseEntity<Product> insertProductPhoto(@RequestPart Product obj,
+	public ResponseEntity<String> insertProductPhoto(@RequestPart Product obj,
 			Authentication authentication,
-			@RequestPart("images")List<MultipartFile> images,
-			MultipartHttpServletRequest request ) {
+			@RequestPart("images")List<MultipartFile> images ) throws IOException {
 		
 		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();
 		User user = new User();
 		user.setIdUser(usuarioPrincipal.getIdUser());
 		obj.setUser(user);
-		Product objSalida = productService.insertProductImages(obj, images);
-		
-		if (objSalida == null) {
-			return ResponseEntity.noContent().build();
-		} else {
-			return ResponseEntity.ok(objSalida);
-		}		
-		
+		productService.insertProductImages(obj, images);
+	
+		return new ResponseEntity<String>("El archivo fue cargado",HttpStatus.OK);		
 	}
 	
 	
@@ -227,9 +223,40 @@ public class ProductRestController {
 		
 		
 			return new ResponseEntity<byte[]>(lstImages, headers, HttpStatus.OK);
-		}		
-		
+		}
+	
+	
+	//List de todos los elementos en el S3 bucket
+	@GetMapping("/ImagesList")
+	public ResponseEntity<List<String>> listFil(){
+		return new ResponseEntity<List<String>>(productService.getObjectFromS3(),HttpStatus.OK);
 	}
+	
+	
+	@GetMapping(value = "/downloadImage")
+	public ResponseEntity<Resource> download(@RequestParam("key")String key){
+		InputStreamResource resource = new InputStreamResource(productService.downloadFile(key));
+		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\""+key+"\"").body(resource);
+	}
+	
+	
+	@GetMapping(value ="/getImgProductByProductId/{idProduct}")
+	
+	public String getPhotoByIdProduct(@PathVariable("idProduct")int idProduct){
+		String objFinal = productService.getImageByProductId(idProduct);
+		return objFinal;
+	}
+	
+	
+	
+	@GetMapping("/getListProductsWithImage")
+	@ResponseBody
+	public ResponseEntity<List<Product>> getListProductsWithImage(){
+		List<Product> lstProduct = productService.getProductsWith1Image();
+		return ResponseEntity.ok(lstProduct);
+	}
+
+}
 	
 	
 	

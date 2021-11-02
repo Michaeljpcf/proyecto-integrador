@@ -17,8 +17,16 @@ public class ProductImages {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idImages;
 	
-	@Lob
-	private byte[] images;
+	
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
+	}
+
+	private String images;
 	
 	@ManyToOne
 	@JoinColumn(name = "idProduct")
@@ -32,13 +40,7 @@ public class ProductImages {
 		this.idImages = idImages;
 	}
 
-	public byte[] getImages() {
-		return images;
-	}
 
-	public void setImages(byte[] images) {
-		this.images = images;
-	}
 
 	public Product getProduct() {
 		return product;
