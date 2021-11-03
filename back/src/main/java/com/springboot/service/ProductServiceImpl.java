@@ -145,8 +145,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> getProductosWithParams(String name, int cat, double price) {
-		List<Product> productList =  productRepository.listProductWithParams(name, cat, price);
+	public List<Product> getProductosWithParams(String name, int cat, double price1,double price2) {
+		List<Product> productList =  productRepository.listProductWithParams(name, cat, price1,price2);
 		if(CollectionUtils.isEmpty(productList)) {
 			log.error("No se encontro ningun listado en el metodo de Product LIST");
 		}
