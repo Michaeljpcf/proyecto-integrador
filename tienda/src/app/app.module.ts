@@ -22,6 +22,7 @@ import { TopbarComponent } from './components/user/topbar/topbar.component';
 import { WishlistComponent } from './components/user/wishlist/wishlist.component';
 import { PostComponent } from './components/user/post/post.component';
 import { ShopProductsComponent } from './components/shop-products/shop-products.component';
+import { InfoProductComponent } from './components/info-product/info-product.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ShopProductsComponent } from './components/shop-products/shop-products.
     TopbarComponent,
     WishlistComponent,
     PostComponent,
-    ShopProductsComponent
+    ShopProductsComponent,
+    InfoProductComponent
   ],
   imports: [
     BrowserModule,

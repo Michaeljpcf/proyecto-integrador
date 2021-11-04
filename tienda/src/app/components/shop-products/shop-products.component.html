@@ -9,109 +9,115 @@
 </div>
 <div class="ps-page--shop" id="shop-sidebar">
   <div class="container">
+    <form (ngSubmit)="filterProduct()">
       <div class="ps-layout--shop">
-
           <div class="ps-layout__left">
               <aside class="widget widget_shop">
                   <h4 class="widget-title">Categorías</h4>
                   <ul class="ps-list--categories">
                     <li  class="menu-item-has-children" *ngFor="let cat of categories">
-                      <a href="#">{{cat.name}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                      <a style="cursor: pointer;">{{cat.name}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
                       <ul class="sub-menu">
                         <li *ngFor="let sub of cat.subcategories">
-                          <a href="#">{{sub.name}}</a>
+                          <a style="cursor: pointer;">{{sub.name}}</a>
                         </li>
                       </ul>
-                    </li>
-                  </ul>
-
-                  <ul class="ps-list--categories">
-                    <li  class="menu-item-has-children">
-                      <a href="shop-default.html">FALTA EL ngFor</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
-                      <ul class="sub-menu">
-                        <li><a href="shop-default.html">Womens</a>
-                        </li>
-                        <li><a href="shop-default.html">Mens</a>
-                        </li>
-                        <li><a href="shop-default.html">Bags</a>
-                        </li>
-                        <li><a href="shop-default.html">Sunglasses</a>
-                        </li>
-                        <li><a href="shop-default.html">Accessories</a>
-                        </li>
-                        <li><a href="shop-default.html">Kid's Fashion</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li *ngFor="let cat of categories">
-                      <a href="shop-default.html">{{cat.name}}</a>
                     </li>
                   </ul>
               </aside>
-              <!-- <aside class="widget widget_shop">
-                  <h4 class="widget-title">BY BRANDS</h4>
-                  <form class="ps-form--widget-search" action="do_action" method="get">
-                      <input class="form-control" type="text" placeholder="">
-                      <button><i class="icon-magnifier"></i></button>
-                  </form>
-                  <figure class="ps-custom-scrollbar" data-height="250">
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-1" name="brand" />
-                          <label for="brand-1">Adidas (3)</label>
+              <aside class="widget widget_shop">
+                <!-- <h4 class="widget-title">BY BRANDS</h4>
+                <form class="ps-form--widget-search" action="do_action" method="get">
+                    <input class="form-control" type="text" placeholder="">
+                    <button><i class="icon-magnifier"></i></button>
+                </form>
+                <figure class="ps-custom-scrollbar" data-height="250">
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-1" name="brand" />
+                        <label for="brand-1">Adidas (3)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-2" name="brand" />
+                        <label for="brand-2">Amcrest (1)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-3" name="brand" />
+                        <label for="brand-3">Apple (2)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-4" name="brand" />
+                        <label for="brand-4">Asus (19)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-5" name="brand" />
+                        <label for="brand-5">Baxtex (20)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-6" name="brand" />
+                        <label for="brand-6">Adidas (11)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-7" name="brand" />
+                        <label for="brand-7">Casio (9)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-8" name="brand" />
+                        <label for="brand-8">Electrolux (0)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-9" name="brand" />
+                        <label for="brand-9">Gallaxy (0)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-10" name="brand" />
+                        <label for="brand-10">Samsung (0)</label>
+                    </div>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-11" name="brand" />
+                        <label for="brand-11">Sony (0)</label>
+                    </div>
+                </figure> -->
+                <figure>
+                  <h4 class="widget-title pb-15">Filtrar por precio</h4>
+                    <div id="nonlinear"></div>
+                    <div class="d-flex align-items-center mt-3">
+                      <div class="w-50">
+                        <div class="form-group position-relative mb-0">
+                          <input type="hidden" class="form-control form-control-sm ps-slider__min">
+                        </div>
                       </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-2" name="brand" />
-                          <label for="brand-2">Amcrest (1)</label>
+                      <div class="w-50">
+                        <div class="form-group position-relative mb-0">
+                          <input type="hidden" class="form-control form-control-sm ps-slider__max" name="price" [(ngModel)]="price">
+                        </div>
                       </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-3" name="brand" />
-                          <label for="brand-3">Apple (2)</label>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-12">
+                        <button class="ps-btn ps-btn--fullwidth">Filtrar</button>
                       </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-4" name="brand" />
-                          <label for="brand-4">Asus (19)</label>
-                      </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-5" name="brand" />
-                          <label for="brand-5">Baxtex (20)</label>
-                      </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-6" name="brand" />
-                          <label for="brand-6">Adidas (11)</label>
-                      </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-7" name="brand" />
-                          <label for="brand-7">Casio (9)</label>
-                      </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-8" name="brand" />
-                          <label for="brand-8">Electrolux (0)</label>
-                      </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-9" name="brand" />
-                          <label for="brand-9">Gallaxy (0)</label>
-                      </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-10" name="brand" />
-                          <label for="brand-10">Samsung (0)</label>
-                      </div>
-                      <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="brand-11" name="brand" />
-                          <label for="brand-11">Sony (0)</label>
-                      </div>
+                    </div>
                   </figure>
-                  <figure>
-                      <h4 class="widget-title">By Price</h4>
-                      <div id="nonlinear"></div>
-                      <p class="ps-slider__meta">Price:<span class="ps-slider__value">$<span class="ps-slider__min"></span></span>-<span class="ps-slider__value">$<span class="ps-slider__max"></span></span></p>
-                  </figure>
-              </aside> -->
+                <!-- <figure>
+                  <h4 class="widget-title">Filtrar por precio</h4>
+                  <div id="nonlinear"></div>
+                  <p class="ps-slider__meta">Price:<span class="ps-slider__value">S/<span class="ps-slider__min"></span></span>-<span class="ps-slider__value">S/<span class="ps-slider__max"><input type="hidden" class="ps-slider__max" name="price"></span></span></p>
+                  <button class="ps-btn ps-btn--fullwidth">Filtrar</button>
+                </figure> -->
+              </aside>
           </div>
 
 
           <div class="ps-layout__right">
               <div class="ps-page__header">
                   <h1>PRODUCTOS</h1>
+              </div>
+              <div class="header__content-center mb-30">
+                <form class="ps-form--quick-search" method="get" (ngSubmit)="filterProduct()">
+                  <input class="form-control" type="text" placeholder="Busca tu producto..." style="border: 1px solid #eee;" name="name" [(ngModel)]="name">
+                  <button style="background-color: #FCB800; color: #000;">Search</button>
+                  <!-- <button class="reset ml-10" style="border-radius: 0;">resetear</button> -->
+                </form>
               </div>
               <div class="ps-shopping ps-tab-root">
                   <div class="ps-shopping__header">
@@ -138,12 +144,12 @@
                                   <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6" *ngFor="let prod of products">
                                       <div class="ps-product">
                                           <div class="ps-product__thumbnail">
-                                            <a href="#">
+                                            <a [routerLink]="['/info-product']">
                                               <img [src]="prod.image" alt="" />
                                             </a>
                                           </div>
                                           <div class="ps-product__container">
-                                            <a class="ps-product__vendor" href="#">{{prod.name}}</a>
+                                            <a class="ps-product__vendor">{{prod.name}}</a>
                                             <div class="ps-product__content">
                                               <p class="ps-product__price">S/{{prod.price}}</p>
                                             </div>
@@ -197,9 +203,9 @@
                   </div>
               </div>
           </div>
-      </div>
+        </div>
+      </form>
   </div>
 </div>
-
 
 <app-footer></app-footer>

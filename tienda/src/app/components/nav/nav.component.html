@@ -72,7 +72,7 @@ Header
             Search
             ======================================-->
             <div class="header__content-center">
-                <form class="ps-form--quick-search" action="index.html" method="get" (ngSubmit)="searchProductNombre()">
+                <form class="ps-form--quick-search" method="get" (ngSubmit)="searchProductName()">
                     <div class="form-group--icon" style="min-width: 147px;">
                         <i class="icon-chevron-down"></i>
                         <select class="form-control">
@@ -80,7 +80,7 @@ Header
                           <option  *ngFor="let cat of categories" value="cat.id">{{cat.name}}</option>
                         </select>
                     </div>
-                    <input class="form-control" type="text" placeholder="Busca tu producto...">
+                    <input class="form-control" type="text" placeholder="Busca tu producto..." name="name" [(ngModel)]="name">
                     <button>Search</button>
                 </form>
             </div>

@@ -4,9 +4,8 @@ import { Category } from 'src/app/models/category';
 import { SubCategory } from 'src/app/models/sub-category';
 import { ClientService } from 'src/app/services/client.service';
 import { ProductService } from 'src/app/services/product.service';
-import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
-import { Byte } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
 
 declare var jQuery:any;
 declare var $:any;
@@ -34,7 +33,7 @@ export class PostComponent implements OnInit {
 
 
   public file:any | File = undefined;
-  public imgSelect: any | ArrayBuffer = 'assets/img/products/default/default-image.jpg';
+  // public imgSelect: any | ArrayBuffer = 'assets/img/products/default/default-image.jpg';
   public gallery: File[] = [];
 
   //summernote
@@ -54,7 +53,7 @@ export class PostComponent implements OnInit {
   constructor(
     private _clientService: ClientService,
     private _productService: ProductService,
-    private _activatedRoute: ActivatedRoute
+    private _router: Router
   ) {
 
   }
@@ -62,25 +61,25 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.getImageByIdProduct(this.idPro);
     this.listCategories();
-    this.listSubcategoriesById(this.id);
+    // this.listSubcategoriesById(this.id);
   }
 
-  listSubcategoriesById(id:number) {
-    this._clientService.listSubCategoriesId(id).subscribe(
-      res=> {
-        console.log(res);
-      }
-    );
-  }
+  // listSubcategoriesById(id:number) {
+  //   this._clientService.listSubCategoriesId(id).subscribe(
+  //     res=> {
+  //       console.log(res);
+  //     }
+  //   );
+  // }
 
   listCategories() {
     this._clientService.listCategories().subscribe(
       (res: Category[])=> {
         this.categories = res;
-        console.log('categorias',res)
+        // console.log('categorias',res)
         this._clientService.listSubCategories().subscribe(
           sub=> {
-            console.log(sub);
+            // console.log(sub);
           }
         );
 
@@ -217,7 +216,7 @@ export class PostComponent implements OnInit {
 
 
   registerPost(registerForm){
-    if (registerForm.valid) {
+    if (registerForm) {
       console.log(registerForm);
 
       let formProduct = $(".formProduct");
@@ -236,7 +235,17 @@ export class PostComponent implements OnInit {
 
       this._productService.newProduct(this.product,this.gallery).subscribe(
         res=>{
-          console.log("producto nuevo",res);
+          console.log(JSON.parse(res));
+        },
+        err=> {
+          iziToast.show({
+            title: 'Success',
+            position: 'topRight',
+            color: 'blue',
+            timeout: 3000,
+            message: 'Registro Exitoso'
+          });
+          this._router.navigate(['/shop-products']);
         }
       );
 

@@ -15,15 +15,13 @@
                     <ul class="categories-dropdown">
                         <li class="categories-item-has-children has-subcategories" *ngFor="let cat of categories">
                             <a data-toggle="tab" href="#product">
-                                <!-- <input type="hidden" name="name" [(ngModel)]="category.name"> -->
                                 {{cat.name}}
                             </a>
                             <div class="subcategories-dropdown">
                                 <ul class="subcategories-list">
-
-                                    <li *ngFor="let sub of cat.subcategories"><a (click)="goProduct(sub)">{{sub.name}}</a>
-                                    </li>
-
+                                  <li *ngFor="let sub of cat.subcategories">
+                                    <a style="cursor: pointer;" (click)="goProduct(sub)">{{sub.name}}</a>
+                                  </li>
                                 </ul>
                             </div>
                         </li>

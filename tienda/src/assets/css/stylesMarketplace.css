@@ -78,6 +78,14 @@
     opacity: 1;
 }
 
+.ps-list--categories li a:hover {
+  color: #fcb800!important;
+}
+
+.ps-list--categories li .sub-menu li a:hover {
+  color: #fcb800!important;
+}
+
 .subcategories-dropdown .subcategories-list li{
     padding: 0 20px;
 }

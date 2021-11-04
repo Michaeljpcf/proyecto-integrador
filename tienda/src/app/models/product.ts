@@ -4,7 +4,7 @@ export class Product {
     id: number;
     name: string;
     url: string;
-    price: string;
+    price: number;
     description: string;
     image: string;
     gallery: string;

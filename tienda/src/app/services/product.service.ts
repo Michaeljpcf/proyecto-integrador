@@ -1,9 +1,8 @@
 import { HttpClient, HttpEvent, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Product } from '../models/product';
-import { Global } from './global';
-import { map, catchError } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -87,6 +86,20 @@ export class ProductService {
       return this._httpClient.get(this.url+"/getListProductUsingParams",{params})
   }
 
+  getProductName(name:string):Observable<any>{
+    const params = new HttpParams()
+      .set("name",name);
 
+      return this._httpClient.get(this.url+"/getListProductUsingParams",{params})
+  }
+
+  // searchProducts(keyword: string): Observable<Product[]> {
+  //   const searchUrl = `${this.url}/search/categ`;
+  //   return this._httpClient.get<Product[]>(searchUrl).pipe(
+  //     map(response => response)
+  //   )
+  // };
 
 }
+
+
