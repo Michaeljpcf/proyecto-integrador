@@ -1,6 +1,7 @@
 package com.springboot.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,12 +14,16 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.springboot.security.entity.User;
 
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Getter
 @Setter
@@ -34,6 +39,13 @@ public class Product {
 	private Double price;
 	private String description;
 	private String image;
+	
+	
+	@Transient
+	@JsonSerialize
+	@JsonDeserialize
+	List<String> lstProductImages;
+	//private List<ProductImages> productImages;
 	
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
@@ -55,8 +67,7 @@ public class Product {
 	public void prePersist() {
 		this.createAt = new Date();
 	}
-
-	
+		
 }
 
 

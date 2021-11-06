@@ -69,9 +69,17 @@ public class ProductRestController {
 		return ResponseEntity.ok(lista);
 	}
 	
+	
+	
 	@GetMapping("/findProduct/{id}")
 	public Product show(@PathVariable Integer id) {
 		return productService.findById(id);
+	}
+	
+	
+	@GetMapping("/getProduct/{id}")
+	public Optional<Product> getProductById(@PathVariable Integer id) {
+		return productService.getById(id);
 	}
 	
 	@PostMapping("/newProduct")	

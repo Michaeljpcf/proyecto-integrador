@@ -2,6 +2,8 @@ package com.springboot.repository;
 
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -18,5 +20,16 @@ public interface ProductImagesRepository extends JpaRepository<ProductImages, In
 	@Query(value = "SELECT a.images from product_images a join products p on p.id = a.idProduct where a.idProduct= ?1 LIMIT 1;", nativeQuery = true)
 	public abstract String findTop1ImagesByProducto_IdStr(int id);
 	
+	
+	
+	//Metodo devolver lista de imagenes
+	@Query(value = "SELECT a.images from product_images a join products p on p.id = a.idProduct where a.idProduct= ?1", nativeQuery = true)
+	public abstract List<String> findListofProductsById(int id); 
+	
+	
+	/*@Query(value = "SELECT a from product_images a join products p on p.id = a.idProduct where a.idProduct= ?1;", nativeQuery = true)
+	public abstract ProductImages findProductListById(int id); 
+	
+	public abstract List<ProductImages> findProductByProductId(int id);*/
 	
 }

@@ -54,7 +54,11 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product findById(Integer id) {
-		return productRepository.findById(id).orElse(null);
+		Optional<Product> pro = productRepository.findById(id);
+		 List<String>lstImgs = proImagesRepository.findListofProductsById(id);
+		pro.get().setLstProductImages(lstImgs);
+					
+		return pro.get();
 	}
 
 	@Override
@@ -69,7 +73,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Optional<Product> getById(int idProduct) {
-		return productRepository.findById(idProduct);
+		Optional<Product> pro = productRepository.findById(idProduct);
+
+		return pro;
 	}
 
 	
