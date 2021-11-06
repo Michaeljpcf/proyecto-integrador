@@ -121,7 +121,7 @@
               </div>
               <div class="ps-shopping ps-tab-root">
                   <div class="ps-shopping__header">
-                      <p><strong>36</strong> Productos encontrados</p>
+                      <p><strong>{{cantProducts}} Productos Encontrados</strong> </p>
                       <div class="ps-shopping__actions">
                           <select class="ps-select" data-placeholder="Sort Items">
                             <option selected disabled>Ordenar por</option>
@@ -207,5 +207,7 @@
       </form>
   </div>
 </div>
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.179.0.min.js"></script>
 
 <app-footer></app-footer>

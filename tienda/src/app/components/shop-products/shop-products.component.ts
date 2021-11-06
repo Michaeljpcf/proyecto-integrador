@@ -22,6 +22,8 @@ export class ShopProductsComponent implements OnInit {
   subCategories: SubCategory[] = [];
   products: Product[] = [];
 
+  cantProducts:number;
+
   name:string="";
   subcat:number=0;
   price:number=0;
@@ -35,6 +37,7 @@ export class ShopProductsComponent implements OnInit {
     this.mainjs();
     this.listCategories();
     this.listProducts();
+
   }
 
   listCategories() {
@@ -59,19 +62,21 @@ export class ShopProductsComponent implements OnInit {
   }
 
   filterProduct() {
-    this._productService.getProductByParams(this.name,this.subcat,this.price).subscribe(
+    let min = parseInt($('.ps-slider__min').val());
+    let max = parseInt($('.ps-slider__max').val());
+    this._productService.getProductByParams(this.name,this.subcat,min,max).subscribe(
       res=> {
         this.products = res.list;
+        this.cantProducts = res.mensaje;
 
-        let min = parseInt($('.ps-slider__min').val());
-        let max = parseInt($('.ps-slider__max').val());
+
         console.log(min);
         console.log(max);
 
-        this.products = this.products.filter((item)=>{
+        /*this.products = this.products.filter((item)=>{
           return item.price >= min &&
                  item.price <= max
-        });
+        });*/
       },
       err=> {
         console.log(err);
