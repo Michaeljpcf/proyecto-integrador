@@ -16,6 +16,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -40,6 +43,7 @@ public class Product {
 	private String description;
 	private String image;
 	
+	private int stock;
 	
 	@Transient
 	@JsonSerialize
@@ -49,6 +53,12 @@ public class Product {
 	
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
+	
+	
+	@JsonFormat(pattern = "dd-MM-yyyy",timezone="America/Lima")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date deliveryRangeDate;
 		
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
@@ -58,6 +68,8 @@ public class Product {
 	@JoinColumn(name = "subcategories_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private SubCategory subCategory;	
+	
+	
 	
 //	@ManyToOne(fetch = FetchType.LAZY)
 //	@JoinColumn(name ="category_id")

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,6 +57,13 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product findById(Integer id) {
 		Optional<Product> pro = productRepository.findById(id);
+		Date today = new Date();
+		
+		Calendar c = Calendar.getInstance();
+		c.setTime(today);
+		c.add(Calendar.DATE, 10);
+		today = c.getTime();
+		pro.get().setDeliveryRangeDate(today);
 		 List<String>lstImgs = proImagesRepository.findListofProductsById(id);
 		pro.get().setLstProductImages(lstImgs);
 					
