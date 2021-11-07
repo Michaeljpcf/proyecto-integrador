@@ -55,6 +55,9 @@ public class Product {
 	private Date createAt;
 	
 	
+	@Transient
+	@JsonSerialize
+	@JsonDeserialize
 	@JsonFormat(pattern = "dd-MM-yyyy",timezone="America/Lima")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Temporal(TemporalType.TIMESTAMP)

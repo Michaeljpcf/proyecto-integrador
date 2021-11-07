@@ -41,8 +41,6 @@ public class ProductServiceImpl implements ProductService {
 	@Value("${aws.s3.bucket}")
 	private String bucketName;
 
-	
-
 	@Autowired
 	private ProductRepository productRepository;
 

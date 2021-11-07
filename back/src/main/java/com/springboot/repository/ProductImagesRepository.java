@@ -24,7 +24,7 @@ public interface ProductImagesRepository extends JpaRepository<ProductImages, In
 	
 	//Metodo devolver lista de imagenes
 	@Query(value = "SELECT a.images from product_images a join products p on p.id = a.idProduct where a.idProduct= ?1", nativeQuery = true)
-	public abstract List<String> findListofProductsById(int id); 
+	public abstract List<String> findListofProductsById(int id);
 	
 	
 	/*@Query(value = "SELECT a from product_images a join products p on p.id = a.idProduct where a.idProduct= ?1;", nativeQuery = true)

@@ -16,7 +16,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 
 @RestController
-@RequestMapping("/stripe")
+@RequestMapping("/api/stripe")
 @CrossOrigin(origins = { "http://localhost:4200" })
 public class PaymentController {
 

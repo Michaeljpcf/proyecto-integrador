@@ -1,6 +1,7 @@
 package com.springboot.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,9 +14,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.springboot.security.entity.User;
 
 import lombok.Getter;
@@ -47,6 +51,11 @@ public class ProductOrder {
 	@JoinColumn(name = "product_id")
 	private Product producto_id;
 	
+	
+	@Transient
+	@JsonSerialize
+	@JsonDeserialize
+	private String productImage;
 
 	private double total;
 	
