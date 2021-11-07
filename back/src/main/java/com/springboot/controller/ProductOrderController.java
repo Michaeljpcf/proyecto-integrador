@@ -54,6 +54,7 @@ public class ProductOrderController {
 		}		
 	}
 	
+	//Metodo que devuelve la lista de OrderList por ID de publicador
 	
 	@GetMapping("/findByProductIdUser/{id}")
 	@ResponseBody
@@ -66,6 +67,8 @@ public class ProductOrderController {
 		return productOrderService.productOrderListByProductId(idUser);
 	}
 	
+	
+	//Metodo que devuelve la lista de OrderList por ID de comprador
 	
 	@GetMapping("/findByProductByIdBuyer/{id}")
 	@ResponseBody
