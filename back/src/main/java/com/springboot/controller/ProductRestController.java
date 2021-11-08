@@ -268,12 +268,13 @@ public class ProductRestController {
 	public ResponseEntity<Map<String,Object>> getListProductWithParams(
 			@RequestParam(name = "name",defaultValue = ""  ,required = false)String name,
 			@RequestParam(name = "cat",defaultValue = "0"  ,required = false)int cat,
+			@RequestParam(name = "subCat",defaultValue = "0"  ,required = false)int subCat,
 			@RequestParam(name = "price1",defaultValue = "0.0",required = false)Double price1,
 			@RequestParam(name = "price2",defaultValue = "0.0",required = false)Double price2){
 		
 		Map<String,Object> mapFinal = new HashMap<>();
 		try {
-			List<Product> lstProduct = productService.getProductosWithParams("%"+name+"%", cat, price1,price2);
+			List<Product> lstProduct = productService.getProductosWithParams("%"+name+"%", cat,subCat, price1,price2);
 			if(CollectionUtils.isEmpty(lstProduct)) {
 				mapFinal.put("mensaje", "No existe datos para la consulta");
 			}else {
