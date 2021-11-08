@@ -49,7 +49,7 @@ public class User implements Serializable{
 	@Column(unique = true)
 	private String email;
 	
-	//@JsonIgnore
+	@JsonIgnore
 	@NotNull
 	private String password;
 	

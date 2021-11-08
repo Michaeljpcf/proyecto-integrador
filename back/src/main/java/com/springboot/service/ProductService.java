@@ -38,6 +38,6 @@ public interface ProductService {
 	public List<Product> getProductsWith1Image();
 	
 	//Obtener lista de los productos con imagen usando 3 parametros
-	public List<Product> getProductosWithParams(String name,int cat,double price1,double price2);
+	public List<Product> getProductosWithParams(String name,int subCat,double price1,double price2);
 
 }

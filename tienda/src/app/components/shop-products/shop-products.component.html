@@ -26,57 +26,6 @@
                   </ul>
               </aside>
               <aside class="widget widget_shop">
-                <!-- <h4 class="widget-title">BY BRANDS</h4>
-                <form class="ps-form--widget-search" action="do_action" method="get">
-                    <input class="form-control" type="text" placeholder="">
-                    <button><i class="icon-magnifier"></i></button>
-                </form>
-                <figure class="ps-custom-scrollbar" data-height="250">
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-1" name="brand" />
-                        <label for="brand-1">Adidas (3)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-2" name="brand" />
-                        <label for="brand-2">Amcrest (1)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-3" name="brand" />
-                        <label for="brand-3">Apple (2)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-4" name="brand" />
-                        <label for="brand-4">Asus (19)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-5" name="brand" />
-                        <label for="brand-5">Baxtex (20)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-6" name="brand" />
-                        <label for="brand-6">Adidas (11)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-7" name="brand" />
-                        <label for="brand-7">Casio (9)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-8" name="brand" />
-                        <label for="brand-8">Electrolux (0)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-9" name="brand" />
-                        <label for="brand-9">Gallaxy (0)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-10" name="brand" />
-                        <label for="brand-10">Samsung (0)</label>
-                    </div>
-                    <div class="ps-checkbox">
-                        <input class="form-control" type="checkbox" id="brand-11" name="brand" />
-                        <label for="brand-11">Sony (0)</label>
-                    </div>
-                </figure> -->
                 <figure>
                   <h4 class="widget-title pb-15">Filtrar por precio</h4>
                     <div id="nonlinear"></div>
@@ -98,12 +47,6 @@
                       </div>
                     </div>
                   </figure>
-                <!-- <figure>
-                  <h4 class="widget-title">Filtrar por precio</h4>
-                  <div id="nonlinear"></div>
-                  <p class="ps-slider__meta">Price:<span class="ps-slider__value">S/<span class="ps-slider__min"></span></span>-<span class="ps-slider__value">S/<span class="ps-slider__max"><input type="hidden" class="ps-slider__max" name="price"></span></span></p>
-                  <button class="ps-btn ps-btn--fullwidth">Filtrar</button>
-                </figure> -->
               </aside>
           </div>
 
@@ -143,21 +86,21 @@
                               <div class="row">
                                   <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6" *ngFor="let prod of products">
                                       <div class="ps-product">
-                                          <div class="ps-product__thumbnail">
-                                            <a [routerLink]="['/info-product']">
-                                              <img [src]="prod.image" alt="" />
-                                            </a>
+                                        <div class="ps-product__thumbnail">
+                                          <a [routerLink]="['/info-product/',prod.id,prod.url]">
+                                            <img [src]="prod.image" alt="" />
+                                          </a>
+                                        </div>
+                                        <div class="ps-product__container">
+                                          <a [routerLink]="['/info-product/',prod.id]" class="ps-product__vendor">{{prod.name}}</a>
+                                          <div class="ps-product__content">
+                                            <p class="ps-product__price">S/{{prod.price}}</p>
                                           </div>
-                                          <div class="ps-product__container">
-                                            <a class="ps-product__vendor">{{prod.name}}</a>
-                                            <div class="ps-product__content">
-                                              <p class="ps-product__price">S/{{prod.price}}</p>
-                                            </div>
-                                            <div class="ps-product__content hover">
-                                              <a class="ps-product__title" href="#">{{prod.name}}</a>
-                                              <p class="ps-product__price">S/{{prod.price}}</p>
-                                            </div>
+                                          <div class="ps-product__content hover">
+                                            <a class="ps-product__title" [routerLink]="['/info-product/',prod.id]" >{{prod.name}}</a>
+                                            <p class="ps-product__price">S/{{prod.price}}</p>
                                           </div>
+                                        </div>
                                       </div>
                                   </div>
                               </div>

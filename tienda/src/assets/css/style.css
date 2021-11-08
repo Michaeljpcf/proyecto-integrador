@@ -14803,7 +14803,7 @@ textarea.form-control {
 
 .ps-page--product .ps-page__container .ps-page__left {
   padding-right: 30px;
-  max-width: calc(100% - 290px);
+  /* max-width: calc(100% - 290px); */
 }
 
 .ps-page--product .ps-page__container .ps-page__right {

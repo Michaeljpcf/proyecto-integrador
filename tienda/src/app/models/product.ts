@@ -6,6 +6,7 @@ export class Product {
     url: string;
     price: number;
     description: string;
+    lstProductImages: string[];
     image: string;
     gallery: string;
     createAt: string;

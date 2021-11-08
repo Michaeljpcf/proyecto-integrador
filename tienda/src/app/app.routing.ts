@@ -10,6 +10,7 @@ import { WishlistComponent } from "./components/user/wishlist/wishlist.component
 import { PostComponent } from "./components/user/post/post.component";
 import { ShopProductsComponent } from "./components/shop-products/shop-products.component";
 import { InfoProductComponent } from "./components/info-product/info-product.component";
+import { VendorStoreComponent } from "./components/user/vendor-store/vendor-store.component";
 
 const appRoute: Routes = [
     {path: '', redirectTo: 'index', pathMatch: 'full'},
@@ -20,10 +21,10 @@ const appRoute: Routes = [
     {path:'account/wishlist', component: WishlistComponent},
     {path:'account/shopping', component: ShoppingComponent},
     {path:'account/sales', component: SalesComponent},
+    {path:'account/vendor-store/:id/:userName', component: VendorStoreComponent},
     {path:'post', component: PostComponent},
     {path:'shop-products', component: ShopProductsComponent},
-    {path:'search-product', component: ShopProductsComponent},
-    {path:'info-product', component: InfoProductComponent}
+    {path:'info-product/:id/:url', component: InfoProductComponent}
 ]
 
 export const appRoutingProvider: any[]=[];

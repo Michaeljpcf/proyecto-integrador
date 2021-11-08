@@ -23,6 +23,7 @@ import { WishlistComponent } from './components/user/wishlist/wishlist.component
 import { PostComponent } from './components/user/post/post.component';
 import { ShopProductsComponent } from './components/shop-products/shop-products.component';
 import { InfoProductComponent } from './components/info-product/info-product.component';
+import { VendorStoreComponent } from './components/user/vendor-store/vendor-store.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { InfoProductComponent } from './components/info-product/info-product.com
     WishlistComponent,
     PostComponent,
     ShopProductsComponent,
-    InfoProductComponent
+    InfoProductComponent,
+    VendorStoreComponent
   ],
   imports: [
     BrowserModule,

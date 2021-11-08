@@ -23,7 +23,7 @@ export class ProductService {
   }
 
   getProducts(id): Observable<Product> {
-    return this._httpClient.get<Product>(`${this.url}+/'findProduct'/+${id}`);
+    return this._httpClient.get<Product>(`${this.url}/findProduct/${id}`);
   }
 
   /*newProduct(product: Product, images:any): Observable<any> {
