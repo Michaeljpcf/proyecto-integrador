@@ -95,8 +95,8 @@ export class ProductService {
       return this._httpClient.get(this.url+"/getListProductUsingParams",{params})
   }
 
-  checkoutProduct(obj:ProductOrder): Observable<any> {
-    return this._httpClient.post(this.url+'/newOrderProduct',obj);
+  checkoutProduct(obj:ProductOrder): Observable<ProductOrder> {
+    return this._httpClient.post<ProductOrder>(this.url+'/newOrderProduct',obj);
   }
 
   // searchProducts(keyword: string): Observable<Product[]> {

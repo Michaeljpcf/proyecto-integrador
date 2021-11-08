@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductOrder } from 'src/app/models/product-order';
+import { SubCategory } from 'src/app/models/sub-category';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,10 +13,12 @@ import { ProductService } from 'src/app/services/product.service';
 export class PaymentProductComponent implements OnInit {
 
   product: Product = new Product();
+
+  subCategory: SubCategory = new SubCategory();
   payProduct: ProductOrder = new ProductOrder();
 
-  id:any;
-  deliveryDate:any;
+
+
 
 
   constructor(
@@ -39,17 +42,25 @@ export class PaymentProductComponent implements OnInit {
       data=> {
         this.product = data;
         console.log(data);
+
+        this.payProduct={
+          deliveryDate:this.product.deliveryRangeDate,
+          total:this.product.price,
+          product_id:this.product
+        }
+        console.log(this.payProduct)
+
       }
     );
 
   }
 
-  paymentProduct(id:number,deliveryDate:ProductOrder) {
+  paymentProduct() {
 
     this._productService.checkoutProduct(this.payProduct).subscribe(
       res=> {
-        this.product.id = id;
-        this.deliveryDate = deliveryDate;
+
+
         console.log(res);
       }
     );
