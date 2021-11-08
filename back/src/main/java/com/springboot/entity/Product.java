@@ -42,7 +42,7 @@ public class Product {
 	private Double price;
 	private String description;
 	private String image;
-	private String condition;
+	private String conditionProduct;
 	
 	private int stock;
 	
