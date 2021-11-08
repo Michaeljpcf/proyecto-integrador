@@ -209,8 +209,8 @@ public class ProductRestController {
 		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();
 		User user = new User();
 		user.setIdUser(usuarioPrincipal.getIdUser());
-//		obj.setSubCategory()
 		obj.setUser(user);
+		obj.setStock(obj.getStock()-1);
 		productService.insertProductImages(obj, images);
 	
 		return new ResponseEntity<String>("El archivo fue cargado",HttpStatus.OK);		
