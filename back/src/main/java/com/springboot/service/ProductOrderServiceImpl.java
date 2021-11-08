@@ -31,7 +31,7 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		
 		List<ProductOrder> lstProductOrder =productOrderRepository.findOrderListByProductUserId(id); 
 		for(ProductOrder aux : lstProductOrder) {
-			String image = proImagesRepository.findTop1ImagesByProducto_IdStr(aux.getProducto_id().getId());
+			String image = proImagesRepository.findTop1ImagesByProducto_IdStr(aux.getProduct_id().getId());
 			aux.setProductImage(image);
 		}
 		return lstProductOrder;
@@ -53,7 +53,7 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		
 		List<ProductOrder> lstProductOrder =productOrderRepository.findOrderListByUserIdBuyer(id);
 		for(ProductOrder aux : lstProductOrder) {
-			String image = proImagesRepository.findTop1ImagesByProducto_IdStr(aux.getProducto_id().getId());
+			String image = proImagesRepository.findTop1ImagesByProducto_IdStr(aux.getProduct_id().getId());
 			aux.setProductImage(image);
 		}
 		return lstProductOrder;

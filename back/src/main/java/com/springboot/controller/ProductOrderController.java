@@ -46,7 +46,6 @@ public class ProductOrderController {
 		User user = new User();
 		user.setIdUser(usuarioPrincipal.getIdUser());
 		obj.setUserBuyer(user);
-		
 		obj.setDeliveryDateNow(new Date());
 		
 		
