@@ -2,6 +2,8 @@ package com.springboot.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ import com.springboot.entity.ProductOrder;
 import com.springboot.security.entity.User;
 import com.springboot.security.entity.UserPrimary;
 import com.springboot.service.ProductOrderService;
+import com.springboot.service.ProductService;
 
 
 @RestController
@@ -29,6 +32,9 @@ public class ProductOrderController {
 	@Autowired
 	private ProductOrderService productOrderService;
 	
+	@Autowired
+	private ProductService productService;
+	
 	
 	@GetMapping("/listProductsOrder")
 	@ResponseBody
@@ -38,7 +44,7 @@ public class ProductOrderController {
 	}
 	
 	
-	
+	@Transactional
 	@PostMapping("/newOrderProduct")
 	@ResponseBody
 	public ResponseEntity<ProductOrder> insertProductOrder(@RequestBody ProductOrder obj, Authentication authentication){
@@ -48,10 +54,11 @@ public class ProductOrderController {
 		obj.setUserBuyer(user);
 		obj.setDeliveryDateNow(new Date());
 		
-		var a = obj.getProduct_id();
-		a.setStock(a.getStock()-1);
-		obj.setProduct_id(a);
+		var id = obj.getProduct_id().getId();
+		var product = productService.findById(id);
 		
+		product.setStock(product.getStock()-1);;
+		productService.insertProduct(product);
 		//obj.setStock(obj.getStock()-1);
 		
 		
