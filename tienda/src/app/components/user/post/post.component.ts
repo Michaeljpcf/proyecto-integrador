@@ -28,7 +28,6 @@ export class PostComponent implements OnInit {
   public id:any;
   public idSubcategory:number;
 
-
   public file:any | File = undefined;
   // public imgSelect: any | ArrayBuffer = 'assets/img/products/default/default-image.jpg';
   public gallery: File[] = [];

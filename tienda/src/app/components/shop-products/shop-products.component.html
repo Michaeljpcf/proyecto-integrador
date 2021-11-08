@@ -16,7 +16,7 @@
                   <h4 class="widget-title">Categorías</h4>
                   <ul class="ps-list--categories">
                     <li  class="menu-item-has-children" *ngFor="let cat of categories">
-                      <a style="cursor: pointer;">{{cat.name}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                      <a style="cursor: pointer;" (click)="filterCatProduct(cat)">{{cat.name}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
                       <ul class="sub-menu">
                         <li *ngFor="let sub of cat.subcategories">
                           <a style="cursor: pointer;">{{sub.name}}</a>

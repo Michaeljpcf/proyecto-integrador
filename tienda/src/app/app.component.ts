@@ -109,45 +109,45 @@ export class AppComponent {
           });
       }
 
-      function subMenuToggle() {
-          $('.menu--mobile .menu-item-has-children > .sub-toggle').on('click', function(e) {
-              e.preventDefault();
-              var current = $(this).parent('.menu-item-has-children')
-              $(this).toggleClass('active');
-              current.siblings().find('.sub-toggle').removeClass('active');
-              current.children('.sub-menu').slideToggle(350);
-              current.siblings().find('.sub-menu').slideUp(350);
-              if (current.hasClass('has-mega-menu')) {
-                  current.children('.mega-menu').slideToggle(350);
-                  current.siblings('.has-mega-menu').find('.mega-menu').slideUp(350);
-              }
+      // function subMenuToggle() {
+      //     $('.menu--mobile .menu-item-has-children > .sub-toggle').on('click', function(e) {
+      //         e.preventDefault();
+      //         var current = $(this).parent('.menu-item-has-children')
+      //         $(this).toggleClass('active');
+      //         current.siblings().find('.sub-toggle').removeClass('active');
+      //         current.children('.sub-menu').slideToggle(350);
+      //         current.siblings().find('.sub-menu').slideUp(350);
+      //         if (current.hasClass('has-mega-menu')) {
+      //             current.children('.mega-menu').slideToggle(350);
+      //             current.siblings('.has-mega-menu').find('.mega-menu').slideUp(350);
+      //         }
 
-          });
-          $('.menu--mobile .has-mega-menu .mega-menu__column .sub-toggle').on('click', function(e) {
-              e.preventDefault();
-              var current = $(this).closest('.mega-menu__column')
-              $(this).toggleClass('active');
-              current.siblings().find('.sub-toggle').removeClass('active');
-              current.children('.mega-menu__list').slideToggle(350);
-              current.siblings().find('.mega-menu__list').slideUp(350);
-          });
-          var listCategories = $('.ps-list--categories');
-          if (listCategories.length > 0) {
-              $('.ps-list--categories .menu-item-has-children > .sub-toggle').on('click', function(e) {
-                  e.preventDefault();
-                  var current = $(this).parent('.menu-item-has-children')
-                  $(this).toggleClass('active');
-                  current.siblings().find('.sub-toggle').removeClass('active');
-                  current.children('.sub-menu').slideToggle(350);
-                  current.siblings().find('.sub-menu').slideUp(350);
-                  if (current.hasClass('has-mega-menu')) {
-                      current.children('.mega-menu').slideToggle(350);
-                      current.siblings('.has-mega-menu').find('.mega-menu').slideUp(350);
-                  }
+      //     });
+      //     $('.menu--mobile .has-mega-menu .mega-menu__column .sub-toggle').on('click', function(e) {
+      //         e.preventDefault();
+      //         var current = $(this).closest('.mega-menu__column')
+      //         $(this).toggleClass('active');
+      //         current.siblings().find('.sub-toggle').removeClass('active');
+      //         current.children('.mega-menu__list').slideToggle(350);
+      //         current.siblings().find('.mega-menu__list').slideUp(350);
+      //     });
+      //     var listCategories = $('.ps-list--categories');
+      //     if (listCategories.length > 0) {
+      //         $('.ps-list--categories .menu-item-has-children > .sub-toggle').on('click', function(e) {
+      //             e.preventDefault();
+      //             var current = $(this).parent('.menu-item-has-children')
+      //             $(this).toggleClass('active');
+      //             current.siblings().find('.sub-toggle').removeClass('active');
+      //             current.children('.sub-menu').slideToggle(350);
+      //             current.siblings().find('.sub-menu').slideUp(350);
+      //             if (current.hasClass('has-mega-menu')) {
+      //                 current.children('.mega-menu').slideToggle(350);
+      //                 current.siblings('.has-mega-menu').find('.mega-menu').slideUp(350);
+      //             }
 
-              });
-          }
-      }
+      //         });
+      //     }
+      // }
 
       function stickyHeader() {
           var header = $('.header'),
@@ -318,67 +318,67 @@ export class AppComponent {
       //     }
       // }
 
-      // function slickConfig() {
-      //     var product = $('.ps-product--detail');
-      //     if (product.length > 0) {
-      //         var primary = product.find('.ps-product__gallery'),
-      //             second = product.find('.ps-product__variants'),
-      //             vertical = product.find('.ps-product__thumbnail').data('vertical');
-      //         primary.slick({
-      //             slidesToShow: 1,
-      //             slidesToScroll: 1,
-      //             asNavFor: '.ps-product__variants',
-      //             fade: true,
-      //             dots: false,
-      //             infinite: false,
-      //             arrows: primary.data('arrow'),
-      //             prevArrow: "<a href='#'><i class='fa fa-angle-left'></i></a>",
-      //             nextArrow: "<a href='#'><i class='fa fa-angle-right'></i></a>",
-      //         });
-      //         second.slick({
-      //             slidesToShow: second.data('item'),
-      //             slidesToScroll: 1,
-      //             infinite: false,
-      //             arrows: second.data('arrow'),
-      //             focusOnSelect: true,
-      //             prevArrow: "<a href='#'><i class='fa fa-angle-up'></i></a>",
-      //             nextArrow: "<a href='#'><i class='fa fa-angle-down'></i></a>",
-      //             asNavFor: '.ps-product__gallery',
-      //             vertical: vertical,
-      //             responsive: [
-      //                 {
-      //                     breakpoint: 1200,
-      //                     settings: {
-      //                         arrows: second.data('arrow'),
-      //                         slidesToShow: 4,
-      //                         vertical: false,
-      //                         prevArrow: "<a href='#'><i class='fa fa-angle-left'></i></a>",
-      //                         nextArrow: "<a href='#'><i class='fa fa-angle-right'></i></a>"
-      //                     }
-      //                 },
-      //                 {
-      //                     breakpoint: 992,
-      //                     settings: {
-      //                         arrows: second.data('arrow'),
-      //                         slidesToShow: 4,
-      //                         vertical: false,
-      //                         prevArrow: "<a href='#'><i class='fa fa-angle-left'></i></a>",
-      //                         nextArrow: "<a href='#'><i class='fa fa-angle-right'></i></a>"
-      //                     }
-      //                 },
-      //                 {
-      //                     breakpoint: 480,
-      //                     settings: {
-      //                         slidesToShow: 3,
-      //                         vertical: false,
-      //                         prevArrow: "<a href='#'><i class='fa fa-angle-left'></i></a>",
-      //                         nextArrow: "<a href='#'><i class='fa fa-angle-right'></i></a>"
-      //                     }
-      //                 },
-      //             ]
-      //         });
-      //     }
-      // }
+      function slickConfig() {
+          var product = $('.ps-product--detail');
+          if (product.length > 0) {
+              var primary = product.find('.ps-product__gallery'),
+                  second = product.find('.ps-product__variants'),
+                  vertical = product.find('.ps-product__thumbnail').data('vertical');
+              primary.slick({
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  asNavFor: '.ps-product__variants',
+                  fade: true,
+                  dots: false,
+                  infinite: false,
+                  arrows: primary.data('arrow'),
+                  prevArrow: "<a href='#'><i class='fa fa-angle-left'></i></a>",
+                  nextArrow: "<a href='#'><i class='fa fa-angle-right'></i></a>",
+              });
+              second.slick({
+                  slidesToShow: second.data('item'),
+                  slidesToScroll: 1,
+                  infinite: false,
+                  arrows: second.data('arrow'),
+                  focusOnSelect: true,
+                  prevArrow: "<a href='#'><i class='fa fa-angle-up'></i></a>",
+                  nextArrow: "<a href='#'><i class='fa fa-angle-down'></i></a>",
+                  asNavFor: '.ps-product__gallery',
+                  vertical: vertical,
+                  responsive: [
+                      {
+                          breakpoint: 1200,
+                          settings: {
+                              arrows: second.data('arrow'),
+                              slidesToShow: 4,
+                              vertical: false,
+                              prevArrow: "<a href='#'><i class='fa fa-angle-left'></i></a>",
+                              nextArrow: "<a href='#'><i class='fa fa-angle-right'></i></a>"
+                          }
+                      },
+                      {
+                          breakpoint: 992,
+                          settings: {
+                              arrows: second.data('arrow'),
+                              slidesToShow: 4,
+                              vertical: false,
+                              prevArrow: "<a href='#'><i class='fa fa-angle-left'></i></a>",
+                              nextArrow: "<a href='#'><i class='fa fa-angle-right'></i></a>"
+                          }
+                      },
+                      {
+                          breakpoint: 480,
+                          settings: {
+                              slidesToShow: 3,
+                              vertical: false,
+                              prevArrow: "<a href='#'><i class='fa fa-angle-left'></i></a>",
+                              nextArrow: "<a href='#'><i class='fa fa-angle-right'></i></a>"
+                          }
+                      },
+                  ]
+              });
+          }
+      }
 
       function tabs() {
           $('.ps-tab-list  li > a ').on('click', function(e) {
@@ -696,12 +696,12 @@ export class AppComponent {
           })
       }
 
-      function select2Cofig() {
-          $('select.ps-select').select2({
-              placeholder: $(this).data('placeholder'),
-              minimumResultsForSearch: -1
-          });
-      }
+      // function select2Cofig() {
+      //     $('select.ps-select').select2({
+      //         placeholder: $(this).data('placeholder'),
+      //         minimumResultsForSearch: -1
+      //     });
+      // }
 
       function carouselNavigation() {
           var prevBtn = $('.ps-carousel__prev'),
@@ -726,11 +726,11 @@ export class AppComponent {
           backgroundImage();
           owlCarouselConfig();
           siteToggleAction();
-          subMenuToggle();
+          // subMenuToggle();
           masonry('.ps-masonry');
           productFilterToggle();
           tabs();
-          // slickConfig();
+          slickConfig();
           productLightbox();
           rating();
           backToTop();
@@ -747,7 +747,7 @@ export class AppComponent {
           accordion();
           progressBar();
           customScrollbar();
-          select2Cofig();
+          // select2Cofig();
           carouselNavigation();
           dateTimePicker();
           $('[data-toggle="tooltip"]').tooltip();

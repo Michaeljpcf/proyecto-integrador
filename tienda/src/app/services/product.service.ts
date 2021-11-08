@@ -78,10 +78,10 @@ export class ProductService {
     return this._httpClient.get(this.url+`/getImgProductByProductId/${idProduct}`,{responseType:'text'});
   }
 
-  getProductByParams(name:string,subcat:number,price1:number,price2:number):Observable<any>{
+  getProductByParams(name:string,cat:number,price1:number,price2:number):Observable<any>{
     const params = new HttpParams()
       .set("name",name)
-      .set("cat",subcat)
+      .set("cat",cat)
       .set("price1",price1)
       .set("price2",price2);
 

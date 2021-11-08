@@ -20,12 +20,14 @@ export class ShopProductsComponent implements OnInit {
 
   categories: Category[] = [];
   subCategories: SubCategory[] = [];
-  products: Product[] = [];
+  products: Product = new Product
+  filter_cat = '';
 
   cantProducts:number;
+  category:number;
 
   name:string="";
-  subcat:number=0;
+  cat:number;
   price:number=0;
 
   constructor(
@@ -34,9 +36,9 @@ export class ShopProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.mainjs();
     this.listCategories();
     this.listProducts();
+    this.mainjs();
 
   }
 
@@ -61,10 +63,15 @@ export class ShopProductsComponent implements OnInit {
     );
   }
 
+  filterCatProduct(category: Category) {
+    this.category = category.id;
+    this.filterProduct();
+  }
+
   filterProduct() {
     let min = parseInt($('.ps-slider__min').val());
     let max = parseInt($('.ps-slider__max').val());
-    this._productService.getProductByParams(this.name,this.subcat,min,max).subscribe(
+    this._productService.getProductByParams(this.name,this.category,min,max).subscribe(
       res=> {
         this.products = res.list;
         this.cantProducts = res.mensaje;

@@ -63,15 +63,15 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="form-group col-md-4">
                                 <label>Fija un Precio</label>
-                                <div class="form-group__content input-group mx-0 pr-0">
+                                <div class="form-group__content input-group">
                                     <div class="input-group-append">
                                       <span class="input-group-text">S/.</span>
                                     </div>
                                     <input
                                     type="number"
-                                    class="form-control formProduct col-md-3"
+                                    class="form-control formProduct"
                                     name="price"
                                     [(ngModel)]="product.price"
                                     tag="prices"
@@ -85,6 +85,22 @@
                                     <div class="valid-feedback">Valido.</div>
                                     <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
                                 </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                              <label>Stock de Producto</label>
+                              <div class="form-group__content">
+                                  <input type="number" class="form-control" name="stock" [(ngModel)]="product.stock" required>
+                              </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                              <label>Condición</label>
+                              <select class="ps-select" name="conditionProduct" [(ngModel)]="product.conditionProduct" required>
+                                <option selected disabled>Seleccionar Condición</option>
+                                <option value="Nuevo">Nuevo</option>
+                                <option value="Usado">Usado</option>
+                              </select>
                             </div>
 
                             <div class="form-group col-md-12">
