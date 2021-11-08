@@ -2,6 +2,7 @@ package com.springboot.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -20,12 +21,12 @@ public class PaymentService {
 	
 	public PaymentIntent paymentIntent(PaymentIntentDTO paymentIntentDto) throws StripeException {
 		Stripe.apiKey=secretKey;
+		List<String> payment_method_types= new ArrayList<>();
+		payment_method_types.add("card");
 		Map<String, Object> params = new HashMap<>();
 		params.put("amount", paymentIntentDto.getAmount());
 		params.put("currency", paymentIntentDto.getCurrency());
 		params.put("description", paymentIntentDto.getDescription());
-		ArrayList payment_method_types= new ArrayList<>();
-		payment_method_types.add("card");
 		params.put("payment_method_types", payment_method_types);
 		return PaymentIntent.create(params);
 	}
