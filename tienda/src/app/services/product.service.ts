@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Product } from '../models/product';
 import { environment } from 'src/environments/environment';
+import { ProductOrder } from '../models/product-order';
 
 @Injectable({
   providedIn: 'root'
@@ -92,6 +93,10 @@ export class ProductService {
       .set("name",name);
 
       return this._httpClient.get(this.url+"/getListProductUsingParams",{params})
+  }
+
+  checkoutProduct(obj:ProductOrder): Observable<any> {
+    return this._httpClient.post(this.url+'/newOrderProduct',obj);
   }
 
   // searchProducts(keyword: string): Observable<Product[]> {

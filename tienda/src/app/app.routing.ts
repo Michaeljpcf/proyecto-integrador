@@ -11,6 +11,7 @@ import { PostComponent } from "./components/user/post/post.component";
 import { ShopProductsComponent } from "./components/shop-products/shop-products.component";
 import { InfoProductComponent } from "./components/info-product/info-product.component";
 import { VendorStoreComponent } from "./components/user/vendor-store/vendor-store.component";
+import { PaymentProductComponent } from "./components/payment-product/payment-product.component";
 
 const appRoute: Routes = [
     {path: '', redirectTo: 'index', pathMatch: 'full'},
@@ -24,7 +25,8 @@ const appRoute: Routes = [
     {path:'account/vendor-store/:id/:userName', component: VendorStoreComponent},
     {path:'post', component: PostComponent},
     {path:'shop-products', component: ShopProductsComponent},
-    {path:'info-product/:id/:url', component: InfoProductComponent}
+    {path:'info-product/:id/:url', component: InfoProductComponent},
+    {path:'payment-product/:id', component: PaymentProductComponent}
 ]
 
 export const appRoutingProvider: any[]=[];

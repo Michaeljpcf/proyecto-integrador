@@ -19,15 +19,12 @@ declare var iziToast:any;
 export class PostComponent implements OnInit {
 
   categories: Category[] = [];
-  // subcategories: SubCategory[] = []
-  // products: Product;
   product: Product = new Product
 
   public imgSrc:string="";
   public idPro:number=34;
 
   public category:any = {};
-  //public product:any = {};
   public id:any;
   public idSubcategory:number;
 
@@ -61,16 +58,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.getImageByIdProduct(this.idPro);
     this.listCategories();
-    // this.listSubcategoriesById(this.id);
   }
-
-  // listSubcategoriesById(id:number) {
-  //   this._clientService.listSubCategoriesId(id).subscribe(
-  //     res=> {
-  //       console.log(res);
-  //     }
-  //   );
-  // }
 
   listCategories() {
     this._clientService.listCategories().subscribe(

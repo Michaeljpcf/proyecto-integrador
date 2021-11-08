@@ -24,6 +24,7 @@ import { PostComponent } from './components/user/post/post.component';
 import { ShopProductsComponent } from './components/shop-products/shop-products.component';
 import { InfoProductComponent } from './components/info-product/info-product.component';
 import { VendorStoreComponent } from './components/user/vendor-store/vendor-store.component';
+import { PaymentProductComponent } from './components/payment-product/payment-product.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { VendorStoreComponent } from './components/user/vendor-store/vendor-stor
     PostComponent,
     ShopProductsComponent,
     InfoProductComponent,
-    VendorStoreComponent
+    VendorStoreComponent,
+    PaymentProductComponent
   ],
   imports: [
     BrowserModule,
