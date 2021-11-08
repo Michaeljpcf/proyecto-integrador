@@ -2,6 +2,7 @@ package com.springboot.controller;
 
 import java.util.List;
 
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -46,6 +47,9 @@ public class ProductOrderController {
 		user.setIdUser(usuarioPrincipal.getIdUser());
 		obj.setUserBuyer(user);
 		
+		obj.setDeliveryDateNow(new Date());
+		
+		
 		ProductOrder objSalida = productOrderService.insertProductOrder(obj);
 		if (objSalida == null) {
 			return ResponseEntity.noContent().build();
@@ -56,21 +60,20 @@ public class ProductOrderController {
 	
 	//Metodo que devuelve la lista de OrderList por ID de publicador
 	
-	@GetMapping("/findByProductIdUser/{id}")
+	@GetMapping("/findByProductIdUser")
 	@ResponseBody
 	public List<ProductOrder> findProductOrderByProductUserId(Authentication authentication){
 		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();
 		User user = new User();
 		user.setIdUser(usuarioPrincipal.getIdUser());
 		int idUser = user.getIdUser();
-		
 		return productOrderService.productOrderListByProductId(idUser);
 	}
 	
 	
 	//Metodo que devuelve la lista de OrderList por ID de comprador
 	
-	@GetMapping("/findByProductByIdBuyer/{id}")
+	@GetMapping("/findByProductByIdBuyer")
 	@ResponseBody
 	public List<ProductOrder> findProductOrderByIdBuyer(Authentication authentication){
 		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();

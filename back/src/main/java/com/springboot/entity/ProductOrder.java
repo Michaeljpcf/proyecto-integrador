@@ -47,7 +47,12 @@ public class ProductOrder {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date deliveryDate;
 	
-	@ManyToOne
+	@JsonFormat(pattern = "dd-MM-yyyy",timezone="America/Lima")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date deliveryDateNow;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id")
 	private Product producto_id;
 	
@@ -70,4 +75,6 @@ public class ProductOrder {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_idBuyer")
 	private User userBuyer;
+	
+	
 }
