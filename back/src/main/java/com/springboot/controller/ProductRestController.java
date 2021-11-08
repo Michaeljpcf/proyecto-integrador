@@ -210,7 +210,7 @@ public class ProductRestController {
 		User user = new User();
 		user.setIdUser(usuarioPrincipal.getIdUser());
 		obj.setUser(user);
-		obj.setStock(obj.getStock()-1);
+		
 		productService.insertProductImages(obj, images);
 	
 		return new ResponseEntity<String>("El archivo fue cargado",HttpStatus.OK);		

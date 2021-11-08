@@ -48,6 +48,12 @@ public class ProductOrderController {
 		obj.setUserBuyer(user);
 		obj.setDeliveryDateNow(new Date());
 		
+		var a = obj.getProduct_id();
+		a.setStock(a.getStock()-1);
+		obj.setProduct_id(a);
+		
+		//obj.setStock(obj.getStock()-1);
+		
 		
 		ProductOrder objSalida = productOrderService.insertProductOrder(obj);
 		if (objSalida == null) {
