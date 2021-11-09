@@ -32,7 +32,7 @@ Checkout
                 <label>Nombre<sup>*</sup></label>
 
                 <div class="form-group__content">
-                  <input class="form-control" type="text" name="nameUser" [(ngModel)]="payProduct.nameUser"/>
+                  <input class="form-control" type="text" name="nameUser" [(ngModel)]="payProduct.nameUser" value="{{user.name}}"/>
                 </div>
               </div>
 
@@ -40,7 +40,7 @@ Checkout
                 <label>Apellidos<sup>*</sup></label>
 
                 <div class="form-group__content">
-                  <input class="form-control" type="text" name="lastNameUser" [(ngModel)]="payProduct.lastNameUser"/>
+                  <input class="form-control" type="text" name="lastNameUser" [(ngModel)]="payProduct.lastNameUser" value="{{user.lastName}}"/>
                 </div>
               </div>
 
@@ -48,7 +48,7 @@ Checkout
                 <label>Teléfono<sup>*</sup></label>
 
                 <div class="form-group__content">
-                  <input class="form-control" type="text" name="phoneContact" [(ngModel)]="payProduct.phoneContact"/>
+                  <input class="form-control" type="text" name="phoneContact" [(ngModel)]="payProduct.phoneContact" value="{{user.phone}}"/>
                 </div>
               </div>
 
@@ -56,7 +56,7 @@ Checkout
                 <label>Email<sup>*</sup></label>
 
                 <div class="form-group__content">
-                  <input class="form-control" type="email" name="emailUser" [(ngModel)]="payProduct.emailUser"/>
+                  <input class="form-control" type="email" name="emailUser" [(ngModel)]="payProduct.emailUser" value="{{user.email}}"/>
                 </div>
               </div>
 
@@ -64,7 +64,7 @@ Checkout
                 <label>Direccion 1<sup>*</sup></label>
 
                 <div class="form-group__content">
-                  <input class="form-control" type="text" name="address1" [(ngModel)]="payProduct.address1"/>
+                  <input class="form-control" type="text" name="address1" [(ngModel)]="payProduct.address1" value="{{user.address}}"/>
                 </div>
               </div>
 

@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Product } from '../models/product';
 import { environment } from 'src/environments/environment';
 import { ProductOrder } from '../models/product-order';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -88,6 +89,14 @@ export class ProductService {
 
   getFindByProductIdUser(): Observable<ProductOrder> {
     return this._httpClient.get<ProductOrder>(this.url+"/findByProductIdUser");
+  }
+
+  getUserByIdSession(): Observable<User> {
+    return this._httpClient.get<User>(this.url+"/getUserByIdSession");
+  }
+
+  updateUserByIdSession(user: User): Observable<User> {
+    return this._httpClient.put<User>(this.url+"/UpdateUserByUser",user);
   }
 
 }

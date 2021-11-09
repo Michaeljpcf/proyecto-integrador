@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductOrder } from 'src/app/models/product-order';
 import { SubCategory } from 'src/app/models/sub-category';
+import { User } from 'src/app/models/user';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -13,13 +14,10 @@ import { ProductService } from 'src/app/services/product.service';
 export class PaymentProductComponent implements OnInit {
 
   product: Product = new Product();
+  user: User = new User();
 
   subCategory: SubCategory = new SubCategory();
   payProduct: ProductOrder = new ProductOrder();
-
-
-
-
 
   constructor(
     private _productService: ProductService,
@@ -33,6 +31,7 @@ export class PaymentProductComponent implements OnInit {
         this.getProductInfo();
       }
     );
+    this.getUserByIdSession();
   }
 
   getProductInfo() {
@@ -62,6 +61,15 @@ export class PaymentProductComponent implements OnInit {
       res=> {
         console.log(res);
         this._router.navigate(['account/shopping']);
+      }
+    );
+  }
+
+  getUserByIdSession() {
+    this._productService.getUserByIdSession().subscribe(
+      data=> {
+        this.user = data;
+        console.log(data);
       }
     );
   }
