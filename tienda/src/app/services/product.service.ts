@@ -82,8 +82,12 @@ export class ProductService {
     return this._httpClient.post<ProductOrder>(this.url+'/newOrderProduct',obj);
   }
 
-  getFindByProductIdUser(): Observable<ProductOrder> {
+  getFindByProductByIdBuyer(): Observable<ProductOrder> {
     return this._httpClient.get<ProductOrder>(this.url+"/findByProductByIdBuyer");
+  }
+
+  getFindByProductIdUser(): Observable<ProductOrder> {
+    return this._httpClient.get<ProductOrder>(this.url+"/findByProductIdUser");
   }
 
 }

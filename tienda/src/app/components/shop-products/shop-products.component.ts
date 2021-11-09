@@ -24,8 +24,8 @@ export class ShopProductsComponent implements OnInit {
   filter_cat = '';
 
   cantProducts:number;
-  category:number;
-  subcategory:number;
+  category:number=0;
+  subcategory:number=0;
 
   name:string="";
   price:number=0;
@@ -65,11 +65,13 @@ export class ShopProductsComponent implements OnInit {
 
   filterCatProduct(category: Category) {
     this.category = category.id;
+    this.subcategory = 0;
     this.filterProduct();
   }
 
   filterSubCatProduct(subcategory: SubCategory) {
     this.subcategory = subcategory.id;
+    this.category = 0;
     this.filterProduct();
   }
 

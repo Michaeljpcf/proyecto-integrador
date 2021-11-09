@@ -8,7 +8,9 @@ export class ProductOrder {
   emailUser?:string;
   address1?:string;
   address2?:string;
+  productImage?:string;
   deliveryDate?: Date;
+  deliveryDateNow?: Date;
   total?:number;
 
   creditName?:string;

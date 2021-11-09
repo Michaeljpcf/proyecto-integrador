@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 declare const $:any;
 
@@ -9,10 +11,14 @@ declare const $:any;
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  publications: Product;
+
+  constructor(
+    private _productService: ProductService
+  ) { }
 
   ngAfterViewInit(): void {
-    $('#example').DataTable();
+    $('#publications').DataTable();
   }
 
   ngOnInit(): void {

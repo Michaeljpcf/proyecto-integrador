@@ -15,29 +15,34 @@
         My Shopping
         ======================================-->
         <div class="table-responsive">
-          <table class="table ps-table--whishlist dt-responsive" width="100%">
-            <thead>
+          <table id="shopping" class="table dt-responsive" width="100%">
+            <thead class="text-center text-uppercase">
               <tr>
-                <th>Product name</th>
-                <th>Proccess</th>
-                <th>Price</th>
-                <th>Quantity</th>
+                <th style="width: 150px;">Código de compra</th>
+                <th>Nombre del producto</th>
+                <th>Seguimiento</th>
+                <th>Precio</th>
               </tr>
             </thead>
 
-            <tbody>
+            <tbody class="text-center">
               <!-- Product -->
-              <tr>
+              <tr *ngFor="let prodOrd of productOrder">
                 <td>
+                  00000{{prodOrd.id}}
+                </td>
+                <td >
                   <div class="ps-product--cart">
                     <div class="ps-product__thumbnail">
-                      <a href="product-default.html">
-                        <img src="img/products/clothing/2.jpg" alt="" />
+                      <a style="cursor: pointer;" [routerLink]="['/info-product/',prodOrd.product_id.id,prodOrd.product_id.url]">
+                        <img src="{{prodOrd.productImage}}" alt="" />
                       </a>
                     </div>
 
                     <div class="ps-product__content">
-                      <a>Unero Military Classical Backpack</a>
+                      <a style="cursor: pointer;" [routerLink]="['/info-product/',prodOrd.product_id.id,prodOrd.product_id.url]">
+                        {{prodOrd.product_id.name}}
+                      </a>
                     </div>
                   </div>
                 </td>
@@ -45,7 +50,7 @@
                 <td>
                   <ul class="timeline">
                     <li class="success">
-                      <h5>08 Noviembre, 2021</h5>
+                      <h5>{{prodOrd.deliveryDateNow}}</h5>
                       <p class="text-success">
                         Revisado <i class="fas fa-check"></i>
                       </p>
@@ -59,7 +64,7 @@
                       </button>
                     </li>
                     <li class="process">
-                      <h5>18 Noviembre, 2021</h5>
+                      <h5>{{prodOrd.deliveryDate}}</h5>
                       <p>Entregado</p>
                       <button class="btn btn-primary" disabled>
                         <span class="spinner-border spinner-border-sm"></span>
@@ -71,9 +76,7 @@
                   <!-- <a class="btn btn-danger btn-lg" href="#">Open Dispute</a> -->
                 </td>
 
-                <td class="price text-center">$205.00</td>
-
-                <td class="text-center">1</td>
+                <td class="price text-center">S/{{prodOrd.total}}</td>
               </tr>
             </tbody>
           </table>
