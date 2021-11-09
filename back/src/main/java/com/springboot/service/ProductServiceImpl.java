@@ -170,6 +170,12 @@ public class ProductServiceImpl implements ProductService {
 		return productList;
 	}
 
+	@Override
+	public List<Product> getProductByIdSession(int id) {
+		List<Product> lstProducts = productRepository.findAllByUserIdUser(id);
+		return lstProducts;
+	}
+
 	
 	
 }

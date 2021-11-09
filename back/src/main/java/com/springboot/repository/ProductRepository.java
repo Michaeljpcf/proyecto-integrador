@@ -23,4 +23,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 			@Param("p_price1")double price1,
 			@Param("p_price2")double price2);
 	
+	
+	public List<Product> findAllByUserIdUser(int id);
+	
 }

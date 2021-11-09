@@ -47,6 +47,7 @@ public class User implements Serializable{
 	@Column(unique = true)
 	private String userName;
 	
+	
 	@NotNull
 	@Column(unique = true)
 	private String email;
@@ -107,6 +108,15 @@ public class User implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 
 	public String getUserName() {
 		return userName;

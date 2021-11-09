@@ -39,5 +39,8 @@ public interface ProductService {
 	
 	//Obtener lista de los productos con imagen usando 3 parametros
 	public List<Product> getProductosWithParams(String name,int subCat,int cat,double price1,double price2);
+	
+	//Obtener lista de productos por IDUser
+	public List<Product> getProductByIdSession(int id);
 
 }

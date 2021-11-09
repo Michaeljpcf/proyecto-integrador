@@ -84,6 +84,19 @@ public class ProductRestController {
 	}
 	
 	
+	@GetMapping("/getProductsByIdSession")
+	@ResponseBody
+	public ResponseEntity<List<Product>> getProductsByIdSession(Authentication authentication){
+		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();
+		User user = new User();
+		user.setIdUser(usuarioPrincipal.getIdUser());
+		
+		List<Product> lstProducts = productService.getProductByIdSession(user.getIdUser());
+		
+		return ResponseEntity.ok(lstProducts);
+	}
+	
+	
 	
 
 	@GetMapping("/listProducts")
