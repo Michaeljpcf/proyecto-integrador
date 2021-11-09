@@ -173,6 +173,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getProductByIdSession(int id) {
 		List<Product> lstProducts = productRepository.findAllByUserIdUser(id);
+		for(Product pro : lstProducts) {
+			String  aux = proImagesRepository.findTop1ImagesByProducto_IdStr(pro.getId());
+			pro.setImage(aux);	
+		}
 		return lstProducts;
 	}
 
