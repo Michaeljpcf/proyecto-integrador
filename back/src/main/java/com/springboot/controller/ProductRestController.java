@@ -46,6 +46,7 @@ import com.springboot.entity.Product;
 import com.springboot.entity.ProductOrder;
 import com.springboot.security.entity.User;
 import com.springboot.security.entity.UserPrimary;
+import com.springboot.security.repository.UserRepository;
 import com.springboot.service.ProductOrderService;
 import com.springboot.service.ProductService;
 
@@ -57,6 +58,32 @@ public class ProductRestController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	
+	
+	@GetMapping("/getUserByIdSession")
+	@ResponseBody
+	public ResponseEntity<User> getUserByIdSession(Authentication authentication) {
+		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();
+		User user = new User();
+		user.setIdUser(usuarioPrincipal.getIdUser());
+		Optional<User> optUser = userRepository.findById(user.getIdUser());
+		return ResponseEntity.ok(optUser.get());
+	}
+	
+	@PutMapping("/UpdateUserByUser")
+	@ResponseBody
+	public ResponseEntity<User> getUserByIdSession(@RequestBody User objUser){
+		User userFinal = new User();
+		userFinal  =userRepository.save(objUser);
+		
+		return ResponseEntity.ok(userFinal);
+	}
+	
+	
 	
 
 	@GetMapping("/listProducts")
