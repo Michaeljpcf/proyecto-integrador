@@ -1,0 +1,163 @@
+<app-nav></app-nav>
+
+<!--=====================================
+My Account Content
+======================================-->
+<div class="ps-vendor-dashboard pro">
+  <div class="container">
+    <div class="ps-section__header">
+      <app-topbar></app-topbar>
+      <!--=====================================
+      Nav Account
+      ======================================-->
+      <div class="ps-section__content">
+        <!--=====================================
+        My Store
+        ======================================-->
+        <div class="ps-vendor-store">
+          <div class="container">
+            <div class="ps-section__container">
+              <!--=====================================
+              Products
+              ======================================-->
+              <div class="ps-section__right" style="padding-left:0">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <a [routerLink]="['/post']">
+                      <button class="btn btn-lg btn-warning my-3">
+                        Crear un nueva publicación
+                      </button>
+                    </a>
+                  </div>
+                </div>
+
+                <table id="example" class="table dt-responsive" width="100%">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Cover Image</th>
+                          <th>Product name</th>
+                          <th>Category</th>
+                          <th>Subcategory</th>
+                          <th>Price</th>
+                          <th>Stock</th>
+                          <th>Delivery time</th>
+                          <th>Description</th>
+                          <th>Gallery</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                      <tr>
+                          <td>1</td>
+                          <td>
+                              <img src="img/products/detail/countdown/4.jpg" alt="">
+                          </td>
+                          <td>Korea Long Sofa Fabric In Blue Navy Color</td>
+                          <td>Garden & Kitchen</td>
+                          <td>Furniture</td>
+                          <td>$679.80</td>
+                          <td>5</td>
+                          <td>10 days</td>
+                          <td>
+                            <h5>What do you get</h5>
+                              <p>Sound of Marshall, unplugs the chords, and takes the show on the road.</p>
+                              <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering.</p>
+                              <p>The FM radio is perhaps gone for good, the assumption apparently being that the jury has ruled.</p>
+                          </td>
+                          <td>GALERIA</td>
+                          <td>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-warning rounded-circle mr-2">
+                                <i class="fas fa-pencil-alt"></i>
+                              </button>
+                              <button type="button" class="btn btn-danger rounded-circle">
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+
+                <!-- <table id="example" class="display" style="width:100%">
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Office</th>
+                          <th>Age</th>
+                          <th>Start date</th>
+                          <th>Salary</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011/04/25</td>
+                          <td>$320,800</td>
+                      </tr>
+                      <tr>
+                          <td>Garrett Winters</td>
+                          <td>Accountant</td>
+                          <td>Tokyo</td>
+                          <td>63</td>
+                          <td>2011/07/25</td>
+                          <td>$170,750</td>
+                      </tr>
+                      <tr>
+                          <td>Ashton Cox</td>
+                          <td>Junior Technical Author</td>
+                          <td>San Francisco</td>
+                          <td>66</td>
+                          <td>2009/01/12</td>
+                          <td>$86,000</td>
+                      </tr>
+                      <tr>
+                          <td>Cedric Kelly</td>
+                          <td>Senior Javascript Developer</td>
+                          <td>Edinburgh</td>
+                          <td>22</td>
+                          <td>2012/03/29</td>
+                          <td>$433,060</td>
+                      </tr>
+                      <tr>
+                          <td>Airi Satou</td>
+                          <td>Accountant</td>
+                          <td>Tokyo</td>
+                          <td>33</td>
+                          <td>2008/11/28</td>
+                          <td>$162,700</td>
+                      </tr>
+                      <tr>
+                          <td>Brielle Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+                          <td>61</td>
+                          <td>2012/12/02</td>
+                          <td>$372,000</td>
+                      </tr>
+                      <tr>
+                          <td>Herrod Chandler</td>
+                          <td>Sales Assistant</td>
+                          <td>San Francisco</td>
+                          <td>59</td>
+                          <td>2012/08/06</td>
+                          <td>$137,500</td>
+                      </tr>
+                  </tbody>
+              </table> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

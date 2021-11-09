@@ -6,12 +6,11 @@ import { RegisterComponent } from "./components/register/register.component";
 import { ProfileComponent } from "./components/user/profile/profile.component";
 import { ShoppingComponent } from "./components/user/shopping/shopping.component";
 import { SalesComponent } from "./components/user/sales/sales.component";
-import { WishlistComponent } from "./components/user/wishlist/wishlist.component";
 import { PostComponent } from "./components/user/post/post.component";
 import { ShopProductsComponent } from "./components/shop-products/shop-products.component";
 import { InfoProductComponent } from "./components/info-product/info-product.component";
-import { VendorStoreComponent } from "./components/user/vendor-store/vendor-store.component";
 import { PaymentProductComponent } from "./components/payment-product/payment-product.component";
+import { ProductsComponent } from "./components/user/products/products.component";
 
 const appRoute: Routes = [
     {path: '', redirectTo: 'index', pathMatch: 'full'},
@@ -19,10 +18,9 @@ const appRoute: Routes = [
     {path:'login',component:LoginComponent},
     {path:'register', component:RegisterComponent},
     {path:'account/profile', component: ProfileComponent},
-    {path:'account/wishlist', component: WishlistComponent},
     {path:'account/shopping', component: ShoppingComponent},
     {path:'account/sales', component: SalesComponent},
-    {path:'account/vendor-store/:id/:userName', component: VendorStoreComponent},
+    {path:'account/publications', component: ProductsComponent},
     {path:'post', component: PostComponent},
     {path:'shop-products', component: ShopProductsComponent},
     {path:'info-product/:id/:url', component: InfoProductComponent},

@@ -19,12 +19,11 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { SalesComponent } from './components/user/sales/sales.component';
 import { ShoppingComponent } from './components/user/shopping/shopping.component';
 import { TopbarComponent } from './components/user/topbar/topbar.component';
-import { WishlistComponent } from './components/user/wishlist/wishlist.component';
 import { PostComponent } from './components/user/post/post.component';
 import { ShopProductsComponent } from './components/shop-products/shop-products.component';
 import { InfoProductComponent } from './components/info-product/info-product.component';
-import { VendorStoreComponent } from './components/user/vendor-store/vendor-store.component';
 import { PaymentProductComponent } from './components/payment-product/payment-product.component';
+import { ProductsComponent } from './components/user/products/products.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +37,11 @@ import { PaymentProductComponent } from './components/payment-product/payment-pr
     SalesComponent,
     ShoppingComponent,
     TopbarComponent,
-    WishlistComponent,
     PostComponent,
     ShopProductsComponent,
     InfoProductComponent,
-    VendorStoreComponent,
-    PaymentProductComponent
+    PaymentProductComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

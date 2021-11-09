@@ -19,7 +19,7 @@
                       <a style="cursor: pointer;" (click)="filterCatProduct(cat)">{{cat.name}}</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
                       <ul class="sub-menu">
                         <li *ngFor="let sub of cat.subcategories">
-                          <a style="cursor: pointer;">{{sub.name}}</a>
+                          <a style="cursor: pointer;" (click)="filterSubCatProduct(sub)">{{sub.name}}</a>
                         </li>
                       </ul>
                     </li>

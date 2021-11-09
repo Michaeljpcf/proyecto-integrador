@@ -25,9 +25,9 @@ export class ShopProductsComponent implements OnInit {
 
   cantProducts:number;
   category:number;
+  subcategory:number;
 
   name:string="";
-  cat:number;
   price:number=0;
 
   constructor(
@@ -68,10 +68,15 @@ export class ShopProductsComponent implements OnInit {
     this.filterProduct();
   }
 
+  filterSubCatProduct(subcategory: SubCategory) {
+    this.subcategory = subcategory.id;
+    this.filterProduct();
+  }
+
   filterProduct() {
     let min = parseInt($('.ps-slider__min').val());
     let max = parseInt($('.ps-slider__max').val());
-    this._productService.getProductByParams(this.name,this.category,min,max).subscribe(
+    this._productService.getProductByParams(this.name,this.category,this.subcategory,min,max).subscribe(
       res=> {
         this.products = res.list;
         this.cantProducts = res.mensaje;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductOrder } from 'src/app/models/product-order';
 import { SubCategory } from 'src/app/models/sub-category';
@@ -23,7 +23,8 @@ export class PaymentProductComponent implements OnInit {
 
   constructor(
     private _productService: ProductService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -59,9 +60,8 @@ export class PaymentProductComponent implements OnInit {
 
     this._productService.checkoutProduct(this.payProduct).subscribe(
       res=> {
-
-
         console.log(res);
+        this._router.navigate(['account/shopping']);
       }
     );
   }
