@@ -99,6 +99,10 @@ export class ProductService {
     return this._httpClient.put<User>(this.url+"/UpdateUserByUser",user);
   }
 
+  getProductsSellingByIdSession(): Observable<Product> {
+    return this._httpClient.get<Product>(this.url+"/getProductsByIdSession");
+  }
+
 }
 
 

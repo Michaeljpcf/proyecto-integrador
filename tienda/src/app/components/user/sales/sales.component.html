@@ -59,11 +59,11 @@
                     </tr>
                   </thead>
 
-                  <tbody>
-                    <tr>
+                  <tbody >
+                    <tr *ngFor="let item of products">
                       <td>
                         <a href="#">
-                          <img src="assets/img/products/electronic/1.jpg" alt="" width="50">
+                          <img src="{{item.image}}" alt="" width="50">
                         </a>
                       </td>
                       <td>
@@ -76,21 +76,6 @@
                       </td>
                     </tr>
 
-                    <tr>
-                      <td>
-                        <a href="#">
-                          <img src="assets/img/products/electronic/2.jpg" alt="" width="50">
-                        </a>
-                      </td>
-                      <td>
-                        <a href="#">Marshall Kilburn Wireless...</a>
-                        <p>$295.47</p>
-                      </td>
-                      <td>
-                        <p class="ps-tag--in-stock">In Stock</p>
-                        <p>Published: Oct 10, 2018</p>
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
                 <div class="ps-block__footer"><a href="#">View All Orders</a></div>
@@ -101,5 +86,7 @@
       </div>
     </div>
   </div>
+
+  <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.179.0.min.js"></script> -->
 
 <app-footer></app-footer>
