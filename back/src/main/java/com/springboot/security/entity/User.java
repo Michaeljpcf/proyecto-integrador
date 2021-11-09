@@ -41,6 +41,8 @@ public class User implements Serializable{
 	@NotNull
 	private String name; 
 	
+	private String lastName; 
+	
 	@NotNull
 	@Column(unique = true)
 	private String userName;
