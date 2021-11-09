@@ -18,9 +18,6 @@ public class UserService {
 	UserRepository userRepository;
 	
 	public Optional<User> getByUserName(String userName) {
-//		var a = userRepository.findByUserName(userName);
-//		a.get().getRoles();
-//		return a;
 		return userRepository.findByUserName(userName);
 	}
 	

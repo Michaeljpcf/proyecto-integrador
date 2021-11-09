@@ -114,7 +114,7 @@
                 <div class="ps-product__desc">
                   <p>
                     Vendido por:<a class="mr-20" [routerLink]="['/account/vendor-store/',product.user.idUser,product.user.userName]"><strong> {{product.user.userName}}</strong></a>
-                    Stock:<a href="#"><strong class="ps-tag--in-stock"> 5</strong></a>
+                    Stock:<a href="#"><strong class="ps-tag--in-stock"> {{product.stock}}</strong></a>
                   </p>
                   <div [innerHTML]="product.description"></div>
                 </div>

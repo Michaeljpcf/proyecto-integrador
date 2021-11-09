@@ -54,7 +54,7 @@ public class ProductOrder {
 	private Date deliveryDateNow;
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "product_id")
 	private Product product_id;
 	
