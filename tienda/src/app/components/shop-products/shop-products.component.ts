@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
@@ -16,7 +16,7 @@ declare var iziToast;
   templateUrl: './shop-products.component.html',
   styleUrls: ['./shop-products.component.css']
 })
-export class ShopProductsComponent implements OnInit {
+export class ShopProductsComponent implements OnInit, AfterViewInit {
 
   categories: Category[] = [];
   subCategories: SubCategory[] = [];
@@ -34,11 +34,14 @@ export class ShopProductsComponent implements OnInit {
     private _clientService: ClientService,
     private _productService: ProductService
   ) { }
+  ngAfterViewInit(): void {
+    this.mainjs();
+  }
 
   ngOnInit(): void {
+    // this.mainjs();
     this.listCategories();
     this.listProducts();
-    this.mainjs();
 
   }
 

@@ -12,18 +12,16 @@ declare const $:any;
 export class ShoppingComponent implements OnInit, AfterViewInit {
 
   productOrder: ProductOrder;
-  dynamicdata : any;
-
+  
   constructor(
     private _productService: ProductService
   ) { }
 
   ngAfterViewInit(): void {
     $('#shopping').DataTable({
-      pageLength: 5,
       processing: true,
-      search: false,
-      lengthMenu : [5, 10, 25]
+      "bLengthChange" : false,
+      searching: false,
     });
   }
 

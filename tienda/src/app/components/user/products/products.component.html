@@ -20,7 +20,7 @@ My Account Content
               <!--=====================================
               Products
               ======================================-->
-              <div class="ps-section__right" style="padding-left:0">
+              <div class="ps-section__right" style="padding-left:0;max-width: none;">
                 <div class="d-flex justify-content-between">
                   <div>
                     <a [routerLink]="['/post']">
@@ -31,8 +31,8 @@ My Account Content
                   </div>
                 </div>
 
-                <table id="publications" class="table dt-responsive" width="100%">
-                  <thead>
+                <table id="publications" class="table mt-35 text-center" width="100%">
+                  <thead class="text-uppercase">
                       <tr>
                           <th>#</th>
                           <th>Imagen</th>
@@ -42,28 +42,25 @@ My Account Content
                           <th>Precio</th>
                           <th>Stock</th>
                           <th>Descripción</th>
-                          <th>Acciones</th>
+                          <!-- <th>Acciones</th> -->
                       </tr>
                   </thead>
 
                   <tbody>
-                      <tr>
-                          <td>1</td>
+                      <tr *ngFor="let item of publications; let i = index">
+                          <td>{{i+1}}</td>
                           <td>
-                              <img src="img/products/detail/countdown/4.jpg" alt="">
+                              <img src="{{item.image}}">
                           </td>
-                          <td>Korea Long Sofa Fabric In Blue Navy Color</td>
-                          <td>Garden & Kitchen</td>
-                          <td>Furniture</td>
-                          <td>$679.80</td>
-                          <td>5</td>
+                          <td>{{item.name}}</td>
+                          <td>{{item.subCategory.category.name}}</td>
+                          <td>{{item.subCategory.name}}</td>
+                          <td>S/{{item.price}}</td>
+                          <td>{{item.stock}}</td>
                           <td>
-                            <h5>What do you get</h5>
-                              <p>Sound of Marshall, unplugs the chords, and takes the show on the road.</p>
-                              <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering.</p>
-                              <p>The FM radio is perhaps gone for good, the assumption apparently being that the jury has ruled.</p>
+                            <div [innerHTML]="item.description"></div>
                           </td>
-                          <td>
+                          <!-- <td>
                             <div class="btn-group">
                               <button type="button" class="btn btn-warning rounded-circle mr-2">
                                 <i class="fas fa-pencil-alt"></i>
@@ -72,7 +69,7 @@ My Account Content
                                 <i class="fas fa-trash"></i>
                               </button>
                             </div>
-                          </td>
+                          </td> -->
                       </tr>
                   </tbody>
               </table>

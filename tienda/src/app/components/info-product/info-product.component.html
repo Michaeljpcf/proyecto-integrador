@@ -119,9 +119,11 @@
                   <div [innerHTML]="product.description"></div>
                 </div>
 
-                <div class="ps-product__shopping">
-                  <a class="ps-btn" [routerLink]="['/payment-product/',product.id]">Comprar ahora</a>
-                </div>
+                <ng-container *ngIf="UserId != product.user.idUser">
+                  <div class="ps-product__shopping">
+                    <a class="ps-btn" [routerLink]="['/payment-product/',product.id]">Comprar ahora</a>
+                  </div>
+                </ng-container>
 
                 <div class="ps-product__specification">
                   <a class="report" href="#">Reportar</a>

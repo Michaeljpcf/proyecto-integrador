@@ -14,10 +14,11 @@
         <!--=====================================
         My Shopping
         ======================================-->
-        <div class="table-responsive">
-          <table id="shopping" class="table dt-responsive" width="100%">
+        <div class="table-responsive mt-40">
+          <table id="shopping" class="table" width="100%">
             <thead class="text-center text-uppercase">
               <tr>
+                <th>#</th>
                 <th style="width: 150px;">Código de compra</th>
                 <th>Nombre del producto</th>
                 <th>Seguimiento</th>
@@ -27,7 +28,8 @@
 
             <tbody class="text-center">
               <!-- Product -->
-              <tr *ngFor="let prodOrd of productOrder">
+              <tr *ngFor="let prodOrd of productOrder; let i = index">
+                <td>{{i+1}}</td>
                 <td>
                   00000{{prodOrd.id}}
                 </td>
@@ -52,7 +54,7 @@
                     <li class="success">
                       <h5>{{prodOrd.deliveryDateNow}}</h5>
                       <p class="text-success">
-                        Revisado <i class="fas fa-check"></i>
+                        Pendiente <i class="fas fa-check"></i>
                       </p>
                     </li>
                     <li class="process">

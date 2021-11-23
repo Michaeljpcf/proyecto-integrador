@@ -57,7 +57,7 @@ public class ProductOrderController {
 		var id = obj.getProduct_id().getId();
 		var product = productService.findById(id);
 		
-		product.setStock(product.getStock()-1);;
+		product.setStock(product.getStock()-1);
 		productService.insertProduct(product);
 		//obj.setStock(obj.getStock()-1);
 		

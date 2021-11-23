@@ -18,10 +18,23 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngAfterViewInit(): void {
-    $('#publications').DataTable();
+    $('#publications').DataTable({
+      "bLengthChange" : false,
+      searching: false,
+    });
   }
 
   ngOnInit(): void {
+    this.getProductsSellingByIdSession();
+  }
+
+  getProductsSellingByIdSession(){
+    this._productService.getProductsSellingByIdSession().subscribe(
+      response=>{
+        this.publications=response;
+        console.log(response)
+      }
+    );
   }
 
 }

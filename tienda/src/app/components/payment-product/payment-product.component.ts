@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductOrder } from 'src/app/models/product-order';
-import { SubCategory } from 'src/app/models/sub-category';
 import { User } from 'src/app/models/user';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -16,7 +15,6 @@ export class PaymentProductComponent implements OnInit {
   product: Product = new Product();
   user: User = new User();
 
-  subCategory: SubCategory = new SubCategory();
   payProduct: ProductOrder = new ProductOrder();
 
   constructor(
@@ -32,6 +30,8 @@ export class PaymentProductComponent implements OnInit {
       }
     );
     this.getUserByIdSession();
+    console.log(this.payProduct.product_id);
+
   }
 
   getProductInfo() {
@@ -56,7 +56,6 @@ export class PaymentProductComponent implements OnInit {
   }
 
   paymentProduct() {
-
     this._productService.checkoutProduct(this.payProduct).subscribe(
       res=> {
         console.log(res);

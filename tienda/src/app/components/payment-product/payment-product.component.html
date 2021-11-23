@@ -32,7 +32,7 @@ Checkout
                 <label>Nombre<sup>*</sup></label>
 
                 <div class="form-group__content">
-                  <input class="form-control" type="text" name="nameUser" [(ngModel)]="payProduct.nameUser" value="{{user.name}}"/>
+                  <input class="form-control" type="text" name="nameUser" [(ngModel)]="payProduct.nameUser" [value]="user.name"/>
                 </div>
               </div>
 
@@ -40,7 +40,7 @@ Checkout
                 <label>Apellidos<sup>*</sup></label>
 
                 <div class="form-group__content">
-                  <input class="form-control" type="text" name="lastNameUser" [(ngModel)]="payProduct.lastNameUser" value="{{user.lastName}}"/>
+                  <input class="form-control" type="text" name="lastNameUser" [(ngModel)]="payProduct.lastNameUser" [value]="user.lastName"/>
                 </div>
               </div>
 

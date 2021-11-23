@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginUser } from 'src/app/models/login-user';
 import { Product } from 'src/app/models/product';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
+import { TokenService } from 'src/app/services/token.service';
 // import { SlickConfig } from "../../functions";
 
 declare var jQuery;
@@ -12,14 +15,31 @@ declare var $;
   templateUrl: './info-product.component.html',
   styleUrls: ['./info-product.component.css']
 })
-export class InfoProductComponent implements OnInit {
+export class InfoProductComponent implements OnInit, AfterViewInit {
 
   product: Product = new Product();
 
+  UserId: number;
+
+  public token:any = '';
+
   constructor(
     private _productService: ProductService,
+    private _tokenService: TokenService,
+    private _authService: AuthService,
     private _activatedRoute: ActivatedRoute
-  ) { }
+  ) {
+    this.token = this._tokenService.getToken();
+    console.log(this.token);
+    let payload = JSON.parse(atob(this.token.split(".")[1]));
+    console.log(payload.id);
+    this.UserId = payload.id;
+    console.log(this.UserId);
+
+  }
+  ngAfterViewInit(): void {
+    this.galleryjs();
+  }
 
   ngOnInit(): void {
     // this.galleryjs();
@@ -28,6 +48,7 @@ export class InfoProductComponent implements OnInit {
         this.getProductInfo();
       }
     );
+
   }
 
   getProductInfo() {

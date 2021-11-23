@@ -12,74 +12,42 @@
         ======================================-->
         <div class="ps-section__content">
           <div class="row">
-            <div class="col-lg-6 col-12 ">
+            <div class="col-12">
                 <figure class="ps-block--vendor-status">
-                    <figcaption>Pedidos recientes</figcaption>
+                    <figcaption>Órdenes recientes</figcaption>
                     <table class="table ps-table ps-table--vendor">
-                      <thead>
+                      <thead class="text-center">
                         <tr>
-                          <th>Order ID</th>
-                          <th>Product</th>
-                          <th>Totals</th>
+                          <th>
+                            <i class="icon-picture"></i>
+                          </th>
+                          <th>Productos</th>
+                          <th>Fecha de compra</th>
+                          <th>Tracking</th>
                         </tr>
                       </thead>
 
                       <tbody>
-                        <tr *ngFor="let aux of orders">
-                          <td><a href="#">MS46891357</a>
-                              <p>Nov 4, 2017</p>
-                          </td>
-                          <td><a href="#">{{aux.product_id.name}}</a>
-                              <p>Shipping</p>
+                        <tr *ngFor="let item of orders">
+                          <td>
+                            <a [routerLink]="['/info-product/',item.id,item.url]">
+                              <img src="{{item.product_id.image}}" alt="" width="50">
+                            </a>
                           </td>
                           <td>
-                              <p>$295.47</p>
-                              <p>$0.00</p>
+                            <a [routerLink]="['/info-product/',item.product_id.id,item.product_id.url]">{{item.product_id.name}}</a>
+                            <p>S/{{item.product_id.price}}</p>
+                          </td>
+                          <td>
+                            <p>Comprado el: {{item.deliveryDateNow}}</p>
+                          </td>
+                          <td class="text-center">
+                            <button type="button" (click)="estadoTracking(item)" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#updateProccess">Actualizar Proceso</button>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                    <div class="ps-block__footer">
-                      <a href="#">View All Orders</a>
-                    </div>
                 </figure>
-            </div>
-
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
-              <figure class="ps-block--vendor-status">
-                <figcaption>Productos recientes</figcaption>
-                <table class="table ps-table ps-table--vendor">
-                  <thead>
-                    <tr>
-                      <th>
-                        <i class="icon-picture"></i>
-                      </th>
-                      <th>Product</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-
-                  <tbody >
-                    <tr *ngFor="let item of products">
-                      <td>
-                        <a href="#">
-                          <img src="{{item.image}}" alt="" width="50">
-                        </a>
-                      </td>
-                      <td>
-                        <a href="#">Marshall Kilburn Wireless...</a>
-                        <p>$295.47</p>
-                      </td>
-                      <td>
-                        <p class="ps-tag--in-stock">In Stock</p>
-                        <p>Published: Oct 10, 2018</p>
-                      </td>
-                    </tr>
-
-                  </tbody>
-                </table>
-                <div class="ps-block__footer"><a href="#">View All Orders</a></div>
-              </figure>
             </div>
           </div>
         </div>
@@ -87,6 +55,37 @@
     </div>
   </div>
 
-  <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.179.0.min.js"></script> -->
+  <div class="modal fade" id="updateProccess" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h5 class="modal-title text-uppercase" id="exampleModalLabel">Actualización de Tracking <span></span></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Producto: <span class="nameProduct"></span></h5>
+              <h5 class="card-title">Precio: <span class="priceProduct"></span></h5>
+
+              <div class="form-group">
+                <h5 class="card-title">Estado de Tracking</h5>
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning btn-lg" (click)="updateProccess()">Guardar</button>
+        </div>
+      </div>
+    </div>
+</div>
 
 <app-footer></app-footer>
