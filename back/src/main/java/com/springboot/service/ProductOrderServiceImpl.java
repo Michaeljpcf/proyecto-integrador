@@ -61,6 +61,11 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		}
 		return lstProductOrder;
 	}
+
+	@Override
+	public ProductOrder findById(int id) {
+		return productOrderRepository.findById(id).orElseThrow();
+	}
 	
 	
 	

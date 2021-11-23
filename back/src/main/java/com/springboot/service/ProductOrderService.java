@@ -13,6 +13,8 @@ public interface ProductOrderService {
 	
 	public List<ProductOrder> findAll();
 	
+	public ProductOrder findById(int id);
+	
 	
 	public List<ProductOrder> findOrderByIdBuyer(int id);
 	

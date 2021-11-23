@@ -10,8 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,16 +61,37 @@ public class ProductOrderController {
 		
 		product.setStock(product.getStock()-1);
 		productService.insertProduct(product);
-		//obj.setStock(obj.getStock()-1);
 		
 		
-		ProductOrder objSalida = productOrderService.insertProductOrder(obj);
+		obj.setStatePO(1);
+		ProductOrder objSalida =  productOrderService.insertProductOrder(obj);
 		if (objSalida == null) {
 			return ResponseEntity.noContent().build();
 		} else {
 			return ResponseEntity.ok(objSalida);
 		}		
 	}
+	
+	
+	@PatchMapping("/updateStateOrderProduct")
+	@ResponseBody
+	public ResponseEntity<ProductOrder> updateProductOrder(@RequestBody ProductOrder obj){
+		
+		
+		ProductOrder salida = new ProductOrder();
+		salida = productOrderService.findById(obj.getId());
+		salida.setStatePO(obj.getStatePO());
+		
+		ProductOrder objSalida = productOrderService.insertProductOrder(salida);		
+				
+		if(objSalida==null) {
+			return ResponseEntity.noContent().build();
+		}
+		return ResponseEntity.ok(objSalida);
+	}
+	
+	
+	
 	
 	//Metodo que devuelve la lista de OrderList por ID de publicador
 	

@@ -137,6 +137,16 @@ public class ProductRestController {
 		
 	}
 	
+	//Metodo para ver el Id del usuario
+	@GetMapping("/getIdSession")
+		public int getIdSession( Authentication authentication) {
+		var usuarioPrincipal = (UserPrimary) authentication.getPrincipal();
+		User user = new User();
+		user.setIdUser(usuarioPrincipal.getIdUser());
+			return user.getIdUser();
+	}
+	
+	
 	@DeleteMapping("/deleteProduct/{id}")
     @ResponseBody
     public ResponseEntity<Product> delete(@PathVariable("id")int idProduct){
@@ -327,6 +337,8 @@ public class ProductRestController {
 		}
 		return ResponseEntity.ok(mapFinal);
 	}
+	
+	
 
 }
 	

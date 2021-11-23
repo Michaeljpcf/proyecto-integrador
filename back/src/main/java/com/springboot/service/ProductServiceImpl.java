@@ -112,8 +112,6 @@ public class ProductServiceImpl implements ProductService {
 			proImagesRepository.save(objImages);
 
 		}
-
-
 	}
 
 	@Override

@@ -42,6 +42,7 @@ public class ProductOrder {
 	private String address2;
 	private String phoneContact;
 	
+	private int statePO;
 	
 	@JsonFormat(pattern = "dd-MM-yyyy",timezone="America/Lima")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
@@ -77,6 +78,8 @@ public class ProductOrder {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_idBuyer")
 	private User userBuyer;
+	
+	
 	
 	
 }

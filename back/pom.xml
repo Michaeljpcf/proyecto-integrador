@@ -98,6 +98,7 @@
 		    <version>1.12.99</version>
 		</dependency>	
 		
+		<!-- https:// -->
 		<dependency>
 		    <groupId>com.stripe</groupId>
 		    <artifactId>stripe-java</artifactId>
