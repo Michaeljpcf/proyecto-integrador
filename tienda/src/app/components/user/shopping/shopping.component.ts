@@ -12,7 +12,7 @@ declare const $:any;
 export class ShoppingComponent implements OnInit, AfterViewInit {
 
   productOrder: ProductOrder;
-  
+
   constructor(
     private _productService: ProductService
   ) { }
@@ -38,5 +38,6 @@ export class ShoppingComponent implements OnInit, AfterViewInit {
       }
     );
   }
+
 
 }

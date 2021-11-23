@@ -59,11 +59,18 @@
                     </li>
                     <li class="process">
                       <h5>15 Noviembre, 2021</h5>
-                      <p>Enviado</p>
-                      <button class="btn btn-primary" disabled>
-                        <span class="spinner-border spinner-border-sm"></span>
-                        En proceso
-                      </button>
+                      <ng-container *ngIf="productOrder.statePO >= 1">
+                        <p class="text-success">
+                          Enviado <i class="fas fa-check"></i>
+                        </p>
+                      </ng-container>
+                      <!-- <ng-container *ngIf="productOrder.statePO >= 3">
+                        <p>Enviado</p>
+                        <button class="btn btn-primary" disabled>
+                          <span class="spinner-border spinner-border-sm"></span>
+                          En proceso
+                        </button>
+                      </ng-container> -->
                     </li>
                     <li class="process">
                       <h5>{{prodOrd.deliveryDate}}</h5>

@@ -16,7 +16,8 @@ export class SalesComponent implements OnInit {
   orders: ProductOrder;
 
   productOrders: ProductOrder = {
-    id:0
+    id:0,
+    statePO:1
   }
 
   constructor(
@@ -25,7 +26,6 @@ export class SalesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRecentOrders();
-    this.updateProccess();
   }
 
   getRecentOrders() {
@@ -47,6 +47,11 @@ export class SalesComponent implements OnInit {
   }
 
   updateProccess() {
+    this._productService.getUpdateStateOrderProduct(this.productOrders).subscribe(
+      res=> {
+        console.log(res);
+      }
+    );
   }
 
 }

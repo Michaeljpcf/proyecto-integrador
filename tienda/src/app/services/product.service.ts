@@ -102,6 +102,10 @@ export class ProductService {
     return this._httpClient.get<Product>(this.url+"/getProductsByIdSession");
   }
 
+  getUpdateStateOrderProduct(order:ProductOrder): Observable<ProductOrder> {
+    return this._httpClient.patch<ProductOrder>(this.url+"/updateStateOrderProduct",order);
+  }
+
 }
 
 

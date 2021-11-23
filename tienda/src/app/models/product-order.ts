@@ -12,6 +12,7 @@ export class ProductOrder {
   deliveryDate?: Date;
   deliveryDateNow?: Date;
   total?:number;
+  statePO?: number;
 
   creditName?:string;
   creditCarNumber?:string;

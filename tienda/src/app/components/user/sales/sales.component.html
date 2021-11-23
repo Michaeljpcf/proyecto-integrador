@@ -19,7 +19,7 @@
                       <thead class="text-center">
                         <tr>
                           <th>
-                            <i class="icon-picture"></i>
+                            Código Orden
                           </th>
                           <th>Productos</th>
                           <th>Fecha de compra</th>
@@ -30,9 +30,7 @@
                       <tbody>
                         <tr *ngFor="let item of orders">
                           <td>
-                            <a [routerLink]="['/info-product/',item.id,item.url]">
-                              <img src="{{item.product_id.image}}" alt="" width="50">
-                            </a>
+                            00000{{item.id}}
                           </td>
                           <td>
                             <a [routerLink]="['/info-product/',item.product_id.id,item.product_id.url]">{{item.product_id.name}}</a>
@@ -72,10 +70,11 @@
 
               <div class="form-group">
                 <h5 class="card-title">Estado de Tracking</h5>
-                <select class="form-control">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
+                <select class="form-control" name="estado" [(ngModel)]="productOrders.statePO">
+                  <option disabled selected value="-1">[Seleccionar Estado]</option>
+                  <option value="1">Pendiente</option>
+                  <option value="2">Enviado</option>
+                  <option value="3">Entregado</option>
                 </select>
               </div>
             </div>
