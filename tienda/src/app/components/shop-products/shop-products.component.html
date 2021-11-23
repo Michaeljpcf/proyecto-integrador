@@ -112,6 +112,9 @@
               <div class="ps-page__header">
                   <h1>PRODUCTOS</h1>
               </div>
+              <!-- <div class="cargando">
+                Buscando productos
+              </div> -->
               <div class="header__content-center mb-30">
                 <form class="ps-form--quick-search" method="get" (ngSubmit)="filterProduct()">
                   <input class="form-control" type="text" placeholder="Busca tu producto..." style="border: 1px solid #eee;" name="name" [(ngModel)]="name">
@@ -207,5 +210,25 @@
       </form>
   </div>
 </div>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.179.0.min.js"></script>
+
+<!-- MOD:WNEGRON 23/11 - CHATBOT -->
+<!-- <script>
+  export default {
+      methods: {
+      },
+      mounted (){
+        (function(d, m){
+          var kommunicateSettings = {"appId":"YOUR_APP_ID","popupWidget":true,"automaticChatOpenOnNavigation":true};
+          var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+          s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+          var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+          window.kommunicate = m; m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+      },
+      data: function(){
+      }
+  }
+  </script> -->
 
 <app-footer></app-footer>
