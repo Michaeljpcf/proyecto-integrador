@@ -117,5 +117,18 @@
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
 	<script src="assets/js/iziToast.min.js"></script>
+  <script>
+    window.watsonAssistantChatOptions = {
+        integrationID: "f4f9a04c-a054-4fa6-8be0-f482fb604492", // The ID of this integration.
+        region: "us-south", // The region your integration is hosted in.
+        serviceInstanceID: "e7676815-ebd2-492a-9982-42774239d1c2", // The ID of your service instance.
+        onLoad: function(instance) { instance.render(); }
+      };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js"
+      document.head.appendChild(t);
+    });
+  </script>
 </body>
 </html>
