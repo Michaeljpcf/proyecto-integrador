@@ -90,13 +90,15 @@
                             <div class="form-group col-md-4">
                               <label>Stock de Producto</label>
                               <div class="form-group__content">
-                                  <input type="number" class="form-control" name="stock" [(ngModel)]="product.stock" required>
+                                  <input type="number" class="form-control formProduct" name="stock" [(ngModel)]="product.stock" required>
+                                  <div class="valid-feedback">Valido.</div>
+                                  <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
                               </div>
                             </div>
 
                             <div class="form-group col-md-4">
                               <label>Condición</label>
-                              <select class="ps-select" name="conditionProduct" [(ngModel)]="product.conditionProduct" required>
+                              <select class="ps-select" name="conditionProduct formProduct" [(ngModel)]="product.conditionProduct" required>
                                 <option selected disabled>Seleccionar Condición</option>
                                 <option value="Nuevo">Nuevo</option>
                                 <option value="Usado">Usado</option>
@@ -116,32 +118,6 @@
                                 <div class="valid-feedback">Valido.</div>
                                 <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
                             </div>
-
-                            <!-- <div class="form-group col-md-12">
-                                <label>Imagen de tu producto</label>
-                                <div class="form-group__content">
-                                    <label for="productImage">
-                                        <img   [src]="imgSelect" class="img-fluid" style="width: 300px;" >
-                                    </label>
-
-                                    <div class="custom-file">
-                                        <input
-
-                                        type="file"
-
-                                        class="custom-file-input fromProduct"
-                                        id="productImage"
-                                        [accept]="'image/jpeg,image/jpg,image/png,image'"
-                                        (change)="fileChangeEvent($event)"
-                                        required>
-
-                                        <div class="valid-feedback">Valido.</div>
-                                        <div class="invalid-feedback">Por favor llene este campo obligatorio.</div>
-
-                                        <label for="productImage" class="custom-file-label" id="image-name">Subir Imagen</label>
-                                    </div>
-                                </div>
-                            </div> -->
 
                             <label>Galería de productos</label>
 
@@ -170,24 +146,11 @@
                                 </ngx-dropzone-image-preview>
 
                             </div>
-
-                            <!-- <div class="form-group col-md-6">
-                                <label>Título del producto</label>
-                                <div class="form-group__content">
-                                    <input type="text" class="form-control" name="title" required>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Título del producto</label>
-                                <div class="form-group__content">
-                                    <input type="text" class="form-control" name="title" required>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="car-footer">
                         <div class="form-group submtit float-end mr-15">
-                            <button class="ps-btn ps-btn--lg">Crear Producto</button>
+                            <button class="ps-btn ps-btn--lg" [disabled]="registerForm.pending">Crear Producto</button>
                         </div>
                     </div>
                 </div>

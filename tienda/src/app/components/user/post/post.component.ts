@@ -46,6 +46,8 @@ export class PostComponent implements OnInit {
     ]
   }
 
+
+
   constructor(
     private _clientService: ClientService,
     private _productService: ProductService,
@@ -97,7 +99,7 @@ export class PostComponent implements OnInit {
   validate(input){
     if ($(input).attr("name") == "name") {
 
-      let pattern = /^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{4,}$/;
+      let pattern = /^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ0-9 ]{3,}$/;
 
       if (!pattern.test(input.value)) {
         $(input).parent().addClass('was-validated');
@@ -107,7 +109,7 @@ export class PostComponent implements OnInit {
       }
     }
 
-    if ($(input).attr("tag") == "prices") {
+    if ($(input).attr("tag") == "prices" && $(input).attr("tag") == "stock") {
 
       let pattern = /^[.\\,\\0-9]{1,}$/;
 
@@ -118,66 +120,7 @@ export class PostComponent implements OnInit {
     }
   }
 
-  // fileChangeEvent(event:any) {
-  //   var file:any;
-
-  //   this.imgSelect = event.target.files[0]
-
-  //   if (event.target.files && event.target.files[0]) {
-  //     file = <File>event.target.files[0];
-  //     console.log(file);
-
-
-  //   } else {
-  //     iziToast.show({
-  //       title: 'Error',
-  //       position: 'topRight',
-  //       color: 'red',
-  //       message: 'No existe una imagen.'
-  //     });
-
-  //     $('#image-name').text('Seleccionar imagen');
-  //     this.imgSelect = 'assets/img/products/default/default-image.jpg';
-  //     this.file = undefined;
-  //   }
-
-  //   if (file.size <= 2000000) {
-  //     if (file.type == 'image/png' || file.type == 'image/webp' || file.type == 'image/jpg' || file.type == 'image/jpeg') {
-
-  //       const reader = new FileReader();
-  //       reader.onload = e => this.imgSelect = reader.result;
-  //       reader.readAsDataURL(file);
-
-  //       $('#image-name').text(file.name);
-
-  //       this.file = file;
-
-  //     } else {
-  //       iziToast.show({
-  //         title: 'Error',
-  //         position: 'topRight',
-  //         color: 'red',
-  //         message: 'La imagen no tiene el formato(png, webp, jpg, jpeg).'
-  //       });
-
-  //       $('#image-name').text('Seleccionar imagen');
-  //       this.imgSelect = 'assets/img/products/default/default-image.jpg';
-  //       this.file = undefined;
-  //     }
-  //   } else {
-  //     iziToast.show({
-  //       title: 'Error',
-  //       position: 'topRight',
-  //       color: 'red',
-  //       message: 'La imagen no puede superar los 2MB.'
-  //     });
-
-  //     $('#image-name').text('Seleccionar imagen');
-  //     this.imgSelect = 'assets/img/products/default/default-image.jpg';
-  //     this.file = undefined;
-  //   }
-  // }
-
+  
   //gallery
 
   onSelect(event) {

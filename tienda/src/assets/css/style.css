@@ -11109,6 +11109,7 @@ textarea.form-control {
   height: 100%;
   z-index: 999999;
   overflow: hidden;
+  background-color: #fff;
 }
 
 #loader-wrapper .loader-section {
